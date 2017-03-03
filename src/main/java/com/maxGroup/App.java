@@ -5,6 +5,7 @@ package com.maxGroup;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Human human = new Human("Vitalik","Mah",1997,11,29);
+        human.toString();
     }
 }
