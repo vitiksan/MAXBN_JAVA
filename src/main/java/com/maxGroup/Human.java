@@ -1,28 +1,32 @@
 package com.maxGroup;
 
 
-public abstract class Human {
+import java.util.GregorianCalendar;
+
+public class Human {
     private String name;
     private String surname;
-    private int old;
+    GregorianCalendar born;
 
     public Human() {
         name = "Enter your name";
         surname = "Enter your surname";
-        old = 0;
+        born = new GregorianCalendar(1970, 01, 01);
     }
 
-    public Human(String name, String surname, int old) {
+    public Human(String name, String surname, int year, int month, int day) {
         setName(name);
-        setOld(old);
+        born = new GregorianCalendar(year, month, day);
         setSurname(surname);
     }
+
     @Override
     public String toString() {
-        System.out.println("Name: " + name);
-        System.out.println("Surname: " + surname);
-        System.out.println("Old: " + old);
-        return null;
+        return getClass().getName() +
+                "[ name = " + name
+                + ", surname = " + surname
+                + ", date born = " + born.getGregorianChange()
+                + "]";
     }
 
     public String getName() {
@@ -39,13 +43,5 @@ public abstract class Human {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public int getOld() {
-        return old;
-    }
-
-    public void setOld(int old) {
-        this.old = old;
     }
 }

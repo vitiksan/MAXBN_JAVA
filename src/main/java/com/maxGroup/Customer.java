@@ -9,6 +9,7 @@ public class Customer extends Human {
 
 
     public Customer() {
+        super();
         statusCustomer = "usual";
         countCard = 0;
         countDeposit = 0;
@@ -16,27 +17,25 @@ public class Customer extends Human {
         idCustomer = "0000000";
     }
 
-    public Customer(String statusCustomer, String idCustomer, String name, String surname, int old, int countCard, int countCredit, int countDeposit) {
-        setName(name);
-        setSurname(surname);
+    public Customer(String statusCustomer, String idCustomer, String name, String surname, int year, int month, int day, int countCard, int countCredit, int countDeposit) {
+        super(name, surname, year, month, day);
         setStatusCustomer(statusCustomer);
         setIdCustomer(idCustomer);
-        setOld(old);
         setCountCard(countCard);
         setCountCredit(countCredit);
         setCountDeposit(countDeposit);
     }
+
     @Override
     public String toString() {
-        System.out.println("Name: " + getName());
-        System.out.println("Surname: " + getSurname());
-        System.out.println("Old: " + getOld());
-        System.out.println("Status customer: " + statusCustomer);
-        System.out.println("ID customer: " + idCustomer);
-        System.out.println("Count card: " + countCard);
-        System.out.println("Count credit: " + countCredit);
-        System.out.println("Count deposit: " + countDeposit);
-        return null;
+        return getClass().getName() +
+                "[ name = " + getName()
+                + ", surname = " + getSurname()
+                + ", date born = " + born.getGregorianChange()
+                + ", IdCustomer = " + idCustomer
+                + ", StatusCustomer = " + statusCustomer
+                + "]";
+
     }
 
     public String getStatusCustomer() {

@@ -6,25 +6,26 @@ public class Employee extends Human {
     private int experience;
 
     public Employee() {
+        super();
         post = "trainee";
         experience = 0;
     }
 
-    public Employee(String name, String surname, String post, int old, int experience) {
-        setName(name);
-        setSurname(surname);
+    public Employee(String name, String surname, String post, int year, int month, int day, int experience) {
+        super(name, surname, year, month, day);
         setPost(post);
-        setOld(old);
         setExperience(experience);
     }
+
     @Override
     public String toString() {
-        System.out.println("Name: " + getName());
-        System.out.println("Surname: " + getSurname());
-        System.out.println("Old: " + getOld());
-        System.out.println("Post: " + post);
-        System.out.println("Experience: " + experience);
-        return null;
+        return getClass().getName() +
+                "[ name = " + getName()
+                + ", surname = " + getSurname()
+                + ", date born = " + born.getGregorianChange()
+                + ", post = " + post
+                + ", experience = " + experience
+                + "]";
     }
 
     public String getPost() {
