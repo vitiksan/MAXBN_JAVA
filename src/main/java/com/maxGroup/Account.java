@@ -3,27 +3,27 @@ package com.maxGroup;
 
 public class Account {
     private String numberAccount;
-    private int balans;
+    private int balance;
     private int pass;
 
     public Account(){
         numberAccount = "0000000000";
-        balans = 0;
+        balance = 0;
         pass=11111111;
     }
-    public Account(String numberAccount, int balans, int pass){
+    public Account(String numberAccount, int balance, int pass){
         this.numberAccount=numberAccount;
-        this.balans=balans;
+        this.balance=balance;
         this.pass=pass;
     }
 
     public void fillBalans(int count){
-        balans+=count;
+        balance+=count;
     }
     public Boolean GetMany(int count, int pass){
-        if(pass==this.pass && count <=this.balans)
+        if(pass==this.pass && count <=this.balance)
         {
-            balans-=count;
+            balance-=count;
             return true;
         }
         return false;
@@ -37,11 +37,11 @@ public class Account {
     }
 
     public int getBalans() {
-        return balans;
+        return balance;
     }
 
-    public void setBalans(int balans) {
-        this.balans = balans;
+    public void setBalans(int balance) {
+        this.balance = balance;
     }
 
     public int getPass() {
