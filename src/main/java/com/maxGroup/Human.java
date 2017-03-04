@@ -6,18 +6,20 @@ import java.util.GregorianCalendar;
 public class Human {
     private String name;
     private String surname;
-    GregorianCalendar born;
+    private GregorianCalendar born;
 
     public Human() {
-        name = "Enter your name";
-        surname = "Enter your surname";
-        born = new GregorianCalendar(1970, 01, 01);
+        this.name = "Enter your name";
+        this.surname = "Enter your surname";
+        this.born = new GregorianCalendar(1970, 01, 01);
     }
 
+
     public Human(String name, String surname, int year, int month, int day) {
-        setName(name);
-        born = new GregorianCalendar(year, month, day);
-        setSurname(surname);
+        this.name = name;
+        this.born = new GregorianCalendar(year, month, day);
+        this.surname = surname;
+
     }
 
     @Override
@@ -43,5 +45,13 @@ public class Human {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public GregorianCalendar getBorn() {
+        return born;
+    }
+
+    public void setBorn(GregorianCalendar born) {
+        this.born = born;
     }
 }

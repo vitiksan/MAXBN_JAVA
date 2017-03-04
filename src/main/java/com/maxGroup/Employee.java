@@ -7,14 +7,14 @@ public class Employee extends Human {
 
     public Employee() {
         super();
-        post = "trainee";
-        experience = 0;
+        this.post = "trainee";
+        this.experience = 0;
     }
 
     public Employee(String name, String surname, String post, int year, int month, int day, int experience) {
         super(name, surname, year, month, day);
-        setPost(post);
-        setExperience(experience);
+        this.post=post;
+        this.experience=experience;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Employee extends Human {
         return getClass().getName() +
                 "[ name = " + getName()
                 + ", surname = " + getSurname()
-                + ", date born = " + born.getGregorianChange()
+                + ", date born = " + getBorn().getGregorianChange()
                 + ", post = " + post
                 + ", experience = " + experience
                 + "]";

@@ -7,9 +7,9 @@ public class Account {
     private int pass;
 
     public Account(){
-        numberAccount = "0000000000";
-        balance = 0;
-        pass=11111111;
+        this.numberAccount = "0000000000";
+        this.balance = 0;
+        this.pass=11111111;
     }
     public Account(String numberAccount, int balance, int pass){
         this.numberAccount=numberAccount;
@@ -23,16 +23,16 @@ public class Account {
     public Boolean GetMany(int count, int pass){
         if(pass==this.pass && count <=this.balance)
         {
-            balance-=count;
+            this.balance-=count;
             return true;
         }
         return false;
     }
-    public String getNumberClient() {
+    public String getNumberAccount() {
         return numberAccount;
     }
 
-    public void setNumberClient(String numberAccount) {
+    public void setNumberAccount(String numberAccount) {
         this.numberAccount = numberAccount;
     }
 

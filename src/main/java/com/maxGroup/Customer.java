@@ -40,30 +40,6 @@ public class Customer extends Human {
         this.statusCustomer = statusCustomer;
     }
 
-    public int getCountCard() {
-        return countCard;
-    }
-
-    public void setCountCard(int countCard) {
-        this.countCard = countCard;
-    }
-
-    public int getCountCredit() {
-        return countCredit;
-    }
-
-    public void setCountCredit(int countCredit) {
-        this.countCredit = countCredit;
-    }
-
-    public int getCountDeposit() {
-        return countDeposit;
-    }
-
-    public void setCountDeposit(int countDeposit) {
-        this.countDeposit = countDeposit;
-    }
-
     public String getIdCustomer() {
         return idCustomer;
     }
