@@ -9,14 +9,14 @@ public class Customer extends Human {
         super();
         this.statusCustomer = "usual";
         this.idCustomer = "0000000";
-        account = new Account();
+        this.account = new Account();
     }
 
     public Customer(String statusCustomer, String idCustomer, String name, String surname, int year, int month, int day, String numberAccount, int balance, int pass) {
         super(name, surname, year, month, day);
-        this.setIdCustomer(idCustomer);
+        this.idCustomer=idCustomer;
         this.statusCustomer = statusCustomer;
-        account = new Account(numberAccount, balance, pass);
+        this.account = new Account(numberAccount, balance, pass);
     }
 
     @Override
