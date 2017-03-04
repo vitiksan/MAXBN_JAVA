@@ -3,23 +3,20 @@ package com.maxGroup;
 public class Customer extends Human {
     private String idCustomer;
     private String statusCustomer; //gold, platinum or usual
-    private int countCard;
-    private int countCredit;
-    private int countDeposit;
+    private Account account;
 
     public Customer() {
         super();
         this.statusCustomer = "usual";
         this.idCustomer = "0000000";
+        account = new Account();
     }
 
-    public Customer(String statusCustomer, String idCustomer, String name, String surname, int year, int month, int day, int countCard, int countCredit, int countDeposit) {
+    public Customer(String statusCustomer, String idCustomer, String name, String surname, int year, int month, int day, String numberAccount, int balance, int pass) {
         super(name, surname, year, month, day);
         this.setIdCustomer(idCustomer);
-        this.statusCustomer=statusCustomer;
-        setCountCard(countCard);
-        setCountCredit(countCredit);
-        setCountDeposit(countDeposit);
+        this.statusCustomer = statusCustomer;
+        account = new Account(numberAccount, balance, pass);
     }
 
     @Override
@@ -29,9 +26,10 @@ public class Customer extends Human {
                 + ", surname = " + getSurname()
                 + ", date born = " + getBorn().getGregorianChange()
                 + ", IdCustomer = " + idCustomer
-                + ", StatusCustomer = " + statusCustomer
-                + "]";
-
+                + ", Status Customer = " + statusCustomer
+                + ", number Account = " + account.getNumberAccount()
+                + ", balance = " + account.getBalans()
+                + " UAH ]";
     }
 
     public String getStatusCustomer() {
