@@ -1,22 +1,28 @@
 package com.maxGroup;
 
+import java.util.ArrayList;
+
 public class Customer extends Human {
-    private String idCustomer;
+    private static int nextId=1;
+    private int idCustomer;
     private String statusCustomer; //gold, platinum or usual
-    private Account account;
+    private ArrayList<Account> account= new ArrayList<Account>();
 
     public Customer() {
         super();
         this.statusCustomer = "usual";
-        this.idCustomer = "0000000";
-        this.account = new Account();
+        setIdCustomer();
+        account.add(new Account());
     }
 
-    public Customer(String statusCustomer, String idCustomer, String name, String surname, int year, int month, int day, String numberAccount, int balance, int pass) {
+    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, String numberAccount, int balance, int pass) {
         super(name, surname, year, month, day);
-        this.idCustomer=idCustomer;
+        setIdCustomer();
         this.statusCustomer = statusCustomer;
-        this.account = new Account(numberAccount, balance, pass);
+        account.add(new Account(numberAccount, balance, pass));
+    }
+    public Boolean createAccount(int balance, int pass){
+        return account.add(new Account(balance, pass));
     }
 
     @Override
@@ -27,9 +33,10 @@ public class Customer extends Human {
                 + ", date born = " + getBorn().getGregorianChange()
                 + ", IdCustomer = " + idCustomer
                 + ", Status Customer = " + statusCustomer
-                + ", number Account = " + account.getNumberAccount()
-                + ", balance = " + account.getBalans()
-                + " UAH ]";
+                //+ ", number Accounts = " +
+                //for(Account it: account) it.getNumberAccount();
+                //+ ", balance = " + account.getBalans()
+                + "]";
     }
 
     public String getStatusCustomer() {
@@ -40,11 +47,15 @@ public class Customer extends Human {
         this.statusCustomer = statusCustomer;
     }
 
-    public String getIdCustomer() {
+    public int getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(String idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setIdCustomer() {
+        this.idCustomer = nextId;
+        nextId++;
+    }
+    public static int getNextId(){
+        return nextId;
     }
 }

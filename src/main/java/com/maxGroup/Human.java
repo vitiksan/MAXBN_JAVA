@@ -51,7 +51,5 @@ public class Human {
         return born;
     }
 
-    public void setBorn(GregorianCalendar born) {
-        this.born = born;
-    }
+
 }
