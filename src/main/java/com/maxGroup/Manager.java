@@ -6,11 +6,11 @@ public class Manager extends Employee {
 
     public Manager() {
         super();
-        this.countClient = 0;
+        countClient = 0;
     }
 
-    public Manager(String name, String surname, String post, int year, int month, int day, int experience, int cell, int countClient) {
-        super(name, surname, post, year, month, day, experience, cell);
+    public Manager(String name, String surname, String post, int year, int month, int day,int salary, int countClient,int yearStart, int mountStart, int dayStart) {
+        super(name, surname, post, year, month, day, salary,yearStart,mountStart,dayStart);
         this.countClient = countClient;
     }
 
@@ -19,10 +19,10 @@ public class Manager extends Employee {
         return getClass().getName() +
                 "[ name = " + getName()
                 + ", surname = " + getSurname()
-                + ", date born = " + getBorn().getGregorianChange()
+                + ", old = " + getOld()
                 + ", post = " + getPost()
                 + ", experience = " + getExperience()
-                + ", cell = " + getCell()
+                + " month, cell = " + getSalary()
                 + ", count of client = " + countClient
                 + "]";
     }

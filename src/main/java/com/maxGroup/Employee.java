@@ -1,43 +1,72 @@
 package com.maxGroup;
 
 
+import java.util.GregorianCalendar;
+
 public class Employee extends Human {
     private String post;
-    private int experience;
-    private int cell;
+    private GregorianCalendar startWork;
+    private int salary;
 
     public Employee() {
         super();
-        this.post = "trainee";
-        this.experience = 0;
-        this.cell = 3000;
+        post = "trainee";
+        startWork=new GregorianCalendar();
+        salary = 3000;
     }
 
-    public Employee(String name, String surname, String post, int year, int month, int day, int experience, int cell) {
+    public Employee(String name, String surname, String post, int year, int month, int day, int salary, int yearStart, int mountStart, int dayStart) {
         super(name, surname, year, month, day);
+        startWork= new GregorianCalendar(yearStart,mountStart, dayStart);
         this.post = post;
-        this.experience = experience;
-        this.cell = cell;
+        this.salary = salary;
     }
 
     @Override
     public String toString() {
         return getClass().getName() +
                 "[ name = " + getName()
+
                 + ", surname = " + getSurname()
-                + ", date born = " + getBorn().getGregorianChange()
+                + ", old = " + getOld()
                 + ", post = " + post
-                + ", experience = " + experience
-                + ", cell = " + cell
+                + ", experience = " + getExperience()
+                + " month, salary = " + salary
                 + "]";
     }
 
-    public int getCell() {
-        return cell;
+    public Boolean riseSalary(int count) {
+        if (count > 0) {
+            salary += count;
+            return true;
+        }
+        return false;
     }
 
-    public void setCell(int cell) {
-        this.cell = cell;
+    public Boolean reduceSalary(int count) {
+        if (count > 0) {
+            salary += count;
+            return true;
+        }
+        return false;
+    }
+
+    public int getExperience() {
+        int experience;
+        GregorianCalendar now = new GregorianCalendar();
+        experience=(now.get(GregorianCalendar.YEAR) - startWork.get(GregorianCalendar.YEAR))*12;
+        experience+=now.get(GregorianCalendar.MONTH) - startWork.get(GregorianCalendar.MONTH);
+        if (now.get(GregorianCalendar.MONTH) == startWork.get(GregorianCalendar.MONTH)
+                && now.get(GregorianCalendar.DATE) < startWork.get(GregorianCalendar.DATE)) experience--;
+        return experience;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     public String getPost() {
@@ -48,12 +77,12 @@ public class Employee extends Human {
         this.post = post;
     }
 
-    public int getExperience() {
-        return experience;
+    public GregorianCalendar getStartWork() {
+        return startWork;
     }
 
-    public void setExperience(int experience) {
-        this.experience = experience;
+    public void setStartWork(GregorianCalendar startWork) {
+        this.startWork = startWork;
     }
 }
 

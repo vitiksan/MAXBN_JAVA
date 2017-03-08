@@ -6,11 +6,12 @@ public class Consulter extends Employee {
 
     public Consulter() {
         super();
-        this.occupation = "Credit";
+        occupation = "Credit";
     }
 
-    public Consulter(String name, String surname, String post, int year, int month, int day, int experience, int cell, String occupation) {
-        super(name, surname, post, year, month, day, experience, cell);
+    public Consulter(String name, String surname, String post, int year, int month, int day,
+                     int salary, String occupation, int yearStart, int mountStart, int dayStart) {
+        super(name, surname, post, year, month, day, salary,yearStart,mountStart,dayStart);
         this.occupation = occupation;
     }
 
@@ -19,10 +20,10 @@ public class Consulter extends Employee {
         return getClass().getName() +
                 "[ name = " + getName()
                 + ", surname = " + getSurname()
-                + ", date born = " + getBorn().getGregorianChange()
+                + ", old = " + getOld()
                 + ", post = " + getPost()
                 + ", experience = " + getExperience()
-                + ", cell = " + getCell()
+                + " month, salary = " + getSalary()
                 + ", occupation = " + occupation
                 + "]";
     }

@@ -15,14 +15,11 @@ public class Customer extends Human {
         account.add(new Account());
     }
 
-    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, String numberAccount, int balance, int pass) {
+    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass) {
         super(name, surname, year, month, day);
         setIdCustomer();
         this.statusCustomer = statusCustomer;
-        account.add(new Account(numberAccount, balance, pass));
-    }
-    public Boolean createAccount(int balance, int pass){
-        return account.add(new Account(balance, pass));
+        account.add(new Account(balance, pass));
     }
 
     @Override
@@ -30,13 +27,33 @@ public class Customer extends Human {
         return getClass().getName() +
                 "[ name = " + getName()
                 + ", surname = " + getSurname()
-                + ", date born = " + getBorn().getGregorianChange()
+                + ", old = " + getOld()
                 + ", IdCustomer = " + idCustomer
                 + ", Status Customer = " + statusCustomer
-                //+ ", number Accounts = " +
-                //for(Account it: account) it.getNumberAccount();
-                //+ ", balance = " + account.getBalans()
+                + ", number Accounts = " + getAccountNumbers()
+                + ", general balance = " + getBalanceAccounts()
                 + "]";
+    }
+
+    public Boolean createAccount(int balance, int pass){
+        return account.add(new Account(balance, pass));
+    }
+
+    public void setIdCustomer() {
+        this.idCustomer = nextId;
+        nextId++;
+    }
+
+    public int getBalanceAccounts(){
+        int sum=0;
+        for(Account item: account) sum+=item.getBalance();
+        return sum;
+    }
+
+    public String getAccountNumbers(){
+        String numbers="";
+        for(Account item:account) numbers+=item.getNumberAccount()+"  ";
+        return numbers;
     }
 
     public String getStatusCustomer() {
@@ -51,10 +68,6 @@ public class Customer extends Human {
         return idCustomer;
     }
 
-    public void setIdCustomer() {
-        this.idCustomer = nextId;
-        nextId++;
-    }
     public static int getNextId(){
         return nextId;
     }

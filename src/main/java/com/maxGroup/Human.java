@@ -9,15 +9,14 @@ public class Human {
     private GregorianCalendar born;
 
     public Human() {
-        this.name = "Enter your name";
-        this.surname = "Enter your surname";
-        this.born = new GregorianCalendar(1970, 01, 01);
+        name = "Name";
+        surname = "Surname";
+        born = new GregorianCalendar(1970, 01, 01);
     }
-
 
     public Human(String name, String surname, int year, int month, int day) {
         this.name = name;
-        this.born = new GregorianCalendar(year, month, day);
+        born = new GregorianCalendar(year, month, day);
         this.surname = surname;
 
     }
@@ -27,8 +26,18 @@ public class Human {
         return getClass().getName() +
                 "[ name = " + name
                 + ", surname = " + surname
-                + ", date born = " + born.getGregorianChange()
+                + ", old = " + getOld()
                 + "]";
+    }
+
+    public int getOld() {
+        int old;
+        GregorianCalendar now = new GregorianCalendar();
+        old = now.get(GregorianCalendar.YEAR) - born.get(GregorianCalendar.YEAR);
+        if (now.get(GregorianCalendar.MONTH) < born.get(GregorianCalendar.MONTH)) old--;
+        if (now.get(GregorianCalendar.MONTH) == born.get(GregorianCalendar.MONTH)
+                && now.get(GregorianCalendar.DATE) < born.get(GregorianCalendar.DATE)) old--;
+        return old;
     }
 
     public String getName() {
@@ -50,6 +59,4 @@ public class Human {
     public GregorianCalendar getBorn() {
         return born;
     }
-
-
 }

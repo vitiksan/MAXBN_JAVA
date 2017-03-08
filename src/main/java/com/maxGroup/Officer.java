@@ -2,15 +2,16 @@ package com.maxGroup;
 
 
 public class Officer extends Employee {
-    private int levelOfGovernment;
+    private String levelOfGovernment;
 
     public Officer() {
         super();
-        this.levelOfGovernment = 1;
+        levelOfGovernment = "";
     }
 
-    public Officer(String name, String surname, String post, int year, int month, int day, int experience, int cell, int levelOfGovernment) {
-        super(name, surname, post, year, month, day, experience, cell);
+    public Officer(String name, String surname, String post, int year, int month, int day, int salary,
+                   String levelOfGovernment, int yearStart, int mountStart, int dayStart) {
+        super(name, surname, post, year, month, day, salary,yearStart,mountStart,dayStart);
         this.levelOfGovernment = levelOfGovernment;
     }
 
@@ -19,19 +20,19 @@ public class Officer extends Employee {
         return getClass().getName() +
                 "[ name = " + getName()
                 + ", surname = " + getSurname()
-                + ", date born = " + getBorn().getGregorianChange()
+                + ", old = " + getOld()
                 + ", post = " + getPost()
                 + ", experience = " + getExperience()
-                + ", cell = " + getCell()
+                + " month, salary = " + getSalary()
                 + ", level of government = " + levelOfGovernment
                 + "]";
     }
 
-    public int getLevelOfGovernment() {
+    public String  getLevelOfGovernment() {
         return levelOfGovernment;
     }
 
-    public void setLevelOfGovernment(int levelOfGovernment) {
+    public void setLevelOfGovernment(String levelOfGovernment) {
         this.levelOfGovernment = levelOfGovernment;
     }
 }

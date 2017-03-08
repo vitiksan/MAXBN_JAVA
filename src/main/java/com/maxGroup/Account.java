@@ -1,37 +1,44 @@
 package com.maxGroup;
 
+import java.util.Scanner;
+
 public class Account {
     private String numberAccount;
     private int balance;
     private int pass;
 
     public Account() {
-        this.numberAccount = "0000000000";
-        this.balance = 0;
-        this.pass = 11111111;
+        numberAccount = "0000000000";
+        balance = 0;
+        pass = 11111111;
     }
 
-    public Account(String numberAccount, int balance, int pass) {
-        this.numberAccount = numberAccount;
-        this.balance = balance;
-        this.pass = pass;
-    }
     public Account(int balance, int pass) {
         this.balance = balance;
         this.pass = pass;
     }
 
-    public void fillBalans(int count) {
-        //TODO 3001 - Перевірка
-        balance += count;
+    public Boolean fillBalans(int count) {
+        if(count >0) {
+            balance += count;
+            return true;
+        }
+        return false;
     }
 
-    public Boolean getMany(int count, int pass) {
-        if (pass == this.pass && count <= this.balance) {
+    public Boolean getMany(int count) {
+        if (checkPassword() && count <= this.balance) {
             this.balance -= count;
             return true;
         }
         return false;
+    }
+
+    private boolean checkPassword(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter password: ");
+        if(in.nextInt()==pass) return true;
+        else return false;
     }
 
     public String getNumberAccount() {
@@ -42,23 +49,15 @@ public class Account {
         this.numberAccount = numberAccount;
     }
 
-    public int getBalans() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalans(int balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
-    }
-
-    public int getPass() {
-        return pass;
     }
 
     public void setPass(int pass) {
         this.pass = pass;
-    }
-
-    private boolean checkPassword(){
-        return true;
     }
 }
