@@ -3,12 +3,12 @@ package com.maxGroup;
 import java.util.Scanner;
 
 public class Account {
-    private String numberAccount;
+    private String cardNumber;
     private int balance;
     private int pass;
 
     public Account() {
-        numberAccount = "0000000000";
+        cardNumber = "0000000000000";
         balance = 0;
         pass = 11111111;
     }
@@ -16,6 +16,9 @@ public class Account {
     public Account(int balance, int pass) {
         this.balance = balance;
         this.pass = pass;
+    }
+    public String generateVCNumber(){
+        return "";
     }
 
     public Boolean fillBalans(int count) {
@@ -41,12 +44,12 @@ public class Account {
         else return false;
     }
 
-    public String getNumberAccount() {
-        return numberAccount;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setNumberAccount(String numberAccount) {
-        this.numberAccount = numberAccount;
+    public void setCardNumber(String numberAccount) {
+        this.cardNumber = numberAccount;
     }
 
     public int getBalance() {

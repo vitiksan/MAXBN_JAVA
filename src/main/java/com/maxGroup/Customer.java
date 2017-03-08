@@ -52,7 +52,7 @@ public class Customer extends Human {
 
     public String getAccountNumbers(){
         String numbers="";
-        for(Account item:account) numbers+=item.getNumberAccount()+"  ";
+        for(Account item:account) numbers+=item.getCardNumber()+"  ";
         return numbers;
     }
 
