@@ -85,4 +85,3 @@ public class Employee extends Human {
         this.startWork = startWork;
     }
 }
-
