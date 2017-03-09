@@ -1,5 +1,6 @@
 package com.maxGroup;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Account {
@@ -8,19 +9,28 @@ public class Account {
     private int pass;
 
     public Account() {
-        cardNumber = "0000000000000";
+        cardNumber = generateVCNumber();
         balance = 0;
         pass = 11111111;
     }
 
     public Account(int balance, int pass) {
+        cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
     }
 
+    public String generateVCNumber() {
+        String temp = "4";
+        Random random = new Random(0);
+        for (int i = 0; i < 15; i++) {
+            temp += String.valueOf(random.nextInt(10));
+        }
+        return temp;
+    }
 
     public Boolean fillBalans(int count) {
-        if(count >0) {
+        if (count > 0) {
             balance += count;
             return true;
         }
@@ -35,10 +45,10 @@ public class Account {
         return false;
     }
 
-    private boolean checkPassword(){
+    private boolean checkPassword() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter password: ");
-        if(in.nextInt()==pass) return true;
+        if (in.nextInt() == pass) return true;
         else return false;
     }
 
