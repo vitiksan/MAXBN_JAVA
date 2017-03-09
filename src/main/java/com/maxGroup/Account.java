@@ -20,6 +20,7 @@ public class Account {
         this.pass = pass;
     }
 
+
     public String generateVCNumber() {
         String temp = "4";
         Random random = new Random(0);
