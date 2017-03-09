@@ -8,27 +8,30 @@ public class Account {
     private String cardNumber;
     private int balance;
     private int pass;
-    private GregorianCalendar openCard;
+    private GregorianCalendar expCard;
 
     public Account() {
         cardNumber = generateVCNumber();
         balance = 0;
         pass = 11111111;
-        openCard = new GregorianCalendar();
+        expCard = new GregorianCalendar();
     }
 
     public Account(int balance, int pass) {
         cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
-        openCard = new GregorianCalendar();
+        expCard = new GregorianCalendar();
     }
 
-    public void GetExp(){
-        GregorianCalendar now=new GregorianCalendar();
-        if((now.get(GregorianCalendar.YEAR)-openCard.get(GregorianCalendar.YEAR)==4 && now.get(GregorianCalendar.MONTH)-openCard.get(GregorianCalendar.MONTH)<2)
-                || (now.get(GregorianCalendar.YEAR)-openCard.get(GregorianCalendar.YEAR)==4 && now.get(GregorianCalendar.MONTH)-openCard.get(GregorianCalendar.MONTH)==2
-        && now.get(GregorianCalendar.DATE)>openCard.get(GregorianCalendar.DATE)))
+    public void GetExp() {
+        GregorianCalendar now = new GregorianCalendar();
+        GregorianCalendar expDate = new
+                GregorianCalendar(now.get(GregorianCalendar.YEAR)+4,
+                now.get(GregorianCalendar.MONTH),now.get(GregorianCalendar.DATE));
+
+        int diffYear =  now.get(GregorianCalendar.YEAR) - expCard.get(GregorianCalendar.YEAR);
+
             System.out.println("Your card will be closed less as 2 month ago");
     }
 
