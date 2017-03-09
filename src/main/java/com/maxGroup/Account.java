@@ -17,9 +17,7 @@ public class Account {
         this.balance = balance;
         this.pass = pass;
     }
-    public String generateVCNumber(){
-        return "";
-    }
+
 
     public Boolean fillBalans(int count) {
         if(count >0) {
