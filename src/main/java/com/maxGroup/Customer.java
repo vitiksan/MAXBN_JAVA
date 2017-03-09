@@ -22,6 +22,7 @@ public class Customer extends Human {
         account.add(new Account(balance, pass));
     }
 
+    
     @Override
     public String toString() {
         return getClass().getName() +
