@@ -39,10 +39,11 @@ public class Customer extends Human {
 
     public boolean deleteAccount() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter number account, that you want to close:");
-        String accountId = in.nextLine();
+        String accountId;
         String accountIdNew;
         boolean search = false;
+        System.out.println("Enter number account, that you want to close:");
+        accountId = in.nextLine();
         for (Account item : account) {
             if (item.getCardNumber() == accountId) {
                 if (item.getBalance() > 0) {
@@ -50,13 +51,15 @@ public class Customer extends Human {
                         System.out.println("You have many at the account, enter number account when you wont transfer many");
                         accountIdNew = in.nextLine();
                         for (Account item2 : account) {
-                            if (item2.getCardNumber() == accountIdNew) search = true;
-                            item.fillBalance(item2.getBalance());
-                            account.remove(item);
-                            return true;
+                            if (item2.getCardNumber() == accountIdNew) {
+                                search = true;
+                                item2.fillBalance(item.getBalance());
+                                account.remove(item);
+                                return true;
+                            }
                         }
                     } while (!search);
-                }
+                } else account.remove(item);
             }
         }
         return false;
