@@ -14,28 +14,30 @@ public class Account {
         cardNumber = generateVCNumber();
         balance = 0;
         pass = 11111111;
-        expCard = new GregorianCalendar();
+        setExpCard();
     }
 
     public Account(int balance, int pass) {
         cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
-        expCard = new GregorianCalendar();
+        setExpCard();
     }
 
     public void GetExp() {
         GregorianCalendar now = new GregorianCalendar();
-        GregorianCalendar expDate = new
-                GregorianCalendar(now.get(GregorianCalendar.YEAR)+4,
-                now.get(GregorianCalendar.MONTH),now.get(GregorianCalendar.DATE));
-
-        int diffYear =  now.get(GregorianCalendar.YEAR) - expCard.get(GregorianCalendar.YEAR);
-
+        int yearNow=now.get(GregorianCalendar.YEAR);
+        int yearExpCard = expCard.get(GregorianCalendar.YEAR);
+        int monthNow=now.get(GregorianCalendar.MONTH);
+        int monthExpCard = expCard.get(GregorianCalendar.MONTH);
+        if(yearNow>yearExpCard || (yearNow==yearExpCard && monthNow>monthExpCard))
             System.out.println("Your card will be closed less as 2 month ago");
     }
 
-
+    public void setExpCard(){
+        GregorianCalendar now = new GregorianCalendar();
+        expCard = new GregorianCalendar(now.get(GregorianCalendar.YEAR)+4,now.get(GregorianCalendar.MONTH),now.get(GregorianCalendar.DATE));
+    }
 
     public String generateVCNumber() {
         String temp = "4";
