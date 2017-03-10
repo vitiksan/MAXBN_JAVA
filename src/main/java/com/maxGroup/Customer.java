@@ -1,12 +1,13 @@
 package com.maxGroup;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Customer extends Human {
-    private static int nextId=1;
+    private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer; //gold, platinum or usual
-    private ArrayList<Account> account= new ArrayList<Account>();
+    private ArrayList<Account> account = new ArrayList<Account>();
 
     public Customer() {
         super();
@@ -22,7 +23,7 @@ public class Customer extends Human {
         account.add(new Account(balance, pass));
     }
 
-    
+
     @Override
     public String toString() {
         return getClass().getName() +
@@ -36,16 +37,32 @@ public class Customer extends Human {
                 + "]";
     }
 
-    public boolean deleteAccount(){
-        if (index<account.size()){
-            account.get(index-1).fillBalance(account.get(index).getBalance());
-            account.remove(index);
-            return true;
+    public boolean deleteAccount() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter number account, that you want to close:");
+        String accountId = in.nextLine();
+        String accountIdNew;
+        boolean search = false;
+        for (Account item : account) {
+            if (item.getCardNumber() == accountId) {
+                if (item.getBalance() > 0) {
+                    do {
+                        System.out.println("You have many at the account, enter number account when you wont transfer many");
+                        accountIdNew = in.nextLine();
+                        for (Account item2 : account) {
+                            if (item2.getCardNumber() == accountIdNew) search = true;
+                            item.fillBalance(item2.getBalance());
+                            account.remove(item);
+                            return true;
+                        }
+                    } while (!search);
+                }
+            }
         }
         return false;
     }
 
-    public Boolean createAccount(int balance, int pass){
+    public Boolean createAccount(int balance, int pass) {
         return account.add(new Account(balance, pass));
     }
 
@@ -54,15 +71,15 @@ public class Customer extends Human {
         nextId++;
     }
 
-    public int getBalanceAccounts(){
-        int sum=0;
-        for(Account item: account) sum+=item.getBalance();
+    public int getBalanceAccounts() {
+        int sum = 0;
+        for (Account item : account) sum += item.getBalance();
         return sum;
     }
 
-    public String getAccountNumbers(){
-        String numbers="";
-        for(Account item:account) numbers+=item.getCardNumber()+"  ";
+    public String getAccountNumbers() {
+        String numbers = "";
+        for (Account item : account) numbers += item.getCardNumber() + "  ";
         return numbers;
     }
 
@@ -78,7 +95,7 @@ public class Customer extends Human {
         return idCustomer;
     }
 
-    public static int getNextId(){
+    public static int getNextId() {
         return nextId;
     }
 }
