@@ -39,7 +39,6 @@ public class Account {
         expCard = new GregorianCalendar(now.get(GregorianCalendar.YEAR)+4,now.get(GregorianCalendar.MONTH),now.get(GregorianCalendar.DATE));
     }
 
-
     public String generateVCNumber() {
         String temp = "4";
         Random random = new Random(0);
