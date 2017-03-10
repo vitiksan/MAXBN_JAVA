@@ -38,7 +38,7 @@ public class Customer extends Human {
 
     public boolean deleteAccount(int index){
         if (index<account.size()){
-            account.get(index-1).fillBalans(account.get(index).getBalance());
+            account.get(index-1).fillBalance(account.get(index).getBalance());
             account.remove(index);
             return true;
         }

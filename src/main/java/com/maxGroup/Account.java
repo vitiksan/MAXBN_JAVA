@@ -35,6 +35,8 @@ public class Account {
             System.out.println("Your card will be closed less as 2 month ago");
     }
 
+
+
     public String generateVCNumber() {
         String temp = "4";
         Random random = new Random(0);
@@ -44,7 +46,7 @@ public class Account {
         return temp;
     }
 
-    public Boolean fillBalans(int count) {
+    public Boolean fillBalance(int count) {
         if (count > 0) {
             balance += count;
             return true;
