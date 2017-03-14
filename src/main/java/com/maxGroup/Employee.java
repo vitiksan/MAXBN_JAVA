@@ -10,14 +10,14 @@ public class Employee extends Human {
 
     public Employee() {
         super();
-        post = "trainee";
-        startWork=new GregorianCalendar();
+        post = "none";
+        startWork = new GregorianCalendar();
         salary = 3000;
     }
 
-    public Employee(String name, String surname, String post, int year, int month, int day, int salary, int yearStart, int mountStart, int dayStart) {
+    public Employee(String name, String surname, String post, int year, int month, int day, int salary, int yearStart, int monthStart, int dayStart) {
         super(name, surname, year, month, day);
-        startWork= new GregorianCalendar(yearStart,mountStart, dayStart);
+        startWork = new GregorianCalendar(yearStart, monthStart, dayStart);
         this.post = post;
         this.salary = salary;
     }
@@ -52,13 +52,13 @@ public class Employee extends Human {
     }
 
     public int getExperience() {
-        int experience;
+        int month;
         GregorianCalendar now = new GregorianCalendar();
-        experience=(now.get(GregorianCalendar.YEAR) - startWork.get(GregorianCalendar.YEAR))*12;
-        experience+=now.get(GregorianCalendar.MONTH) - startWork.get(GregorianCalendar.MONTH);
+        month = (now.get(GregorianCalendar.YEAR) - startWork.get(GregorianCalendar.YEAR)) * 12;
+        month += now.get(GregorianCalendar.MONTH) - startWork.get(GregorianCalendar.MONTH) + 1;
         if (now.get(GregorianCalendar.MONTH) == startWork.get(GregorianCalendar.MONTH)
-                && now.get(GregorianCalendar.DATE) < startWork.get(GregorianCalendar.DATE)) experience--;
-        return experience;
+                && now.get(GregorianCalendar.DATE) < startWork.get(GregorianCalendar.DATE)) month--;
+        return month;
     }
 
     public int getSalary() {
