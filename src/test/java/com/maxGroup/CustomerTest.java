@@ -25,7 +25,7 @@ public class CustomerTest {
             System.out.println(item.toString());
             sum += item.getBalanceAccounts();
         }
-        System.out.println("All sum accounts group: " +sum);
+        System.out.println("All sum accounts group: " + sum);
 
     }
 
