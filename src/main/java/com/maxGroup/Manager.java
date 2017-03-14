@@ -9,8 +9,8 @@ public class Manager extends Employee {
         countClient = 0;
     }
 
-    public Manager(String name, String surname, String post, int year, int month, int day,int salary, int countClient,int yearStart, int mountStart, int dayStart) {
-        super(name, surname, post, year, month, day, salary,yearStart,mountStart,dayStart);
+    public Manager(String name, String surname, String post, int year, int month, int day, int salary, int countClient, int yearStart, int mountStart, int dayStart) {
+        super(name, surname, post, year, month, day, salary, yearStart, mountStart, dayStart);
         this.countClient = countClient;
     }
 
