@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Vitalik on 14.03.2017.
- */
 public class CustomerTest {
-    public static void informationExspertTest(String[] args) {
+    public static void main(String[] args) {
         ArrayList<Customer> group = new ArrayList<Customer>();
 
         group.add(new Customer("usual", "Vitalik", "Mah", 1997, 11, 29, 58000, 1111));
