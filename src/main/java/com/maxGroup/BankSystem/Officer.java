@@ -1,4 +1,4 @@
-package com.maxGroup;
+package com.maxGroup.BankSystem;
 
 
 public class Officer extends Employee {

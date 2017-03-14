@@ -1,8 +1,8 @@
 package com.maxGroup;
 
-import java.util.ArrayList;
+import com.maxGroup.BankSystem.Customer;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 public class CustomerTest {
     public static void main(String[] args) {

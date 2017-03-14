@@ -1,5 +1,6 @@
 package com.maxGroup;
 
+import com.maxGroup.BankSystem.Account;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

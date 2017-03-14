@@ -1,4 +1,4 @@
-package com.maxGroup;
+package com.maxGroup.BankSystem;
 
 
 public class Manager extends Employee {
@@ -33,5 +33,14 @@ public class Manager extends Employee {
 
     public void setCountClient(int countClient) {
         this.countClient = countClient;
+    }
+
+    @Override
+    public Boolean riseSalary(int count) {
+        if (count > 0) {
+            setSalary((int) (getSalary()+count+count*0.15));
+            return true;
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.maxGroup;
+package com.maxGroup.BankSystem;
 
 
 import java.util.GregorianCalendar;
@@ -22,11 +22,17 @@ public class Employee extends Human {
         this.salary = salary;
     }
 
+    public Employee(String name, String surname, String post, int year, int month, int day, int salary) {
+        super(name, surname, year, month, day);
+        startWork = new GregorianCalendar();
+        this.post = post;
+        this.salary = salary;
+    }
+
     @Override
     public String toString() {
         return getClass().getName() +
                 "[ name = " + getName()
-
                 + ", surname = " + getSurname()
                 + ", old = " + getOld()
                 + ", post = " + post
@@ -45,7 +51,7 @@ public class Employee extends Human {
 
     public Boolean reduceSalary(int count) {
         if (count > 0) {
-            salary += count;
+            salary -= count;
             return true;
         }
         return false;

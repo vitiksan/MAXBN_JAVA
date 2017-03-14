@@ -1,4 +1,4 @@
-package com.maxGroup;
+package com.maxGroup.BankSystem;
 
 import java.util.ArrayList;
 import java.util.Scanner;

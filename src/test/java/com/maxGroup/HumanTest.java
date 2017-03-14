@@ -1,10 +1,9 @@
 package com.maxGroup;
 
+import com.maxGroup.BankSystem.Customer;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class HumanTest {
     @Test

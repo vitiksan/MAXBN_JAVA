@@ -1,4 +1,4 @@
-package com.maxGroup;
+package com.maxGroup.BankSystem;
 
 import java.util.GregorianCalendar;
 import java.util.Random;
