@@ -17,6 +17,11 @@ public class Account {
         setExpCard();
     }
 
+    /**
+     * Конструктор
+     * @param balance - Кількість грошей на рахунку
+     * @param pass - Пароль від рахунку
+     */
     public Account(int balance, int pass) {
         cardNumber = generateVCNumber();
         this.balance = balance;
@@ -49,6 +54,10 @@ public class Account {
         expCard = new GregorianCalendar(now.get(GregorianCalendar.YEAR) + 4, now.get(GregorianCalendar.MONTH), now.get(GregorianCalendar.DATE));
     }
 
+    /**
+     *
+     * @return - генерація 16-значного номера рахунку
+     */
     public String generateVCNumber() {
         String temp = "4";
         Random random = new Random(0);
@@ -65,6 +74,11 @@ public class Account {
         else return false;
     }
 
+    /**
+     * Зняття грошей з рахунку
+     * @param count - Сума, яку потрібно зняти з рахунку
+     * @return - true якщо операція виконана, false якщо ні
+     */
     public Boolean getMany(int count) {
         if (checkPassword() && count <= this.balance) {
             this.balance -= count;
@@ -73,6 +87,11 @@ public class Account {
         return false;
     }
 
+    /**
+     * Поповнення рахунку
+     * @param count - Сума, на яку поповнюється рахунок
+     * @return - true якщо операція виконана, false якщо ні
+     */
     public Boolean fillBalance(int count) {
         if (count > 0) {
             balance += count;

@@ -14,6 +14,15 @@ public class Human {
         born = new GregorianCalendar(1970, 01, 01);
     }
 
+    /**
+     * Конструктор
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     */
+
     public Human(String name, String surname, int year, int month, int day) {
         this.name = name;
         born = new GregorianCalendar(year, month, day);

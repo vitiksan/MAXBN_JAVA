@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Customer extends Human {
     private static int nextId = 1;
     private int idCustomer;
-    private String statusCustomer; //gold, platinum or usual
+    private String statusCustomer;
     private ArrayList<Account> account = new ArrayList<Account>();
 
     public Customer() {
@@ -16,6 +16,17 @@ public class Customer extends Human {
         account.add(new Account());
     }
 
+    /**
+     * Конструктор
+     * @param statusCustomer - Статус клієнта(наприклад звичайний, золотий або платиновий)
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param balance - Кількість грошей на початкувому рахунку
+     * @param pass - Пароль від початкового рахунку
+     */
     public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass) {
         super(name, surname, year, month, day);
         setIdCustomer();
@@ -52,6 +63,12 @@ public class Customer extends Human {
                 + "]";
     }
 
+    /**
+     * Створення нового аккаунта
+     * @param balance - Баланс нового рахунку
+     * @param pass - Пароль нового рахунку
+     * @return - true якщо операція виконана, false якщо ні
+     */
     public Boolean createAccount(int balance, int pass) {
         return account.add(new Account(balance, pass));
     }

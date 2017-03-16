@@ -9,8 +9,38 @@ public class Manager extends Employee {
         countClient = 0;
     }
 
-    public Manager(String name, String surname, String post, int year, int month, int day, int salary, int countClient, int yearStart, int mountStart, int dayStart) {
-        super(name, surname, post, year, month, day, salary, yearStart, mountStart, dayStart);
+    /**
+     * Конструктор
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param post - Посада працівника
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param salary - Зарплата
+     * @param countClient - Кількість клієнтів, яку обслуговує цей менеджер
+     * @param yearStart - Рік початку роботи
+     * @param monthStart - Місяць початку роботи
+     * @param dayStart - День початку роботи
+     */
+    public Manager(String name, String surname, String post, int year, int month, int day, int salary, int countClient, int yearStart, int monthStart, int dayStart) {
+        super(name, surname, post, year, month, day, salary, yearStart, monthStart, dayStart);
+        this.countClient = countClient;
+    }
+
+    /**
+     * Конструктор
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param post - Посада працівника
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param salary - Зарплата
+     * @param countClient - Кількість клієнтів, яку обслуговує цей менеджер
+     */
+    public Manager(String name, String surname, String post, int year, int month, int day, int salary, int countClient) {
+        super(name, surname, post, year, month, day, salary);
         this.countClient = countClient;
     }
 

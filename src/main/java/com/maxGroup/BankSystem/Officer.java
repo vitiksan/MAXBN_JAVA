@@ -9,13 +9,42 @@ public class Officer extends Employee {
         levelOfGovernment = "";
     }
 
-    public Officer(String name, String surname, String post, int year, int month, int day, int salary,
-                   String levelOfGovernment, int yearStart, int mountStart, int dayStart) {
-        super(name, surname, post, year, month, day, salary,yearStart,mountStart,dayStart);
+    /**
+     *
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param post - Посада працівника
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param salary - Зарплата
+     * @param levelOfGovernment - Рівень доступу(можливості керування або доступу до рахунків)
+     * @param yearStart - Рік початку роботи
+     * @param monthStart - Місяць початку роботи
+     * @param dayStart - День початку роботи
+     */
+    public Officer(String name, String surname, String post, int year, int month, int day, int salary, String levelOfGovernment, int yearStart, int monthStart, int dayStart) {
+        super(name, surname, post, year, month, day, salary, yearStart, monthStart, dayStart);
         this.levelOfGovernment = levelOfGovernment;
     }
 
-    public String  getLevelOfGovernment() {
+    /**
+     * Конструктор
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param post - Посада працівника
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param salary - Зарплата
+     * @param levelOfGovernment - Рівень доступу(можливості керування або доступу до рахунків)
+     */
+    public Officer(String name, String surname, String post, int year, int month, int day, int salary, String levelOfGovernment) {
+        super(name, surname, post, year, month, day, salary);
+        this.levelOfGovernment = levelOfGovernment;
+    }
+
+    public String getLevelOfGovernment() {
         return levelOfGovernment;
     }
 

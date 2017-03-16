@@ -15,6 +15,18 @@ public class Employee extends Human {
         salary = 3000;
     }
 
+    /**
+     * Конструктор
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param salary - Зарплата
+     * @param yearStart - Рік початку роботи
+     * @param monthStart - Місяць початку роботи
+     * @param dayStart - День початку роботи
+     */
     public Employee(String name, String surname, String post, int year, int month, int day, int salary, int yearStart, int monthStart, int dayStart) {
         super(name, surname, year, month, day);
         startWork = new GregorianCalendar(yearStart, monthStart, dayStart);
@@ -22,6 +34,16 @@ public class Employee extends Human {
         this.salary = salary;
     }
 
+    /**
+     * Конструктор
+     * @param name - Ім'я
+     * @param surname - Прізвище
+     * @param post - Посада працівника
+     * @param year - Рік народження
+     * @param month - Місяць народженя
+     * @param day - День народження
+     * @param salary - Зарплата
+     */
     public Employee(String name, String surname, String post, int year, int month, int day, int salary) {
         super(name, surname, year, month, day);
         startWork = new GregorianCalendar();
@@ -61,6 +83,11 @@ public class Employee extends Human {
                 + "]";
     }
 
+    /**
+     * Підняття зарплати
+     * @param count - Сума, на яку потрібно підняти зарплату
+     * @return - true якщо операція виконана, false якщо ні
+     */
     public Boolean riseSalary(int count) {
         if (count > 0) {
             salary += count;
@@ -69,6 +96,11 @@ public class Employee extends Human {
         return false;
     }
 
+    /**
+     * Урізання зарплати
+     * @param count - Сума, на яку потрібно опустити зарплату
+     * @return - true якщо операція виконана, false якщо ні
+     */
     public Boolean reduceSalary(int count) {
         if (count > 0) {
             salary -= count;
@@ -77,6 +109,10 @@ public class Employee extends Human {
         return false;
     }
 
+    /**
+     * Вирахування досвіду роботи
+     * @return - досвід роботи працівника у місяцях
+     */
     public int getExperience() {
         int month;
         GregorianCalendar now = new GregorianCalendar();
