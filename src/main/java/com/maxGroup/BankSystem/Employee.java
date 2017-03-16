@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 public class Employee extends Human {
     private String post;
     private GregorianCalendar startWork;
-    private int salary;
+    private double salary;
 
     public Employee() {
         super();
@@ -67,11 +67,11 @@ public class Employee extends Human {
         return month;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -91,5 +91,7 @@ public class Employee extends Human {
         this.startWork = startWork;
     }
 
-
+    public void setBonus() {
+        salary *= 1.10;
+    }
 }

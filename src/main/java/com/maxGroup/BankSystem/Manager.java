@@ -43,4 +43,8 @@ public class Manager extends Employee {
         }
         return false;
     }
+    @Override
+    public void setBonus(){
+        setSalary(getSalary()*1.25);
+    }
 }
