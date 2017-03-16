@@ -21,25 +21,6 @@ public class Human {
 
     }
 
-    @Override
-    public String toString() {
-        return getClass().getName() +
-                "[ name = " + name
-                + ", surname = " + surname
-                + ", old = " + getOld()
-                + "]";
-    }
-
-    public int getOld() {
-        int old;
-        GregorianCalendar now = new GregorianCalendar();
-        old = now.get(GregorianCalendar.YEAR) - born.get(GregorianCalendar.YEAR);
-        if (now.get(GregorianCalendar.MONTH) < born.get(GregorianCalendar.MONTH)) old--;
-        if (now.get(GregorianCalendar.MONTH) == born.get(GregorianCalendar.MONTH)
-                && now.get(GregorianCalendar.DATE) < born.get(GregorianCalendar.DATE)) old--;
-        return old;
-    }
-
     public String getName() {
         return name;
     }
@@ -58,5 +39,24 @@ public class Human {
 
     public GregorianCalendar getBorn() {
         return born;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() +
+                "[ name = " + name
+                + ", surname = " + surname
+                + ", old = " + getOld()
+                + "]";
+    }
+
+    public int getOld() {
+        int old;
+        GregorianCalendar now = new GregorianCalendar();
+        old = now.get(GregorianCalendar.YEAR) - born.get(GregorianCalendar.YEAR);
+        if (now.get(GregorianCalendar.MONTH) < born.get(GregorianCalendar.MONTH)) old--;
+        if (now.get(GregorianCalendar.MONTH) == born.get(GregorianCalendar.MONTH)
+                && now.get(GregorianCalendar.DATE) < born.get(GregorianCalendar.DATE)) old--;
+        return old;
     }
 }

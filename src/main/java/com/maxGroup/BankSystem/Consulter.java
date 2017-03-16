@@ -15,6 +15,14 @@ public class Consulter extends Employee {
         this.occupation = occupation;
     }
 
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
     @Override
     public String toString() {
         return getClass().getName() +
@@ -26,13 +34,5 @@ public class Consulter extends Employee {
                 + " month, salary = " + getSalary()
                 + ", occupation = " + occupation
                 + "]";
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
     }
 }

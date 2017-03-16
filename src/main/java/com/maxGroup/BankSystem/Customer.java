@@ -23,6 +23,21 @@ public class Customer extends Human {
         account.add(new Account(balance, pass));
     }
 
+    public String getStatusCustomer() {
+        return statusCustomer;
+    }
+
+    public void setStatusCustomer(String statusCustomer) {
+        this.statusCustomer = statusCustomer;
+    }
+
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public static int getNextId() {
+        return nextId;
+    }
 
     @Override
     public String toString() {
@@ -35,6 +50,15 @@ public class Customer extends Human {
                 + ", number Accounts = " + getAccountNumbers()
                 + ", general balance = " + getBalanceAccounts()
                 + "]";
+    }
+
+    public Boolean createAccount(int balance, int pass) {
+        return account.add(new Account(balance, pass));
+    }
+
+    public void setIdCustomer() {
+        this.idCustomer = nextId;
+        nextId++;
     }
 
     public boolean deleteAccount() {
@@ -65,15 +89,6 @@ public class Customer extends Human {
         return false;
     }
 
-    public Boolean createAccount(int balance, int pass) {
-        return account.add(new Account(balance, pass));
-    }
-
-    public void setIdCustomer() {
-        this.idCustomer = nextId;
-        nextId++;
-    }
-
     public int getBalanceAccounts() {
         int sum = 0;
         for (Account item : account) sum += item.getBalance();
@@ -84,21 +99,5 @@ public class Customer extends Human {
         String numbers = "";
         for (Account item : account) numbers += item.getCardNumber() + "  ";
         return numbers;
-    }
-
-    public String getStatusCustomer() {
-        return statusCustomer;
-    }
-
-    public void setStatusCustomer(String statusCustomer) {
-        this.statusCustomer = statusCustomer;
-    }
-
-    public int getIdCustomer() {
-        return idCustomer;
-    }
-
-    public static int getNextId() {
-        return nextId;
     }
 }

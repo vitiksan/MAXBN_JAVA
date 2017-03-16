@@ -29,6 +29,26 @@ public class Employee extends Human {
         this.salary = salary;
     }
 
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
+
+    public GregorianCalendar getStartWork() {
+        return startWork;
+    }
+
     @Override
     public String toString() {
         return getClass().getName() +
@@ -65,30 +85,6 @@ public class Employee extends Human {
         if (now.get(GregorianCalendar.MONTH) == startWork.get(GregorianCalendar.MONTH)
                 && now.get(GregorianCalendar.DATE) < startWork.get(GregorianCalendar.DATE)) month--;
         return month;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
-
-    public GregorianCalendar getStartWork() {
-        return startWork;
-    }
-
-    public void setStartWork(GregorianCalendar startWork) {
-        this.startWork = startWork;
     }
 
     public void setBonus() {

@@ -14,6 +14,14 @@ public class Manager extends Employee {
         this.countClient = countClient;
     }
 
+    public int getCountClient() {
+        return countClient;
+    }
+
+    public void setCountClient(int countClient) {
+        this.countClient = countClient;
+    }
+
     @Override
     public String toString() {
         return getClass().getName() +
@@ -25,23 +33,6 @@ public class Manager extends Employee {
                 + " month, cell = " + getSalary()
                 + ", count of client = " + countClient
                 + "]";
-    }
-
-    public int getCountClient() {
-        return countClient;
-    }
-
-    public void setCountClient(int countClient) {
-        this.countClient = countClient;
-    }
-
-    @Override
-    public Boolean riseSalary(int count) {
-        if (count > 0) {
-            setSalary((int) (getSalary() + count + count * 0.15));
-            return true;
-        }
-        return false;
     }
 
     @Override

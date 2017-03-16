@@ -15,6 +15,14 @@ public class Officer extends Employee {
         this.levelOfGovernment = levelOfGovernment;
     }
 
+    public String  getLevelOfGovernment() {
+        return levelOfGovernment;
+    }
+
+    public void setLevelOfGovernment(String levelOfGovernment) {
+        this.levelOfGovernment = levelOfGovernment;
+    }
+
     @Override
     public String toString() {
         return getClass().getName() +
@@ -26,13 +34,5 @@ public class Officer extends Employee {
                 + " month, salary = " + getSalary()
                 + ", level of government = " + levelOfGovernment
                 + "]";
-    }
-
-    public String  getLevelOfGovernment() {
-        return levelOfGovernment;
-    }
-
-    public void setLevelOfGovernment(String levelOfGovernment) {
-        this.levelOfGovernment = levelOfGovernment;
     }
 }
