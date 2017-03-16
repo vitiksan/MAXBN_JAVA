@@ -38,13 +38,14 @@ public class Manager extends Employee {
     @Override
     public Boolean riseSalary(int count) {
         if (count > 0) {
-            setSalary((int) (getSalary()+count+count*0.15));
+            setSalary((int) (getSalary() + count + count * 0.15));
             return true;
         }
         return false;
     }
+
     @Override
-    public void setBonus(){
-        setSalary(getSalary()*1.25);
+    public void setBonus() {
+        setSalary(getSalary() * 1.25);
     }
 }
