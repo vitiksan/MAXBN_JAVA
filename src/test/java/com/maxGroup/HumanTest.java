@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class HumanTest {
     @Test
-    public void arraListTest() throws Exception {
+    public void arrayListTest() throws Exception {
         ArrayList<Customer> people = new ArrayList<Customer>();
 
         for (int i = 0; i < 10; i++) {
