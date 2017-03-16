@@ -3,32 +3,10 @@ package com.maxGroup.BankSystem;
 
 import java.util.GregorianCalendar;
 
-public class Human {
+public abstract class Human {
     private String name;
     private String surname;
     private GregorianCalendar born;
-
-    public Human() {
-        name = "Name";
-        surname = "Surname";
-        born = new GregorianCalendar(1970, 01, 01);
-    }
-
-    /**
-     * Конструктор
-     * @param name - Ім'я
-     * @param surname - Прізвище
-     * @param year - Рік народження
-     * @param month - Місяць народженя
-     * @param day - День народження
-     */
-
-    public Human(String name, String surname, int year, int month, int day) {
-        this.name = name;
-        born = new GregorianCalendar(year, month, day);
-        this.surname = surname;
-
-    }
 
     public String getName() {
         return name;
@@ -50,13 +28,8 @@ public class Human {
         return born;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getName() +
-                "[ name = " + name
-                + ", surname = " + surname
-                + ", old = " + getOld()
-                + "]";
+    public void setBorn(GregorianCalendar born) {
+        this.born = born;
     }
 
     public int getOld() {

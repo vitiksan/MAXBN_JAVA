@@ -1,34 +1,41 @@
 package com.maxGroup.BankSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-public class Customer extends Human {
+public class Customer extends Human implements Serializable{
     private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
     private ArrayList<Account> account = new ArrayList<Account>();
 
     public Customer() {
-        super();
+        setName("");
+        setSurname("");
+        setBorn(new GregorianCalendar());
         this.statusCustomer = "usual";
         setIdCustomer();
-        account.add(new Account());
+        //account.add(new Account());
     }
 
     /**
      * Конструктор
+     *
      * @param statusCustomer - Статус клієнта(наприклад звичайний, золотий або платиновий)
-     * @param name - Ім'я
-     * @param surname - Прізвище
-     * @param year - Рік народження
-     * @param month - Місяць народженя
-     * @param day - День народження
-     * @param balance - Кількість грошей на початкувому рахунку
-     * @param pass - Пароль від початкового рахунку
+     * @param name           - Ім'я
+     * @param surname        - Прізвище
+     * @param year           - Рік народження
+     * @param month          - Місяць народженя
+     * @param day            - День народження
+     * @param balance        - Кількість грошей на початкувому рахунку
+     * @param pass           - Пароль від початкового рахунку
      */
     public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass) {
-        super(name, surname, year, month, day);
+        setName(name);
+        setSurname(surname);
+        setBorn(new GregorianCalendar(year, month, day));
         setIdCustomer();
         this.statusCustomer = statusCustomer;
         account.add(new Account(balance, pass));
@@ -50,23 +57,11 @@ public class Customer extends Human {
         return nextId;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getName() +
-                "[ name = " + getName()
-                + ", surname = " + getSurname()
-                + ", old = " + getOld()
-                + ", IdCustomer = " + idCustomer
-                + ", Status Customer = " + statusCustomer
-                + ", number Accounts = " + getAccountNumbers()
-                + ", general balance = " + getBalanceAccounts()
-                + "]";
-    }
-
     /**
      * Створення нового аккаунта
+     *
      * @param balance - Баланс нового рахунку
-     * @param pass - Пароль нового рахунку
+     * @param pass    - Пароль нового рахунку
      * @return - true якщо операція виконана, false якщо ні
      */
     public Boolean createAccount(int balance, int pass) {
@@ -116,5 +111,39 @@ public class Customer extends Human {
         String numbers = "";
         for (Account item : account) numbers += item.getCardNumber() + "  ";
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() +
+                "[ name = " + getName()
+                + ", surname = " + getSurname()
+                + ", old = " + getOld()
+                + ", IdCustomer = " + idCustomer
+                + ", Status Customer = " + statusCustomer
+                + ", number Accounts = " + getAccountNumbers()
+                + ", general balance = " + getBalanceAccounts()
+                + "]";
+    }
+
+    @Override
+    public boolean equals(Object otherObj) {
+        if (this == otherObj) return true;
+
+        if (otherObj == null) return false;
+
+        if (getClass() != otherObj.getClass()) return false;
+
+        Customer temp = (Customer) otherObj;
+
+        return getName().equals(temp.getName())
+                && getSurname().equals(temp.getSurname());
+    }
+
+    @Override
+    public int hashCode() {
+        return 6*getName().hashCode()+
+                5* getSurname().hashCode()+
+                9* getBorn().hashCode();
     }
 }
