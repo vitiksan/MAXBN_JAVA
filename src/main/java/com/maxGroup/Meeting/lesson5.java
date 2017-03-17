@@ -1,6 +1,6 @@
 package com.maxGroup.Meeting;
 
-import com.maxGroup.BankSystem.Consulter;
+import com.maxGroup.BankSystem.Consultant;
 import com.maxGroup.BankSystem.Employee;
 import com.maxGroup.BankSystem.Manager;
 
@@ -14,12 +14,10 @@ public class lesson5 {
         ArrayList<Employee> staff = new ArrayList<Employee>();
         ArrayList<Manager> staff2 = new ArrayList<Manager>();
 
-        staff.add(new Employee());
         staff.add(new Manager());
-        staff.add(new Consulter());
+        staff.add(new Consultant());
         staff.add(new Manager());
-        staff.add(new Consulter());
-        staff.add(new Employee());
+        staff.add(new Consultant());
 
         Manager someBoss1 = (Manager) staff.get(1);
 

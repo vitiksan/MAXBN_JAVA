@@ -13,9 +13,9 @@ public class ManagerTest {
 
         staff.add(new Employee());
         staff.add(new Manager());
-        staff.add(new Consulter());
+        staff.add(new Consultant());
         staff.add(new Manager());
-        staff.add(new Consulter());
+        staff.add(new Consultant());
         staff.add(new Employee());
 
         for (Employee human : staff) {

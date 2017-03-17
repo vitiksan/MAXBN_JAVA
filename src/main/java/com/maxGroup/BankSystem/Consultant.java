@@ -3,10 +3,10 @@ package com.maxGroup.BankSystem;
 
 import java.util.GregorianCalendar;
 
-public class Consulter extends Employee {
+public class Consultant extends Employee {
     private String occupation;
 
-    public Consulter() {
+    public Consultant() {
         setName("none");
         setSurname("none");
         setBorn(new GregorianCalendar());
@@ -30,7 +30,7 @@ public class Consulter extends Employee {
      * @param monthStart - Місяць початку роботи
      * @param dayStart - День початку роботи
      */
-    public Consulter(String name, String surname, String post, int year, int month, int day, int salary, String occupation, int yearStart, int monthStart, int dayStart) {
+    public Consultant(String name, String surname, String post, int year, int month, int day, int salary, String occupation, int yearStart, int monthStart, int dayStart) {
         setName(name);
         setSurname(surname);
         setBorn(new GregorianCalendar(year,month,day));
@@ -51,7 +51,7 @@ public class Consulter extends Employee {
      * @param salary - Зарплата
      * @param occupation - Обсласть в якій працівник проводить консультації
      */
-    public Consulter(String name, String surname, String post, int year, int month, int day, int salary, String occupation) {
+    public Consultant(String name, String surname, String post, int year, int month, int day, int salary, String occupation) {
         setName(name);
         setSurname(surname);
         setBorn(new GregorianCalendar(year,month,day));
