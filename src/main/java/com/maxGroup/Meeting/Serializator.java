@@ -27,6 +27,7 @@ public class Serializator {
         saveData("customers", customers);
     }
 
+
     private static void saveData(String path, Object obj) {
         try {
             FileOutputStream someFile = new FileOutputStream(path + ".ser");
