@@ -1,11 +1,18 @@
 package com.maxGroup.BankSystem;
 
 
+import java.util.GregorianCalendar;
+
 public class Consulter extends Employee {
     private String occupation;
 
     public Consulter() {
-        super();
+        setName("none");
+        setSurname("none");
+        setBorn(new GregorianCalendar());
+        setPost("none");
+        setStartWork(new GregorianCalendar());
+        setSalary(3000);
         occupation = "Credit";
     }
 
@@ -24,7 +31,12 @@ public class Consulter extends Employee {
      * @param dayStart - День початку роботи
      */
     public Consulter(String name, String surname, String post, int year, int month, int day, int salary, String occupation, int yearStart, int monthStart, int dayStart) {
-        super(name, surname, post, year, month, day, salary, yearStart, monthStart, dayStart);
+        setName(name);
+        setSurname(surname);
+        setBorn(new GregorianCalendar(year,month,day));
+        setPost(post);
+        setStartWork(new GregorianCalendar(yearStart,monthStart,dayStart));
+        setSalary(salary);
         this.occupation = occupation;
     }
 
@@ -40,7 +52,11 @@ public class Consulter extends Employee {
      * @param occupation - Обсласть в якій працівник проводить консультації
      */
     public Consulter(String name, String surname, String post, int year, int month, int day, int salary, String occupation) {
-        super(name, surname, post, year, month, day, salary);
+        setName(name);
+        setSurname(surname);
+        setBorn(new GregorianCalendar(year,month,day));
+        setPost(post);
+        setSalary(salary);
         this.occupation = occupation;
     }
 
@@ -50,6 +66,10 @@ public class Consulter extends Employee {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public void setBonus() {
+        setSalary(getSalary() * 1.20);
     }
 
     @Override

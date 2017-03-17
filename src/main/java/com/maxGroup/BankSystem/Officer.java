@@ -1,11 +1,18 @@
 package com.maxGroup.BankSystem;
 
 
+import java.util.GregorianCalendar;
+
 public class Officer extends Employee {
     private String levelOfGovernment;
 
     public Officer() {
-        super();
+        setName("none");
+        setSurname("none");
+        setBorn(new GregorianCalendar());
+        setPost("none");
+        setStartWork(new GregorianCalendar());
+        setSalary(3000);
         levelOfGovernment = "";
     }
 
@@ -24,7 +31,12 @@ public class Officer extends Employee {
      * @param dayStart - День початку роботи
      */
     public Officer(String name, String surname, String post, int year, int month, int day, int salary, String levelOfGovernment, int yearStart, int monthStart, int dayStart) {
-        super(name, surname, post, year, month, day, salary, yearStart, monthStart, dayStart);
+        setName(name);
+        setSurname(surname);
+        setPost(post);
+        setBorn(new GregorianCalendar(year,month,day));
+        setSalary(salary);
+        setStartWork(new GregorianCalendar(yearStart,monthStart,dayStart));
         this.levelOfGovernment = levelOfGovernment;
     }
 
@@ -40,7 +52,11 @@ public class Officer extends Employee {
      * @param levelOfGovernment - Рівень доступу(можливості керування або доступу до рахунків)
      */
     public Officer(String name, String surname, String post, int year, int month, int day, int salary, String levelOfGovernment) {
-        super(name, surname, post, year, month, day, salary);
+        setName(name);
+        setSurname(surname);
+        setPost(post);
+        setBorn(new GregorianCalendar(year,month,day));
+        setSalary(salary);
         this.levelOfGovernment = levelOfGovernment;
     }
 
@@ -50,6 +66,10 @@ public class Officer extends Employee {
 
     public void setLevelOfGovernment(String levelOfGovernment) {
         this.levelOfGovernment = levelOfGovernment;
+    }
+
+    public void setBonus() {
+        setSalary(getSalary() * 1.1);
     }
 
     @Override
