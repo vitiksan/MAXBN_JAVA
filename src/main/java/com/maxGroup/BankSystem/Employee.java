@@ -9,7 +9,9 @@ public class Employee extends Human {
     private double salary;
 
     public Employee() {
-        super();
+        setName("none");
+        setSurname("none");
+        setBorn(new GregorianCalendar());
         post = "none";
         startWork = new GregorianCalendar();
         salary = 3000;
@@ -28,7 +30,9 @@ public class Employee extends Human {
      * @param dayStart - День початку роботи
      */
     public Employee(String name, String surname, String post, int year, int month, int day, int salary, int yearStart, int monthStart, int dayStart) {
-        //super(name, surname, year, month, day);
+        setName(name);
+        setSurname(surname);
+        setBorn(new GregorianCalendar(year, month, day));
         startWork = new GregorianCalendar(yearStart, monthStart, dayStart);
         this.post = post;
         this.salary = salary;
@@ -45,7 +49,9 @@ public class Employee extends Human {
      * @param salary - Зарплата
      */
     public Employee(String name, String surname, String post, int year, int month, int day, int salary) {
-        //super(name, surname, year, month, day);
+        setName(name);
+        setSurname(surname);
+        setBorn(new GregorianCalendar(year, month, day));
         startWork = new GregorianCalendar();
         this.post = post;
         this.salary = salary;
