@@ -1,6 +1,7 @@
 package com.maxGroup.Meeting;
 
 import com.maxGroup.BankSystem.Customer;
+import com.maxGroup.BankSystem.Manager;
 
 import javax.swing.*;
 import java.io.*;
@@ -8,9 +9,10 @@ import java.util.ArrayList;
 
 public class Serializator {
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
+    private static ArrayList<Manager> managers = new ArrayList<Manager>();
 
     public static void main(String[] args) {
-        customers = (ArrayList<Customer>) getData("customers");
+        /*customers = (ArrayList<Customer>) getData("customers");
         System.out.println("ArrayList size before = " + customers.size());
 
         Customer cm = new Customer();
@@ -23,6 +25,19 @@ public class Serializator {
 
         System.out.println("ArrayList size after = " + customers.size());
         saveData("customers", customers);
+        */
+        managers = (ArrayList<Manager>) getData("managers");
+        System.out.println("ArrayList size before = " + managers.size());
+        Manager manager = new Manager();
+        manager.setName(JOptionPane.showInputDialog(null, "Імя клієнта"));
+        manager.setSurname(JOptionPane.showInputDialog(null, "Прізвище клієнта"));
+
+        managers.add(manager);
+
+        for (Manager item: managers) System.out.println(item.toString());
+
+        System.out.println("ArrayList size after = " + managers.size());
+        saveData("managers",managers);
     }
 
 
