@@ -4,7 +4,7 @@ import com.maxGroup.BankSystem.Employee;
 
 public class lesson5_1 {
     public static void main(String[] args) {
-        double salary = 1000;
+        /*double salary = 1000;
         riseTo(salary);
         System.out.println("Salary = " + salary);
 
@@ -16,8 +16,7 @@ public class lesson5_1 {
         swap(em1,em2);
         System.out.println(em1.toString());
         System.out.println(em2.toString());
-
-
+*/
 
     }
     public static void swap(Employee x, Employee y){

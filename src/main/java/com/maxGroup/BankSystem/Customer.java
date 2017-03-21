@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-public class Customer extends Human implements Serializable{
+public class Customer extends Human implements Serializable {
     private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
     private ArrayList<Account> account = new ArrayList<Account>();
 
     public Customer() {
-        setName("");
-        setSurname("");
-        setBorn(new GregorianCalendar());
+        setName("none");
+        setSurname("none");
+        setBorn(new GregorianCalendar(1970,1,1));
         this.statusCustomer = "usual";
         setIdCustomer();
-        //account.add(new Account());
+        account.add(new Account());
     }
 
     /**
@@ -142,8 +142,8 @@ public class Customer extends Human implements Serializable{
 
     @Override
     public int hashCode() {
-        return 6*getName().hashCode()+
-                5* getSurname().hashCode()+
-                9* getBorn().hashCode();
+        return 6 * getName().hashCode() +
+                5 * getSurname().hashCode() +
+                9 * getBorn().hashCode();
     }
 }

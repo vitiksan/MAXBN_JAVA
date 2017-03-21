@@ -14,7 +14,7 @@ public class Account implements Serializable{
     public Account() {
         cardNumber = generateVCNumber();
         balance = 0;
-        pass = 11111111;
+        pass = 1111;
         setExpCard();
     }
 

@@ -19,9 +19,7 @@ public class Serializator {
 
         customers.add(cm);
 
-        for (Customer customer : customers) {
-            System.out.println(customer.toString());
-        }
+        for (Customer customer : customers) System.out.println(customer.toString());
 
         System.out.println("ArrayList size after = " + customers.size());
         saveData("customers", customers);

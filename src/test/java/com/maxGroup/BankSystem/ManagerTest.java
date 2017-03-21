@@ -11,12 +11,12 @@ public class ManagerTest {
     public void riseSalary() throws Exception {
         ArrayList<Employee> staff = new ArrayList<Employee>();
 
-        staff.add(new Employee());
+        //staff.add(new Employee());
         staff.add(new Manager());
         staff.add(new Consultant());
         staff.add(new Manager());
         staff.add(new Consultant());
-        staff.add(new Employee());
+        //staff.add(new Employee());
 
         for (Employee human : staff) {
             System.out.println(human.toString());
@@ -38,7 +38,7 @@ public class ManagerTest {
     @Test //TODO Task 5001
     public void setBonus() throws Exception {
         ArrayList<Employee> staff = new ArrayList<Employee>();
-        staff.add(new Employee());
+        /*staff.add(new Employee());
         staff.add(new Manager());
 
         int salary = 5000;
@@ -49,6 +49,7 @@ public class ManagerTest {
         }
         assertEquals(salary * 1.10, staff.get(0).getSalary(), 0);
         assertEquals(salary * 1.25, staff.get(1).getSalary(), 0);
-    }
+
+    */}
 
 }
