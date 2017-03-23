@@ -22,6 +22,9 @@ public class Serializator {
         } catch (IOException e) {
             System.out.println("Виняток " + e);
             log.error("Виняток " + e);
+        } catch (NullPointerException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
         }
     }
 

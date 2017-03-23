@@ -77,7 +77,7 @@ public abstract class Employee extends Human {
             if (now.get(GregorianCalendar.MONTH) == startWork.get(GregorianCalendar.MONTH)
                     && now.get(GregorianCalendar.DATE) < startWork.get(GregorianCalendar.DATE)) month--;
             now = null;
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Виняток " + e);
             log.error("Виняток " + e);
         }
