@@ -1,10 +1,8 @@
 package com.maxGroup.BankSystem;
 
-
-import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public abstract class Human implements Serializable {
+public abstract class Human {
     private String name;
     private String surname;
     private GregorianCalendar born;

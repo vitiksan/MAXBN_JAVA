@@ -1,9 +1,10 @@
 package com.maxGroup.BankSystem;
 
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Officer extends Employee {
+public class Officer extends Employee implements Serializable {
     private String levelOfGovernment;
 
     public Officer() {
@@ -70,6 +71,7 @@ public class Officer extends Employee {
 
     public void setBonus() {
         setSalary(getSalary() * 1.1);
+        Serializator serializator = new Serializator();
     }
 
     @Override

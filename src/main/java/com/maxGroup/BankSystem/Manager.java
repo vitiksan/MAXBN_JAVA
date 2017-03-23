@@ -1,9 +1,10 @@
 package com.maxGroup.BankSystem;
 
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Manager extends Employee {
+public class Manager extends Employee implements Serializable {
     private int countClient;
 
     public Manager() {

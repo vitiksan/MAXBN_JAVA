@@ -12,8 +12,6 @@ public class lesson7_2 {
         try catch throw thows finally
          */
         subProgram();
-
-
     }
 
     public static void subProgram() {
