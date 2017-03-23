@@ -1,20 +1,27 @@
 package com.maxGroup.GRASP;
 
-public class ProductSpecification {
+public class Product {
+    private static int nextID = 1;
     private String description;
     private double price;
     private int id;
 
-    public ProductSpecification() {
+    public Product() {
         description = "none";
         price = 0.0;
-        id = 0;
+        setId();
     }
 
-    public ProductSpecification(String description, double price, int id) {
+    public Product(String description, double price, int id) {
         this.description = description;
         this.price = price;
         this.id = id;
+    }
+
+    public Product(String description, double price) {
+        this.description = description;
+        this.price = price;
+        setId();
     }
 
     public String getDescription() {
@@ -41,9 +48,15 @@ public class ProductSpecification {
         this.id = id;
     }
 
+    public void setId() {
+        id = nextID;
+        nextID++;
+    }
+
+
     @Override
     public String toString() {
-        return "ProductSpecification{" +
+        return "Product{" +
                 "description='" + description + '\'' +
                 ", price=" + price +
                 ", id=" + id +

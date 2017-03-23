@@ -11,7 +11,6 @@ public class Serializator {
         try {
             FileOutputStream someFile = new FileOutputStream(path + ".ser");
             ObjectOutputStream someObj = new ObjectOutputStream(someFile);
-
             someObj.writeObject(obj);
             someFile.close();
             someObj.close();

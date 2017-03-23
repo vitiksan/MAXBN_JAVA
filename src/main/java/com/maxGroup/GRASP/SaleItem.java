@@ -1,8 +1,7 @@
 package com.maxGroup.GRASP;
 
-
-
-public class SaleItem extends ProductSpecification {
+public class SaleItem{
+    private Product item = null;
     private int quantity;
 
     public SaleItem() {
@@ -11,7 +10,7 @@ public class SaleItem extends ProductSpecification {
     }
 
     public SaleItem(String description, double price, int id, int quantity) {
-        super(description, price, id);
+
         this.quantity = quantity;
     }
 

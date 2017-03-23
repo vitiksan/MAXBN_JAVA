@@ -13,8 +13,9 @@ public class Sale {
         date = new GregorianCalendar();
     }
 
-    public void addSaleItem(SaleItem saleItem){
-        saleItems.add(saleItem);
+    public void addSaleItem(Product product, int q) {
+
+        saleItems.add(new SaleItem(product, q));
     }
 
     public ArrayList<SaleItem> getSaleItems() {
@@ -24,10 +25,11 @@ public class Sale {
     public GregorianCalendar getDate() {
         return date;
     }
-    public double getTotal(){
-        double fullPrice =0;
-        for (SaleItem item :saleItems){
-            fullPrice+=item.getSubTotal();
+
+    public double getTotal() {
+        double fullPrice = 0;
+        for (SaleItem item : saleItems) {
+            fullPrice += item.getSubTotal();
         }
         return fullPrice;
     }
