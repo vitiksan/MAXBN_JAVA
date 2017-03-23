@@ -1,9 +1,11 @@
 package com.maxGroup.BankSystem;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 
 public class Serializator {
-
+    private static final Logger log = Logger.getLogger(Serializator.class);
 
     public static void saveData(String path, Object obj) {
         try {
@@ -15,9 +17,11 @@ public class Serializator {
             someObj.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
         }
     }
 
@@ -32,11 +36,14 @@ public class Serializator {
             someObj.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
         } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
         }
         return temp;
     }
