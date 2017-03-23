@@ -21,7 +21,7 @@ public class lesson7_2 {
         int someArray[] = new int[150];
 
 
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 200; i++) {
             try {
                 b = random.nextInt(50);
                 c = random.nextInt(50);
