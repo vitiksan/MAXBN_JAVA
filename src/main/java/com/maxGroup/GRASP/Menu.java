@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Menu {
     private static final Logger log = Logger.getLogger(Menu.class);
-    private static Register register = new Register();
+    private static Register register = new Register(new ProductCatalog());
     private static int choose = -1;
 
     public static void main(String[] args) {
@@ -22,18 +22,20 @@ public class Menu {
     private static void done(int temp) {
         switch (temp) {
             case 1:
-                register.newSale();
+                register.addItemsToSale(register.newSale());
                 break;
             case 2:
-                register.addProduct("milk",25.3);
+                register.addProduct("milk", 25.3);
                 break;
             case 3:
+
                 break;
             case 4:
                 break;
             case 5:
                 break;
             case 0:
+                System.exit(0);
                 break;
             default:
                 break;
@@ -46,10 +48,15 @@ public class Menu {
         int temp = -1;
         do {
             try {
-                temp = in.nextInt();
+                System.out.print("Please enter your choise: ");
+                temp = Integer.parseInt(in.next());
+                if (temp > 5) {
+                    throw new Exception();
+                }
             } catch (Exception e) {
-                System.out.println("Error");
-                log.error("Виняток " + e);
+                System.out.println("Введено не існуючий пункт меню");
+                log.error("Введено не існуючий пункт меню");
+                temp = -1;
             }
         } while (temp < 0);
         return temp;
@@ -59,9 +66,9 @@ public class Menu {
         System.out.println("You can:");
         System.out.println("1-Create sale");
         System.out.println("2-Add new product");
-        System.out.println("2-Add new product to sale");
-        System.out.println("3-Show sale`s price");
-        System.out.println("4-Buy products");
+        System.out.println("3-Add new product to sale");
+        System.out.println("4-Show sale`s price");
+        System.out.println("5-Buy products");
         System.out.println("0-Exit");
     }
 }

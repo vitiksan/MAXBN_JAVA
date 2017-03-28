@@ -13,6 +13,10 @@ public class SaleItem{
         item = new Product(description,price);
         this.quantity = quantity;
     }
+    public SaleItem(Product product, int quantity) {
+        item = product;
+        this.quantity = quantity;
+    }
 
     public int getQuantity() {
         return quantity;

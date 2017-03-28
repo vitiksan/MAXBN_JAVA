@@ -20,6 +20,10 @@ public class Sale {
 
         saleItems.add(new SaleItem(description, price, q));
     }
+    public void addSaleItem(Product product, int q) {
+
+        saleItems.add(new SaleItem(product,q));
+    }
 
     public void setIdSale() {
         idSale = nextIdSale;
