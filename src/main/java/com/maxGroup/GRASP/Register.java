@@ -18,7 +18,9 @@ public class Register {
         System.out.println("How much?");
 
         sale.addSaleItem("milk", 50, 6);
-
+    }
+    public void addProduct(String description, double price) {
+        catalog.setProducts(description, price);
     }
 
 
