@@ -5,12 +5,12 @@ public class SaleItem{
     private int quantity;
 
     public SaleItem() {
-        super();
+        item = new Product();
         quantity = 0;
     }
 
-    public SaleItem(String description, double price, int id, int quantity) {
-
+    public SaleItem(String description, double price, int quantity) {
+        item = new Product(description,price);
         this.quantity = quantity;
     }
 
@@ -29,6 +29,6 @@ public class SaleItem{
                 '}';
     }
     public double getSubTotal(){
-        return getPrice()*quantity;
+        return item.getPrice()*quantity;
     }
 }

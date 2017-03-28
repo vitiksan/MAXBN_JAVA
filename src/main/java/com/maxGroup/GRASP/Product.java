@@ -12,12 +12,6 @@ public class Product {
         setId();
     }
 
-    public Product(String description, double price, int id) {
-        this.description = description;
-        this.price = price;
-        this.id = id;
-    }
-
     public Product(String description, double price) {
         this.description = description;
         this.price = price;

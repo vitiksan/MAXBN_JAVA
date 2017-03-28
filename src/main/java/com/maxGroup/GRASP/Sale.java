@@ -13,9 +13,9 @@ public class Sale {
         date = new GregorianCalendar();
     }
 
-    public void addSaleItem(Product product, int q) {
+    public void addSaleItem(String descripton, double price, int q) {
 
-        saleItems.add(new SaleItem(product, q));
+        saleItems.add(new SaleItem(descripton, price, q));
     }
 
     public ArrayList<SaleItem> getSaleItems() {
