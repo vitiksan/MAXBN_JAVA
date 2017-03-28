@@ -16,9 +16,9 @@ public class Sale {
         setIdSale();
     }
 
-    public void addSaleItem(String descripton, double price, int q) {
+    public void addSaleItem(String description, double price, int q) {
 
-        saleItems.add(new SaleItem(descripton, price, q));
+        saleItems.add(new SaleItem(description, price, q));
     }
 
     public void setIdSale() {

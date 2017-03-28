@@ -12,12 +12,12 @@ public class Register {
         return temp;
     }
 
-    public void addItemsToSale(Sale sale){
+    public void addItemsToSale(Sale sale) {
 
         Product tempProd = catalog.choose();
         System.out.println("How much?");
 
-        sale.addSaleItem(tempProd, 50);
+        sale.addSaleItem("milk", 50, 6);
 
     }
 
