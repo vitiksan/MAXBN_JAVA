@@ -21,7 +21,7 @@ public class Register {
         return temp;
     }
 
-    public void addItemsToSale(Sale sale, ProductCatalog) {
+    public void addItemsToSale(Sale sale, ProductCatalog catalog) {
         Scanner in = new Scanner(System.in);
         boolean closeSale = false;
         do {
@@ -32,7 +32,6 @@ public class Register {
             System.out.print("Do you want add something else?(1-Yes, 0-No): ");
             closeSale = Boolean.parseBoolean(in.next());
         } while (!closeSale);
-
     }
 
     public void addProduct(String description, double price) {

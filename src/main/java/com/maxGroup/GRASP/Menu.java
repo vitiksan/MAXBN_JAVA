@@ -25,7 +25,7 @@ public class Menu {
                 register.addItemsToSale(register.newSale());
                 break;
             case 2:
-                register.addProduct("milk", 25.3);
+                register.addProduct();
                 break;
             case 3:
 
