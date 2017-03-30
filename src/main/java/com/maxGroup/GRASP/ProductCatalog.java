@@ -28,7 +28,7 @@ public class ProductCatalog {
 
     public Product choose() {
         for (Product item : products) {
-            System.out.println("id: " + item.getId() + " - " + item.getDescription());
+            System.out.println(item.toString());
         }
 
         System.out.println("Select product by id: ");
