@@ -7,19 +7,16 @@ import java.util.Scanner;
 
 public class Register {
     private static final Logger log = Logger.getLogger(Register.class);
-    private ArrayList<Sale> sales = null;
+    private static ArrayList<Sale> sales = new ArrayList<Sale>();
 
-    public Register(ArrayList<Product> data) {
-        sales = new ArrayList<Sale>();
-    }
 
-    public Sale newSale() {
+    public static Sale newSale() {
         Sale temp = new Sale();
         sales.add(temp);
         return temp;
     }
 
-    public void addItemsToSale(Sale sale) {
+    public static void addItemsToSale(Sale sale) {
         Scanner in = new Scanner(System.in);
         boolean closeSale = false;
         do {
@@ -51,11 +48,11 @@ public class Register {
         } while (!closeSale);
     }
 
-    public void addProduct(String description, double price) {
+    public static void addProduct(String description, double price) {
         ProductCatalog.setProducts(description, price);
     }
 
-    public void addProduct() {
+    public static void addProduct() {
         Scanner in = new Scanner(System.in);
         String description;
         double price;

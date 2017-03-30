@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Menu {
     private static final Logger log = Logger.getLogger(Menu.class);
-    private static Register register = new Register(ProductCatalog.getData());
     private static int choose = -1;
 
     public static void main(String[] args) {
@@ -21,10 +20,10 @@ public class Menu {
     private static void done(int temp) {
         switch (temp) {
             case 1:
-                register.addItemsToSale(register.newSale());
+                Register.addItemsToSale(Register.newSale());
                 break;
             case 2:
-                register.addProduct();
+                Register.addProduct();
                 break;
             case 3:
 

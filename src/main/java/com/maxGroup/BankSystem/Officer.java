@@ -71,7 +71,6 @@ public class Officer extends Employee implements Serializable {
 
     public void setBonus() {
         setSalary(getSalary() * 1.1);
-        Serializator serializator = new Serializator();
     }
 
     @Override
