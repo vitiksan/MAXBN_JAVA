@@ -37,7 +37,7 @@ public class Register {
     }
 
     public void addProduct() {
-        //catalog.setProducts();
+
     }
 
 }
