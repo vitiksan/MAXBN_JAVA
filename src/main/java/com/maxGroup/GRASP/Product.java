@@ -47,7 +47,6 @@ public class Product {
         nextID++;
     }
 
-
     @Override
     public String toString() {
         return "Product{" +
