@@ -8,10 +8,8 @@ import java.util.Scanner;
 public class Register {
     private static final Logger log = Logger.getLogger(Register.class);
     private ArrayList<Sale> sales = null;
-    private ProductCatalog catalog = null;
 
-    public Register(ProductCatalog catalog) {
-        this.catalog = catalog;
+    public Register(ArrayList<Product> data) {
         sales = new ArrayList<Sale>();
     }
 
@@ -26,7 +24,7 @@ public class Register {
         boolean closeSale = false;
         do {
             try {
-                Product tempProd = catalog.choose();
+                Product tempProd = ProductCatalog.choose();
                 System.out.println("How much?");
                 int quantity = Integer.parseInt(in.next());
                 if(quantity<=0){
@@ -54,7 +52,7 @@ public class Register {
     }
 
     public void addProduct(String description, double price) {
-        catalog.setProducts(description, price);
+        ProductCatalog.setProducts(description, price);
     }
 
     public void addProduct() {
@@ -67,7 +65,7 @@ public class Register {
             if (price<0){
                 throw new Exception("Price less than 0");
             }
-            catalog.setProducts(description, price);
+            ProductCatalog.setProducts(description, price);
         }catch (Exception e){
             log.error(e.getMessage());
         }

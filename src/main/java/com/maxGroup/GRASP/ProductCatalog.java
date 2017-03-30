@@ -8,25 +8,17 @@ import java.util.Scanner;
 
 public class ProductCatalog {
     private static final Logger log = Logger.getLogger(ProductCatalog.class);
-    private static ArrayList<Product> products = null;
+    private static ArrayList<Product> products = new ArrayList<Product>();
 
-    public ProductCatalog() {
-        products = new ArrayList<Product>();
-    }
-
-    public ProductCatalog(ArrayList<Product> products) {
-        this.products = new ArrayList<Product>(products);
-    }
-
-    public ArrayList<Product> getProducts() {
+    public static ArrayList<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(String description, double price) {
+    public static void setProducts(String description, double price) {
         products.add(new Product(description, price));
     }
 
-    public Product choose() {
+    public static Product choose() {
         for (Product item : products) {
             System.out.println(item.toString());
         }
@@ -66,7 +58,7 @@ public class ProductCatalog {
         }
     }
 
-    public static void getData() {
+    public static ArrayList<Product> getData() {
         try {
             FileInputStream someFile = new FileInputStream("ProductCatalog.ser");
             ObjectInputStream someObj = new ObjectInputStream(someFile);
@@ -85,5 +77,6 @@ public class ProductCatalog {
             System.out.println("Виняток " + e);
             log.error("Виняток " + e);
         }
+        return products;
     }
 }
