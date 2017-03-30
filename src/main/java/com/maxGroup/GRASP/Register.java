@@ -46,6 +46,9 @@ public class Register {
         try {
             description = in.next();
             price = Double.parseDouble(in.next());
+            if (price<0){
+                throw new Exception("Price less than 0");
+            }
             catalog.setProducts(description, price);
         }catch (Exception e){
             log.error(e.getMessage());
