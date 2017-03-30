@@ -72,5 +72,4 @@ public class Register {
             log.error(e.getMessage());
         }
     }
-
 }

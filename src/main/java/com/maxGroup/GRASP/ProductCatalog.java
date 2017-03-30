@@ -42,6 +42,7 @@ public class ProductCatalog {
                 break;
             }
         }
+
         return products.get(selection);
     }
 
