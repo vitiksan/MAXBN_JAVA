@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ProductCatalog {
+public class ProductCatalog implements Serializable{
     private static final Logger log = Logger.getLogger(ProductCatalog.class);
     private static ArrayList<Product> products = new ArrayList<Product>();
 
@@ -19,6 +19,7 @@ public class ProductCatalog {
     }
 
     public static Product choose() {
+        ProductCatalog.getData();
         for (Product item : products) {
             System.out.println(item.toString());
         }
@@ -58,12 +59,12 @@ public class ProductCatalog {
         }
     }
 
-    public static ArrayList<Product> getData() {
+    public static void getData() {
         try {
             FileInputStream someFile = new FileInputStream("ProductCatalog.ser");
             ObjectInputStream someObj = new ObjectInputStream(someFile);
 
-            products =(ArrayList<Product>) someObj.readObject();
+            products = (ArrayList<Product>) someObj.readObject();
             someFile.close();
             someObj.close();
 
@@ -77,6 +78,8 @@ public class ProductCatalog {
             System.out.println("Виняток " + e);
             log.error("Виняток " + e);
         }
-        return products;
+        int maxId = 0;
+        for (Product item : products) if (item.getId() > maxId) maxId = item.getId();
+        Product.setNextID(maxId + 1);
     }
 }

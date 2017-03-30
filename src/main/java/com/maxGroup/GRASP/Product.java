@@ -1,6 +1,8 @@
 package com.maxGroup.GRASP;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable, infoProduct{
     private static int nextID = 1;
     private String description;
     private double price;
@@ -45,6 +47,9 @@ public class Product {
     public void setId() {
         id = nextID;
         nextID++;
+    }
+    public static void setNextID(int id){
+        nextID = id;
     }
 
     @Override
