@@ -1,9 +1,12 @@
 package com.maxGroup.GRASP;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Register {
+    private static final Logger log = Logger.getLogger(Register.class);
     private ArrayList<Sale> sales = null;
     private ProductCatalog catalog = null;
 
@@ -18,7 +21,7 @@ public class Register {
         return temp;
     }
 
-    public void addItemsToSale(Sale sale , ProductCatalog) {
+    public void addItemsToSale(Sale sale, ProductCatalog) {
         Scanner in = new Scanner(System.in);
         boolean closeSale = false;
         do {
@@ -37,7 +40,16 @@ public class Register {
     }
 
     public void addProduct() {
-
+        Scanner in = new Scanner(System.in);
+        String description;
+        double price;
+        try {
+            description = in.next();
+            price = Double.parseDouble(in.next());
+            catalog.setProducts(description, price);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
     }
 
 }
