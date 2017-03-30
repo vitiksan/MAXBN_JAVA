@@ -21,16 +21,35 @@ public class Register {
         return temp;
     }
 
-    public void addItemsToSale(Sale sale, ProductCatalog catalog) {
+    public void addItemsToSale(Sale sale) {
         Scanner in = new Scanner(System.in);
         boolean closeSale = false;
         do {
-            Product tempProd = catalog.choose();
-            System.out.println("How much?");
-            int quantity = Integer.parseInt(in.next());
-            sale.addSaleItem(tempProd, quantity);
-            System.out.print("Do you want add something else?(1-Yes, 0-No): ");
-            closeSale = Boolean.parseBoolean(in.next());
+            try {
+                Product tempProd = catalog.choose();
+                System.out.println("How much?");
+                int quantity = Integer.parseInt(in.next());
+                if(quantity<=0){
+                    throw new Exception();
+                }
+                sale.addSaleItem(tempProd, quantity);
+                System.out.print("Do you want add something else?(1-Yes, 0-No): ");
+                closeSale = Boolean.parseBoolean(in.next());
+            }
+            catch (NullPointerException e) {
+                System.out.println("Використовується об'єктну ссилку що рівна null");
+                log.error("Використовується об'єктну ссилку що рівна null");
+                log.error(e.getMessage());
+            }catch (ClassCastException e) {
+                System.out.println("Невірний вибрано дію");
+                log.error("Невірний вибрано дію");
+                log.error(e.getMessage());
+                closeSale = false;
+            }catch (Exception e){
+                System.out.println("Невірно введено кількість товару");
+                log.error("Невірно введено кількість товару");
+                log.error(e.getMessage());
+            }
         } while (!closeSale);
     }
 
