@@ -56,6 +56,7 @@ public class Menu {
             } catch (Exception e) {
                 System.out.println("Введено не існуючий пункт меню");
                 log.error("Введено не існуючий пункт меню");
+                log.error(e.getMessage());
                 temp = -1;
             }
         } while (temp < 0);
