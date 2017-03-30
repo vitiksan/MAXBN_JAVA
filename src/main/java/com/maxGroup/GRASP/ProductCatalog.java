@@ -1,10 +1,14 @@
 package com.maxGroup.GRASP;
 
+import org.apache.log4j.Logger;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductCatalog {
-    private ArrayList<Product> products = null;
+    private static final Logger log = Logger.getLogger(ProductCatalog.class);
+    private static ArrayList<Product> products = null;
 
     public ProductCatalog() {
         products = new ArrayList<Product>();
@@ -40,5 +44,46 @@ public class ProductCatalog {
         }
 
         return products.get(selection);
+    }
+
+    public static void saveData() {
+        try {
+            FileOutputStream someFile = new FileOutputStream("ProductCatalog.ser");
+            ObjectOutputStream someObj = new ObjectOutputStream(someFile);
+            someObj.writeObject(products);
+            someFile.close();
+            someObj.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
+        } catch (IOException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
+        } catch (NullPointerException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
+        }
+    }
+
+    public static void getData() {
+        try {
+            FileInputStream someFile = new FileInputStream("ProductCatalog.ser");
+            ObjectInputStream someObj = new ObjectInputStream(someFile);
+
+            products =(ArrayList<Product>) someObj.readObject();
+            someFile.close();
+            someObj.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
+        } catch (IOException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Виняток " + e);
+            log.error("Виняток " + e);
+        }
     }
 }
