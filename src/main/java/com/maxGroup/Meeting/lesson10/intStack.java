@@ -4,6 +4,6 @@ public interface intStack {
     void push(int item);
     int pop();
     int top();
-    int isEmpty();
-    int isFull();
+    boolean isEmpty();
+    boolean isFull();
 }
