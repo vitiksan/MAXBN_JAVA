@@ -1,6 +1,6 @@
 package com.maxGroup.Meeting.lesson10;
 
-public interface IntStack {
+public interface intStack {
     void push(int item);
     int pop();
     int top();
