@@ -40,6 +40,8 @@ public class Register {
                 closeSale = false;
             }
         } while (!closeSale);
+        log.info(sale.generateCheck());
+        System.out.println(sale.generateCheck());
     }
 
     public static void addProduct(String description, double price) {

@@ -20,9 +20,10 @@ public class Sale {
 
         saleItems.add(new SaleItem(description, price, q));
     }
+
     public void addSaleItem(Product product, int q) {
 
-        saleItems.add(new SaleItem(product,q));
+        saleItems.add(new SaleItem(product, q));
     }
 
     public void setIdSale() {
@@ -44,5 +45,16 @@ public class Sale {
             fullPrice += item.getSubTotal();
         }
         return fullPrice;
+    }
+
+    public String generateCheck() {
+        String temp = "*****************************\n";
+        temp += "Номер чеку: " + idSale + "\n";
+        temp += "ID товар\tНазва товару\tЦіна за одиницю\tКількість\tЦіна\n";
+        for (SaleItem item : saleItems) temp += item.generateCheck() + "\n";
+        temp += "Загальна сума: \t\t\t\t" + getTotal() + "\n";
+        temp += "Дата генераці чеку\t\t\t" + date.getGregorianChange();
+        temp += "\n***********************";
+        return temp;
     }
 }

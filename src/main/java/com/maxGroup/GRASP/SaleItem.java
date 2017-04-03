@@ -1,6 +1,6 @@
 package com.maxGroup.GRASP;
 
-public class SaleItem{
+public class SaleItem {
     private Product item = null;
     private int quantity;
 
@@ -10,9 +10,10 @@ public class SaleItem{
     }
 
     public SaleItem(String description, double price, int quantity) {
-        item = new Product(description,price);
+        item = new Product(description, price);
         this.quantity = quantity;
     }
+
     public SaleItem(Product product, int quantity) {
         item = product;
         this.quantity = quantity;
@@ -32,7 +33,12 @@ public class SaleItem{
                 "quantity=" + quantity +
                 '}';
     }
-    public double getSubTotal(){
-        return item.getPrice()*quantity;
+
+    public double getSubTotal() {
+        return item.getPrice() * quantity;
+    }
+
+    public String generateCheck() {
+        return item.generateCheck() + quantity + "\t" + getSubTotal();
     }
 }

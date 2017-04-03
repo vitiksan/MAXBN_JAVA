@@ -2,7 +2,7 @@ package com.maxGroup.GRASP;
 
 import java.io.Serializable;
 
-public class Product implements Serializable, infoProduct{
+public class Product implements Serializable, infoProduct {
     private static int nextID = 1;
     private String description;
     private double price;
@@ -48,7 +48,8 @@ public class Product implements Serializable, infoProduct{
         id = nextID;
         nextID++;
     }
-    public static void setNextID(int id){
+
+    public static void setNextID(int id) {
         nextID = id;
     }
 
@@ -59,5 +60,9 @@ public class Product implements Serializable, infoProduct{
                 "description = " + description +
                 ", price = " + price +
                 '}';
+    }
+
+    public String generateCheck() {
+        return id + "\t" + description + "\t" + price + "\t";
     }
 }
