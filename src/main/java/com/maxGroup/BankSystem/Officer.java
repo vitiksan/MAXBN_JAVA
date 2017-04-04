@@ -2,10 +2,11 @@ package com.maxGroup.BankSystem;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Officer extends Employee implements Serializable {
-    private String levelOfGovernment;
+    private ArrayList<Manager> subordinates;
 
     public Officer() {
         setName("none");
@@ -14,60 +15,51 @@ public class Officer extends Employee implements Serializable {
         setPost("none");
         setStartWork(new GregorianCalendar());
         setSalary(3000);
-        levelOfGovernment = "";
+        subordinates = new ArrayList<Manager>();
     }
 
     /**
-     *
-     * @param name - Ім'я
-     * @param surname - Прізвище
-     * @param post - Посада працівника
-     * @param year - Рік народження
-     * @param month - Місяць народженя
-     * @param day - День народження
-     * @param salary - Зарплата
-     * @param levelOfGovernment - Рівень доступу(можливості керування або доступу до рахунків)
-     * @param yearStart - Рік початку роботи
+     * @param name       - Ім'я
+     * @param surname    - Прізвище
+     * @param post       - Посада працівника
+     * @param year       - Рік народження
+     * @param month      - Місяць народженя
+     * @param day        - День народження
+     * @param salary     - Зарплата
+     * @param yearStart  - Рік початку роботи
      * @param monthStart - Місяць початку роботи
-     * @param dayStart - День початку роботи
+     * @param dayStart   - День початку роботи
      */
-    public Officer(String name, String surname, String post, int year, int month, int day, int salary, String levelOfGovernment, int yearStart, int monthStart, int dayStart) {
+    public Officer(String name, String surname, String post, int year, int month, int day, int salary, int yearStart, int monthStart, int dayStart) {
         setName(name);
         setSurname(surname);
         setPost(post);
-        setBorn(new GregorianCalendar(year,month,day));
+        setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
-        setStartWork(new GregorianCalendar(yearStart,monthStart,dayStart));
-        this.levelOfGovernment = levelOfGovernment;
+        setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
+        subordinates = new ArrayList<Manager>();
     }
 
     /**
      * Конструктор
-     * @param name - Ім'я
+     *
+     * @param name    - Ім'я
      * @param surname - Прізвище
-     * @param post - Посада працівника
-     * @param year - Рік народження
-     * @param month - Місяць народженя
-     * @param day - День народження
-     * @param salary - Зарплата
-     * @param levelOfGovernment - Рівень доступу(можливості керування або доступу до рахунків)
+     * @param post    - Посада працівника
+     * @param year    - Рік народження
+     * @param month   - Місяць народженя
+     * @param day     - День народження
+     * @param salary  - Зарплата
      */
-    public Officer(String name, String surname, String post, int year, int month, int day, int salary, String levelOfGovernment) {
+    public Officer(String name, String surname, String post, int year, int month, int day, int salary) {
         setName(name);
         setSurname(surname);
         setPost(post);
-        setBorn(new GregorianCalendar(year,month,day));
+        setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
-        this.levelOfGovernment = levelOfGovernment;
+        subordinates = new ArrayList<Manager>();
     }
 
-    public String getLevelOfGovernment() {
-        return levelOfGovernment;
-    }
-
-    public void setLevelOfGovernment(String levelOfGovernment) {
-        this.levelOfGovernment = levelOfGovernment;
-    }
 
     public void setBonus() {
         setSalary(getSalary() * 1.1);
@@ -82,7 +74,7 @@ public class Officer extends Employee implements Serializable {
                 + ", post = " + getPost()
                 + ", experience = " + getExperience()
                 + " month, salary = " + getSalary()
-                + ", level of government = " + levelOfGovernment
+                + ", subordinates = " + ""
                 + "]";
     }
 }

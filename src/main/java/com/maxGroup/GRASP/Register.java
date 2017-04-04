@@ -18,7 +18,7 @@ public class Register {
 
     public static void addItemsToSale(Sale sale) {
         Scanner in = new Scanner(System.in);
-        boolean closeSale = false;
+        int closeSale = -1;
         do {
             try {
                 Product tempProd = ProductCatalog.choose();
@@ -27,19 +27,20 @@ public class Register {
                 if (quantity <= 0) throw new Exception();
 
                 sale.addSaleItem(tempProd, quantity);
-                System.out.print("Do you want add something else?(0-Yes, 1-No): ");
-                closeSale = Boolean.parseBoolean(in.next());
+                System.out.print("Do you want add something else?(1-Yes, 0-No): ");
+                closeSale = Integer.parseInt(in.next());
+                if (closeSale != 0 && closeSale != 1) throw new Exception();
             } catch (NullPointerException e) {
                 System.out.println("Використовується об'єктну ссилку що рівна null");
                 log.error("Використовується об'єктну ссилку що рівна null");
                 log.error(e.getMessage());
             } catch (Exception e) {
-                System.out.println("Невірно введено кількість товару");
-                log.error("Невірно введено кількість товару");
+                System.out.println("Невірно введено кількість або ID товару");
+                log.error("Невірно введено кількість або ID товару");
                 log.error(e.getMessage());
-                closeSale = false;
+                closeSale = -1;
             }
-        } while (!closeSale);
+        } while (closeSale != 0);
         log.info(sale.generateCheck());
         System.out.println(sale.generateCheck());
     }

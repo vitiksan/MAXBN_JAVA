@@ -56,13 +56,13 @@ public class Product implements Serializable, infoProduct {
     @Override
     public String toString() {
         return "Product{" +
-                ", id = " + id +
-                "description = " + description +
+                "id = " + id +
+                ", description = " + description +
                 ", price = " + price +
                 '}';
     }
 
     public String generateCheck() {
-        return id + "\t" + description + "\t" + price + "\t";
+        return id + "\t\t\t" + description + "\t\t\t" + price + "\t\t\t";
     }
 }

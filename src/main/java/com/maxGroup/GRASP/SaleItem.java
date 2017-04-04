@@ -39,6 +39,6 @@ public class SaleItem {
     }
 
     public String generateCheck() {
-        return item.generateCheck() + quantity + "\t" + getSubTotal();
+        return item.generateCheck() + quantity + "\t\t\t" + getSubTotal() + "\t\t\t";
     }
 }

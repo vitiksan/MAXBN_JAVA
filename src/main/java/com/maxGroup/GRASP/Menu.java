@@ -26,11 +26,8 @@ public class Menu {
                 Register.addProduct();
                 break;
             case 3:
-
                 break;
             case 4:
-                break;
-            case 5:
                 break;
             case 0:
                 System.exit(0);
@@ -48,7 +45,7 @@ public class Menu {
             try {
                 System.out.print("Please enter your choise: ");
                 temp = Integer.parseInt(in.next());
-                if (temp > 5) {
+                if (temp > 4) {
                     throw new Exception();
                 }
             } catch (Exception e) {
@@ -63,11 +60,10 @@ public class Menu {
 
     private static void information() {
         System.out.println("You can:");
-        System.out.println("1-Create sale");
+        System.out.println("1-Add new product to sale");
         System.out.println("2-Add new product");
-        System.out.println("3-Add new product to sale");
-        System.out.println("4-Show sale`s price");
-        System.out.println("5-Buy products");
+        System.out.println("3-Show sale`s price");
+        System.out.println("4-Buy products");
         System.out.println("0-Exit");
     }
 }

@@ -48,13 +48,13 @@ public class Sale {
     }
 
     public String generateCheck() {
-        String temp = "*****************************\n";
-        temp += "Номер чеку: " + idSale + "\n";
-        temp += "ID товар\tНазва товару\tЦіна за одиницю\tКількість\tЦіна\n";
+        String temp = "\n**************************************************************\n";
+        temp += "Номер чеку:  " + idSale + "\n";
+        temp += "ID товару\tНазва товару\tЦіна за одиницю\tКількість\tЦіна\n";
         for (SaleItem item : saleItems) temp += item.generateCheck() + "\n";
-        temp += "Загальна сума: \t\t\t\t" + getTotal() + "\n";
-        temp += "Дата генераці чеку\t\t\t" + date.getGregorianChange();
-        temp += "\n***********************";
+        temp += "Загальна сума: \t\t\t\t\t\t\t\t\t\t\t" + getTotal() + "\n";
+        temp += "Дата генераці чеку\t\t\t\t" + date.getGregorianChange();
+        temp += "\n**************************************************************\n";
         return temp;
     }
 }
