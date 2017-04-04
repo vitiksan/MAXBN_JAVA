@@ -1,12 +1,16 @@
 package com.maxGroup.BankSystem;
 
 
+import org.apache.log4j.Logger;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
-public class Manager extends Employee implements Serializable {
-    private ArrayList<Customer> client;
+public class Manager extends Employee implements Serializable, WorkWithClient {
+    private static final Logger log = Logger.getLogger(Manager.class);
+    private ArrayList<Customer> clients;
 
     public Manager() {
         setName("none");
@@ -15,7 +19,7 @@ public class Manager extends Employee implements Serializable {
         setPost("none");
         setStartWork(new GregorianCalendar());
         setSalary(3000);
-        client = new ArrayList<Customer>();
+        clients = new ArrayList<Customer>();
     }
 
     /**
@@ -39,7 +43,7 @@ public class Manager extends Employee implements Serializable {
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
         setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
-        client = new ArrayList<Customer>();
+        clients = new ArrayList<Customer>();
     }
 
     /**
@@ -59,7 +63,7 @@ public class Manager extends Employee implements Serializable {
         setPost(post);
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
-        client = new ArrayList<Customer>();
+        clients = new ArrayList<Customer>();
     }
 
     public void setBonus() {
@@ -77,5 +81,35 @@ public class Manager extends Employee implements Serializable {
                 + " month, cell = " + getSalary()
                 + ", clients = " + ""
                 + "]";
+    }
+
+    public String showClient() {
+        String temp = "";
+        for (Customer item : clients) temp += item.toString();
+        return temp;
+    }
+
+    public void addNewClient() {
+        clients.add(new Customer());
+    }
+
+    public void deleteClient() {
+        Scanner in = new Scanner(System.in);
+        boolean find = false;
+        try {
+            for (Customer item : clients) System.out.println(item.toString());
+            System.out.println("Enter surname customer for delete: ");
+            String surname = in.nextLine();
+            for (int i = 0; i < clients.size(); i++) {
+                if (surname == clients.get(i).getSurname()) {
+                    clients.remove(i);
+                    find = true;
+                }
+            }
+            if (!find) throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Can`t find this surname");
+            log.info("Can`t find this surname" + e.getMessage());
+        }
     }
 }

@@ -1,11 +1,15 @@
 package com.maxGroup.BankSystem;
 
 
+import org.apache.log4j.Logger;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
-public class Officer extends Employee implements Serializable {
+public class Officer extends Employee implements Serializable, WorkWithClient {
+    private static final Logger log = Logger.getLogger(Officer.class);
     private ArrayList<Manager> subordinates;
 
     public Officer() {
@@ -76,5 +80,35 @@ public class Officer extends Employee implements Serializable {
                 + " month, salary = " + getSalary()
                 + ", subordinates = " + ""
                 + "]";
+    }
+
+    public String showClient() {
+        String temp = "";
+        for (Manager item : subordinates) temp += item.toString();
+        return temp;
+    }
+
+    public void addNewClient() {
+        subordinates.add(new Manager());
+    }
+
+    public void deleteClient() {
+        Scanner in = new Scanner(System.in);
+        boolean find = false;
+        try {
+            for (Manager item : subordinates) System.out.println(item.toString());
+            System.out.println("Enter surname manager for delete: ");
+            String surname = in.nextLine();
+            for (int i = 0; i < subordinates.size(); i++) {
+                if (surname == subordinates.get(i).getSurname()) {
+                    subordinates.remove(i);
+                    find = true;
+                }
+            }
+            if (!find) throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Can`t find this surname");
+            log.info("Can`t find this surname" + e.getMessage());
+        }
     }
 }
