@@ -3,6 +3,9 @@ package com.maxGroup.GRASP;
 import java.io.Serializable;
 
 public class Product implements Serializable, infoProduct {
+
+    private static final long SerialVersionUID = 100500L;
+
     private static int nextID = 1;
     private String description;
     private double price;
