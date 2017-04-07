@@ -4,15 +4,15 @@ public class Checkers implements IGame {
     public int moves;
     public int MOVES;
 
-    public Checkers(int moves, int MOVES) {
+    public Checkers(int moves) {
         this.moves = moves;
-        this.MOVES = MOVES;
+        MOVES = 3;
     }
 
     public boolean move() {
-        if (MOVES - moves < 3 && MOVES - moves >= 0) {
+        if (MOVES > moves) {
             moves = MOVES;
-            System.out.println("Перехід з " + moves + " до " + MOVES+" (шахмати)");
+            System.out.println("Здійснено хід у шахах");
             return true;
         }
         System.out.println("Неможливо походити");

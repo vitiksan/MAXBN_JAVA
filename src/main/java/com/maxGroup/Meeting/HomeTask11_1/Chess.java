@@ -4,15 +4,14 @@ public class Chess implements IGame {
     public int moves;
     public int MOVES;
 
-    public Chess(int moves, int MOVES) {
+    public Chess(int moves) {
         this.moves = moves;
-        this.MOVES = MOVES;
+        MOVES = 5;
     }
 
     public boolean move() {
-        if (MOVES - moves == 1) {
-            moves = MOVES;
-            System.out.println("Перехід з " + moves + " до " + MOVES + " (шахи)");
+        if (MOVES > moves) {
+            System.out.println("Здійснено хід у шахматах");
             return true;
         }
         System.out.println("Неможливо походити");
