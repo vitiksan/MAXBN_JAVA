@@ -1,16 +1,16 @@
 package com.maxGroup.Meeting.lesson12_abstractFactory;
 
+import java.util.ArrayList;
+
 public class Runner {
     public static void main(String[] args) {
+        ArrayList<IEmployee> team = new ArrayList<IEmployee>();
         IDeveloperFactory developerFactory = createDevFactory("java");
-        IDeveloper developer = developerFactory.createDeveloper();
-        developer.writeCode();
+        team.add(developerFactory.createDeveloper());
         IManagerFactory managerFactory = createManFactory("project");
-        IManager manager = managerFactory.createManager();
-        manager.createTask();
+        team.add(managerFactory.createManager());
         ITesterFactory testerFactory = createTestFactory("qa");
-        ITester tester = testerFactory.createTester();
-        tester.debugCode();
+        team.add(testerFactory.createTester());
     }
 
     public static IDeveloperFactory createDevFactory(String devType) {
