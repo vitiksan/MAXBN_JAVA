@@ -9,15 +9,15 @@ public class Customer extends Human implements Serializable {
     private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
-    private ArrayList<Account> account = new ArrayList<Account>();
+    private ArrayList<IAccount> account;
 
     public Customer() {
         setName("none");
         setSurname("none");
-        setBorn(new GregorianCalendar(1970,1,1));
+        setBorn(new GregorianCalendar(1970, 1, 1));
         this.statusCustomer = "usual";
         setIdCustomer();
-        account.add(new Account());
+        createAccount();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Customer extends Human implements Serializable {
         setBorn(new GregorianCalendar(year, month, day));
         setIdCustomer();
         this.statusCustomer = statusCustomer;
-        account.add(new Account(balance, pass));
+        createAccount(balance, pass);
     }
 
     public String getStatusCustomer() {
@@ -64,8 +64,20 @@ public class Customer extends Human implements Serializable {
      * @param pass    - Пароль нового рахунку
      * @return - true якщо операція виконана, false якщо ні
      */
-    public Boolean createAccount(int balance, int pass) {
-        return account.add(new Account(balance, pass));
+    public boolean createAccount(int balance, int pass) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Do you want create account for?(credit,deposit,payments - enter your answer)");
+        String choices = in.nextLine();
+        IAccountFactory factory = AccFactory.createAccountFactory(choices);
+        return account.add(factory.createAccount(balance, pass));
+    }
+
+    public boolean createAccount() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Do you want create account for?(credit, deposit, payments - enter your answer)");
+        String choices = in.nextLine();
+        IAccountFactory factory = AccFactory.createAccountFactory(choices);
+        return account.add(factory.createAccount());
     }
 
     public void setIdCustomer() {
@@ -80,13 +92,13 @@ public class Customer extends Human implements Serializable {
         boolean search = false;
         System.out.println("Enter number account, that you want to close:");
         accountId = in.nextLine();
-        for (Account item : account) {
+        for (IAccount item : account) {
             if (item.getCardNumber() == accountId) {
                 if (item.getBalance() > 0) {
                     do {
                         System.out.println("You have many at the account, enter number account when you wont transfer many");
                         accountIdNew = in.nextLine();
-                        for (Account item2 : account) {
+                        for (IAccount item2 : account) {
                             if (item2.getCardNumber() == accountIdNew) {
                                 search = true;
                                 item2.fillBalance(item.getBalance());
@@ -103,13 +115,13 @@ public class Customer extends Human implements Serializable {
 
     public int getBalanceAccounts() {
         int sum = 0;
-        for (Account item : account) sum += item.getBalance();
+        for (IAccount item : account) sum += item.getBalance();
         return sum;
     }
 
     public String getAccountNumbers() {
         String numbers = "";
-        for (Account item : account) numbers += item.getCardNumber() + "  ";
+        for (IAccount item : account) numbers += item.getCardNumber() + "  ";
         return numbers;
     }
 
