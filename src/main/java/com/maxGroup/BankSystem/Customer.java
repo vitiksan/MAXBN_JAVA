@@ -9,7 +9,7 @@ public class Customer extends Human implements Serializable {
     private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
-    private ArrayList<IAccount> account;
+    private ArrayList<IAccount> account = new ArrayList<IAccount>();
 
     public Customer() {
         setName("none");

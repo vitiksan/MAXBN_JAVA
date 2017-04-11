@@ -41,14 +41,14 @@ public class Menu {
         int temp = -1;
         do {
             try {
-                System.out.print("Please enter your choise: ");
+                System.out.print("Please enter your choices: ");
                 temp = Integer.parseInt(in.next());
                 if (temp > 4) {
                     throw new Exception();
                 }
             } catch (Exception e) {
-                System.out.println("Your choises not defined");
-                log.error("Your choises not defined");
+                System.out.println("Your choices not defined");
+                log.error("Your choices not defined");
                 log.error(e.getMessage());
                 temp = -1;
             }
@@ -58,9 +58,10 @@ public class Menu {
 
     private static void information() {
         System.out.println("You can:");
-        System.out.println("1-");
+        System.out.println("1-Create new Manager");
         System.out.println("2-");
         System.out.println("3-");
+        System.out.println("4-");
         System.out.println("0-Exit");
     }
 }
