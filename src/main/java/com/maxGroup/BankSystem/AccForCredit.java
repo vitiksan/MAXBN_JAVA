@@ -1,10 +1,11 @@
 package com.maxGroup.BankSystem;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AccForCredit implements IAccount {
+public class AccForCredit implements IAccount,Serializable {
     private String cardNumber;
     private int balance;
     private int pass;
