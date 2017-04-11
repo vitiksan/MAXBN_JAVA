@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.AccountFactory;
 
 public interface IAccountFactory {
     public IAccount createAccount();

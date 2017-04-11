@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.AccountFactory;
 
 public class AccFactory {
     public static IAccountFactory createAccountFactory(String cardType) {

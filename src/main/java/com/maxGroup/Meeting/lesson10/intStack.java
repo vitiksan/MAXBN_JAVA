@@ -6,4 +6,7 @@ public interface intStack {
     int top();
     boolean isEmpty();
     boolean isFull();
+    default void clear(){
+        System.out.println("Метод очищення не реалізований ");
+    }
 }

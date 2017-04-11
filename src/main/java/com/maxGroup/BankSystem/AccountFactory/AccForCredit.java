@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.AccountFactory;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;

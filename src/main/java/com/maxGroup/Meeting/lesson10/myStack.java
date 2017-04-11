@@ -25,4 +25,9 @@ public class myStack implements intStack {
     public boolean isFull(){
         return (top>=size-1);
     }
+
+    @Override
+    public void clear() {
+        System.out.println("Реалізація очищення стеку в класі");
+    }
 }

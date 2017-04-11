@@ -1,17 +1,17 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.AccountFactory;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AccForPayments implements IAccount,Serializable {
+public class AccForDeposit implements IAccount,Serializable {
     private String cardNumber;
     private int balance;
     private int pass;
     private GregorianCalendar expCard;
 
-    public AccForPayments() {
+    public AccForDeposit() {
         cardNumber = generateVCNumber();
         balance = 0;
         pass = 1111;
@@ -23,7 +23,7 @@ public class AccForPayments implements IAccount,Serializable {
      * @param balance - Кількість грошей на рахунку
      * @param pass - Пароль від рахунку
      */
-    public AccForPayments(int balance, int pass) {
+    public AccForDeposit(int balance, int pass) {
         cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
