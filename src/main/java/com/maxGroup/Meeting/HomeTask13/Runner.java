@@ -9,7 +9,7 @@ public class Runner {
         arr.push(8);
         System.out.println(arr.top() + "  " + arr.pop());
         while (!arr.isEmpty()) {
-            arr.pop();
+            System.out.println(arr.pop());
         }
         System.out.println("size after delete: " + arr.getSize());
     }

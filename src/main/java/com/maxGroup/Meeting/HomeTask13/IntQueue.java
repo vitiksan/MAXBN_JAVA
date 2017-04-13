@@ -6,7 +6,7 @@ public class IntQueue implements IIntQueue {
     ArrayList<Integer> queue;
 
     public IntQueue() {
-        queue = new ArrayList<>();
+        queue = new ArrayList<Integer>();
     }
 
     @Override
