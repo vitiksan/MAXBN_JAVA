@@ -3,6 +3,7 @@ package com.maxGroup.Meeting.lesson14;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class ConnectionDB {
     private static String DRIVERNAME = "com.mysql.jdbc.Driver";
@@ -85,5 +86,56 @@ public class ConnectionDB {
         }
     }
 
+    public static void updateSalaryForManagers() throws SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        Scanner in = new Scanner(System.in);
+
+        getUserFromDB();
+        System.out.println("Введіть id людини якій потрібно змінити зарплату: ");
+        int id = Integer.parseInt(in.next());
+        System.out.println("Введіть нову зарплату: ");
+        int newSalary = Integer.parseInt(in.next());
+
+        String query = "UPDATE TABLE managers SET salary=" + newSalary + " WHERE id=" + id + ";";
+        try {
+            connection = getConnection();
+            statement = connection.createStatement();
+            statement.execute(query);
+
+
+        } catch (SQLException e) {
+            log.error("Не вдалося змінити дані");
+            log.error(e.getMessage());
+        } finally {
+            if (connection != null) connection.close();
+            if (statement != null) statement.close();
+        }
+    }
+
+    public static void deleteLineFronDB() throws SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        Scanner in = new Scanner(System.in);
+
+        getUserFromDB();
+        System.out.println("Введіть id людини якy потрібно видалити: ");
+        int id = Integer.parseInt(in.next());
+
+        String query = "DELETE FROM managers WHERE id=" + id + ";";
+        try {
+            connection = getConnection();
+            statement = connection.createStatement();
+            statement.execute(query);
+
+
+        } catch (SQLException e) {
+            log.error("Не вдалося видалити людину");
+            log.error(e.getMessage());
+        } finally {
+            if (connection != null) connection.close();
+            if (statement != null) statement.close();
+        }
+    }
 
 }
