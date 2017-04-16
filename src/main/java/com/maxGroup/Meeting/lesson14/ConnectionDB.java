@@ -40,7 +40,7 @@ public class ConnectionDB {
 
         String query = "INSERT INTO managers " +
                 "(id,name,surname,post,salary) " +
-                "VALUES (3,'Olia','Stfn','manager',15000)";
+                "VALUES (5,'Olia','Stfn','manager',15000)";
 
         try {
             connection = getConnection();
@@ -84,4 +84,6 @@ public class ConnectionDB {
             if (statement != null) statement.close();
         }
     }
+
+
 }

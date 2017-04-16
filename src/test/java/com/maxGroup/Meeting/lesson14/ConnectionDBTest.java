@@ -7,8 +7,7 @@ import static org.junit.Assert.*;
 public class ConnectionDBTest {
     @Test
     public void getConnection() throws Exception {
-        ConnectionDB.createManager();
-        //ConnectionDB.getUserFromDB();
+        //ConnectionDB.createManager();
+        ConnectionDB.getUserFromDB();
     }
-
 }
