@@ -91,17 +91,18 @@ public class ConnectionDB {
         Statement statement = null;
         Scanner in = new Scanner(System.in);
 
-        getUserFromDB();
-        System.out.println("Введіть id людини якій потрібно змінити зарплату: ");
-        int id = Integer.parseInt(in.next());
-        System.out.println("Введіть нову зарплату: ");
-        int newSalary = Integer.parseInt(in.next());
+        //getUserFromDB();
+        //System.out.println("Введіть id людини якій потрібно змінити зарплату: ");
+        //int id = in.nextInt();
+        //System.out.println("Введіть нову зарплату: ");
+        //int newSalary = in.nextInt();
 
-        String query = "UPDATE TABLE managers SET salary=" + newSalary + " WHERE id=" + id + ";";
+        //String query = "UPDATE TABLE managers SET salary=" + newSalary + " WHERE id=" + id + ";";
+        String query = "UPDATE managers SET salary=5000 WHERE id=1;";
         try {
             connection = getConnection();
             statement = connection.createStatement();
-            statement.execute(query);
+            statement.executeUpdate(query);
 
 
         } catch (SQLException e) {
@@ -113,16 +114,17 @@ public class ConnectionDB {
         }
     }
 
-    public static void deleteLineFronDB() throws SQLException {
+    public static void deleteLineFromDB() throws SQLException {
         Connection connection = null;
         Statement statement = null;
         Scanner in = new Scanner(System.in);
 
-        getUserFromDB();
-        System.out.println("Введіть id людини якy потрібно видалити: ");
-        int id = Integer.parseInt(in.next());
+        //getUserFromDB();
+        //System.out.println("Введіть id людини якy потрібно видалити: ");
+        //int id = in.nextInt();
 
-        String query = "DELETE FROM managers WHERE id=" + id + ";";
+        //String query = "DELETE FROM managers WHERE id=" + id + ";";
+        String query = "DELETE FROM managers WHERE id=5;";
         try {
             connection = getConnection();
             statement = connection.createStatement();
