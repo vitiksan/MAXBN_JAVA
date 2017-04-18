@@ -112,4 +112,5 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
             log.info("Can`t find this surname" + e.getMessage());
         }
     }
+
 }
