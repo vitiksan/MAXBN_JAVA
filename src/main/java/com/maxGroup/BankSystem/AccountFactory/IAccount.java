@@ -14,6 +14,7 @@ public interface IAccount {
     Boolean fillBalance(double count);
     void GetExp();
     void setAccountId();
+    void setAccountId(int id);
     int getAccountId();
     String getType();
 }

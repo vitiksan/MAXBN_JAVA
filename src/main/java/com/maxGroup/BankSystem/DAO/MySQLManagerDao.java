@@ -32,13 +32,12 @@ public class MySQLManagerDao implements IManagerDao {
             ResultSet resultSet = prSt.executeQuery();
 
             while (resultSet.next()) {
-                //manager.set = resultSet.getInt("id");
+                manager.setIdManager(resultSet.getInt("id"));
                 manager.setName(resultSet.getString("name"));
                 manager.setSurname(resultSet.getString("surname"));
                 manager.setPost(resultSet.getString("post"));
                 manager.setSalary(resultSet.getDouble("salary"));
             }
-
 
         } catch (SQLException e) {
             log.error("Не вдалося отримати дані");

@@ -34,6 +34,14 @@ public class AccForDeposit implements IAccount,Serializable {
         setAccountId();
     }
 
+    public AccForDeposit(double balance, int pass,String cardNumber) {
+        this.cardNumber = cardNumber;
+        this.balance = balance;
+        this.pass = pass;
+        setExpCard();
+        setAccountId();
+    }
+
     public String getCardNumber() {
         return cardNumber;
     }
@@ -130,5 +138,10 @@ public class AccForDeposit implements IAccount,Serializable {
 
     public int getPass() {
         return pass;
+    }
+
+    @Override
+    public void setAccountId(int id) {
+        this.id=id;
     }
 }

@@ -127,4 +127,8 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         idManager = nextId;
         nextId++;
     }
+
+    public void setIdManager(int idManager) {
+        this.idManager = idManager;
+    }
 }

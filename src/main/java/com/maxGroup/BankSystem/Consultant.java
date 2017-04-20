@@ -102,4 +102,8 @@ public class Consultant extends Employee implements Serializable {
         idConsultant = nextId;
         nextId++;
     }
+
+    public void setIdConsultant(int idConsultant) {
+        this.idConsultant = idConsultant;
+    }
 }

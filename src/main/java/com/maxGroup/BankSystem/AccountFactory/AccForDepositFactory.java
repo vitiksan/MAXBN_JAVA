@@ -5,7 +5,11 @@ public class AccForDepositFactory implements IAccountFactory {
         return new AccForDeposit();
     }
 
-    public IAccount createAccount(int balance, int pass) {
-        return new AccForDeposit(balance,pass);
+    public IAccount createAccount(double balance, int pass) {
+        return new AccForDeposit(balance, pass);
+    }
+
+    public IAccount createAccount(double balance, int pass, String cardNumber) {
+        return new AccForDeposit(balance, pass, cardNumber);
     }
 }

@@ -127,4 +127,8 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         idOfficer = nextId;
         nextId++;
     }
+
+    public void setIdOfficer(int idOfficer) {
+        this.idOfficer = idOfficer;
+    }
 }
