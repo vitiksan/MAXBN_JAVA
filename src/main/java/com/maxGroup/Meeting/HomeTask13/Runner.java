@@ -12,6 +12,5 @@ public class Runner {
         while (!arr.isEmpty()) {
             System.out.println(arr.pop());
         }
-
     }
 }
