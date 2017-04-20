@@ -9,6 +9,8 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Officer extends Employee implements Serializable, WorkWithClient {
+    private static int nextId = 1;
+    private int idOfficer;
     private static final Logger log = Logger.getLogger(Officer.class);
     private ArrayList<Manager> subordinates;
 
@@ -20,7 +22,9 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         setStartWork(new GregorianCalendar());
         setSalary(3000);
         subordinates = new ArrayList<Manager>();
+        setIdOfficer();
     }
+
 
     /**
      * @param name       - Ім'я
@@ -42,6 +46,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         setSalary(salary);
         setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
         subordinates = new ArrayList<Manager>();
+        setIdOfficer();
     }
 
     /**
@@ -62,6 +67,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
         subordinates = new ArrayList<Manager>();
+        setIdOfficer();
     }
 
 
@@ -72,6 +78,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
     @Override
     public String toString() {
         return getClass().getName() +
+                "[ id = " + idOfficer +
                 "[ name = " + getName()
                 + ", surname = " + getSurname()
                 + ", old = " + getOld()
@@ -110,5 +117,14 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
             System.out.println("Can`t find this surname");
             log.info("Can`t find this surname" + e.getMessage());
         }
+    }
+
+    public int getIdOfficer() {
+        return idOfficer;
+    }
+
+    public void setIdOfficer() {
+        idOfficer = nextId;
+        nextId++;
     }
 }

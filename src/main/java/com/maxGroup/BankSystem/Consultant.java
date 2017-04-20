@@ -5,7 +5,8 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 public class Consultant extends Employee implements Serializable {
-
+    private static int nextId = 1;
+    private int idConsultant;
     private String occupation;
 
     public Consultant() {
@@ -16,50 +17,55 @@ public class Consultant extends Employee implements Serializable {
         setStartWork(new GregorianCalendar());
         setSalary(3000);
         occupation = "Credit";
+        setIdConsultant();
     }
 
     /**
      * Конструктор
-     * @param name - Ім'я
-     * @param surname - Прізвище
-     * @param post - Посада працівника
-     * @param year - Рік народження
-     * @param month - Місяць народженя
-     * @param day - День народження
-     * @param salary - Зарплата
+     *
+     * @param name       - Ім'я
+     * @param surname    - Прізвище
+     * @param post       - Посада працівника
+     * @param year       - Рік народження
+     * @param month      - Місяць народженя
+     * @param day        - День народження
+     * @param salary     - Зарплата
      * @param occupation - Обсласть в якій працівник проводить консультації
-     * @param yearStart - Рік початку роботи
+     * @param yearStart  - Рік початку роботи
      * @param monthStart - Місяць початку роботи
-     * @param dayStart - День початку роботи
+     * @param dayStart   - День початку роботи
      */
     public Consultant(String name, String surname, String post, int year, int month, int day, int salary, String occupation, int yearStart, int monthStart, int dayStart) {
         setName(name);
         setSurname(surname);
-        setBorn(new GregorianCalendar(year,month,day));
+        setBorn(new GregorianCalendar(year, month, day));
         setPost(post);
-        setStartWork(new GregorianCalendar(yearStart,monthStart,dayStart));
+        setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
         setSalary(salary);
         this.occupation = occupation;
+        setIdConsultant();
     }
 
     /**
      * Конструктор
-     * @param name - Ім'я
-     * @param surname - Прізвище
-     * @param post - Посада працівника
-     * @param year - Рік народження
-     * @param month - Місяць народженя
-     * @param day - День народження
-     * @param salary - Зарплата
+     *
+     * @param name       - Ім'я
+     * @param surname    - Прізвище
+     * @param post       - Посада працівника
+     * @param year       - Рік народження
+     * @param month      - Місяць народженя
+     * @param day        - День народження
+     * @param salary     - Зарплата
      * @param occupation - Обсласть в якій працівник проводить консультації
      */
     public Consultant(String name, String surname, String post, int year, int month, int day, int salary, String occupation) {
         setName(name);
         setSurname(surname);
-        setBorn(new GregorianCalendar(year,month,day));
+        setBorn(new GregorianCalendar(year, month, day));
         setPost(post);
         setSalary(salary);
         this.occupation = occupation;
+        setIdConsultant();
     }
 
     public String getOccupation() {
@@ -77,7 +83,8 @@ public class Consultant extends Employee implements Serializable {
     @Override
     public String toString() {
         return getClass().getName() +
-                "[ name = " + getName()
+                "[ id = " + idConsultant +
+                ", name = " + getName()
                 + ", surname = " + getSurname()
                 + ", old = " + getOld()
                 + ", post = " + getPost()
@@ -85,5 +92,14 @@ public class Consultant extends Employee implements Serializable {
                 + " month, salary = " + getSalary()
                 + ", occupation = " + occupation
                 + "]";
+    }
+
+    public int getIdConsultant() {
+        return idConsultant;
+    }
+
+    public void setIdConsultant() {
+        idConsultant = nextId;
+        nextId++;
     }
 }

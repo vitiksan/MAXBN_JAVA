@@ -9,6 +9,8 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Manager extends Employee implements Serializable, WorkWithClient {
+    private static int nextId = 1;
+    private int idManager;
     private static final Logger log = Logger.getLogger(Manager.class);
     private ArrayList<Customer> clients;
 
@@ -20,6 +22,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         setStartWork(new GregorianCalendar());
         setSalary(3000);
         clients = new ArrayList<Customer>();
+        setIdManager();
     }
 
     /**
@@ -44,6 +47,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         setSalary(salary);
         setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
         clients = new ArrayList<Customer>();
+        setIdManager();
     }
 
     /**
@@ -64,6 +68,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
         clients = new ArrayList<Customer>();
+        setIdManager();
     }
 
     public void setBonus() {
@@ -73,7 +78,8 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
     @Override
     public String toString() {
         return getClass().getName() +
-                "[ name = " + getName()
+                "[ id = " + idManager +
+                ", name = " + getName()
                 + ", surname = " + getSurname()
                 + ", old = " + getOld()
                 + ", post = " + getPost()
@@ -113,4 +119,12 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         }
     }
 
+    public int getIdManager() {
+        return idManager;
+    }
+
+    public void setIdManager() {
+        idManager = nextId;
+        nextId++;
+    }
 }
