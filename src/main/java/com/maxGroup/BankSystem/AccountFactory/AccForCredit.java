@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class AccForCredit implements IAccount,Serializable {
+    private static int nextId = 1;
+    private int id;
     private String cardNumber;
     private int balance;
     private int pass;
@@ -16,6 +18,7 @@ public class AccForCredit implements IAccount,Serializable {
         balance = 0;
         pass = 1111;
         setExpCard();
+        setAccountId();
     }
 
     /**
@@ -28,6 +31,7 @@ public class AccForCredit implements IAccount,Serializable {
         this.balance = balance;
         this.pass = pass;
         setExpCard();
+        setAccountId();
     }
 
     public String getCardNumber() {
@@ -109,5 +113,14 @@ public class AccForCredit implements IAccount,Serializable {
         int monthExpCard = expCard.get(GregorianCalendar.MONTH);
         if (yearNow > yearExpCard || (yearNow == yearExpCard && monthNow > monthExpCard))
             System.out.println("Your card will be closed less as 2 month ago");
+    }
+
+    public int getAccountId() {
+        return id;
+    }
+
+    public void setAccountId() {
+        id = nextId;
+        nextId++;
     }
 }

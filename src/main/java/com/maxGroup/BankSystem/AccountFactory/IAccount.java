@@ -12,4 +12,6 @@ public interface IAccount {
     Boolean getMany(int count);
     Boolean fillBalance(int count);
     void GetExp();
+    void setAccountId();
+    int getAccountId();
 }
