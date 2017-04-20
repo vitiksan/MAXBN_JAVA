@@ -14,8 +14,8 @@ public class ConnectionDBTest {
     @Test
     public void getConnection() throws Exception {
         //ConnectionDB.createManager();
-        ConnectionDB.getUserFromDB();
+        //ConnectionDB.getUserFromDB();
         //ConnectionDB.updateSalaryForManagers();
-        //ConnectionDB.deleteLineFromDB();
+        ConnectionDB.deleteLineFromDB();
     }
 }

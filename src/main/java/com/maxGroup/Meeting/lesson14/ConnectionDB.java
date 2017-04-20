@@ -68,7 +68,7 @@ public class ConnectionDB {
         try {
             connection = getConnection();
             prSt = connection.prepareStatement(INSERT_NEW);
-            prSt.setInt(1, 10);
+            prSt.setInt(1, 1);
             prSt.setString(2, "Nazar");
             prSt.setString(3, "Mykhailiv");
             prSt.setString(4, "Mentor");
@@ -149,15 +149,7 @@ public class ConnectionDB {
     public static void updateSalaryForManagers() throws SQLException {
         Connection connection = null;
         Statement statement = null;
-        //Scanner in = new Scanner(System.in);
 
-        //getUserFromDB();
-        //System.out.println("Введіть id людини якій потрібно змінити зарплату: ");
-        //int id = in.nextInt();
-        //System.out.println("Введіть нову зарплату: ");
-        //int newSalary = in.nextInt();
-
-        //String query = "UPDATE TABLE managers SET salary=" + newSalary + " WHERE id=" + id + ";";
         String query = "UPDATE managers SET salary=5000 WHERE id=1;";
         try {
             connection = getConnection();
@@ -177,13 +169,7 @@ public class ConnectionDB {
     public static void deleteLineFromDB() throws SQLException {
         Connection connection = null;
         Statement statement = null;
-        //Scanner in = new Scanner(System.in);
 
-        //getUserFromDB();
-        //System.out.println("Введіть id людини якy потрібно видалити: ");
-        //int id = in.nextInt();
-
-        //String query = "DELETE FROM managers WHERE id=" + id + ";";
         String query = "DELETE FROM managers WHERE id=5;";
         try {
             connection = getConnection();
