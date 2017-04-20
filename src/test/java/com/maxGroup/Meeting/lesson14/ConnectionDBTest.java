@@ -8,7 +8,7 @@ public class ConnectionDBTest {
     @Test
     public void createManagerPS() throws Exception {
         //ConnectionDB.createManagerPS();
-        ConnectionDB.createManagerBT();
+        ConnectionDB.createManagerBT(3);
     }
 
     @Test

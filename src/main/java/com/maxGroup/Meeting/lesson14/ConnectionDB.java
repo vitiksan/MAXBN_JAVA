@@ -86,33 +86,36 @@ public class ConnectionDB {
 
     }
 
-    public static void createManagerBT() throws SQLException {
+    public static void createManagerBT(int count) throws SQLException {
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement prSt = null;
+        Scanner in = new Scanner(System.in);
 
-        String query = "INSERT INTO managers " +
-                "(id,name,surname,post,salary) " +
-                "VALUES (5,'Olia','Stfn','manager',15000)";
-
+        int id = 1;
         try {
             connection = getConnection();
-            statement = connection.createStatement();
+            prSt = connection.prepareStatement(INSERT_NEW);
 
-            statement.addBatch("INSERT INTO managers (id,name,surname,post,salary) " +
-                    "VALUES (5,'Olia','Stfn','manager',15000)");
+            while (count>0) {
 
-            statement.addBatch("INSERT INTO managers (id,name,surname,post,salary) " +
-                    "VALUES (6,'Vila','Stfn','manager',15000)");
-
-            statement.executeBatch();
-            statement.clearBatch();
+                prSt.setInt(1, id);
+                prSt.setString(2, "Nazar");
+                prSt.setString(3, "Mykhailiv");
+                prSt.setString(4, "Mentor");
+                prSt.setDouble(5, 5000000.0);
+                prSt.addBatch();
+                count--;
+                id++;
+            }
+            prSt.executeBatch();
+            prSt.clearBatch();
 
         } catch (SQLException e) {
             log.error("Не вдалося створити нового менеджера");
             log.error(e.getMessage());
         } finally {
             if (connection != null) connection.close();
-            if (statement != null) statement.close();
+            if (prSt != null) prSt.close();
         }
 
     }
