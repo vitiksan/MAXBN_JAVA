@@ -127,4 +127,8 @@ public class AccForCredit implements IAccount,Serializable {
     public String getType() {
         return "Credit";
     }
+
+    public int getPass() {
+        return pass;
+    }
 }

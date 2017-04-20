@@ -17,8 +17,8 @@ public class MySQLManagerDAO implements IManagerDAO {
     }
 
     @Override
-    public Manager create() {
-        return null;
+    public void create(Manager manager) {
+
     }
 
     @Override

@@ -127,4 +127,8 @@ public class AccForPayments implements IAccount,Serializable {
     public String getType() {
         return "Payments";
     }
+
+    public int getPass() {
+        return pass;
+    }
 }

@@ -6,6 +6,7 @@ public interface IAccount {
     double getBalance();
     void setBalance(double balance);
     void setPass(int pass);
+    int getPass();
     void setExpCard();
     String generateVCNumber();
     boolean checkPassword();

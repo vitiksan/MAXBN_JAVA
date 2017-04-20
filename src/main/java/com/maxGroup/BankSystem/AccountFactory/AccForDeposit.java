@@ -127,4 +127,8 @@ public class AccForDeposit implements IAccount,Serializable {
     public String getType() {
         return "Deposit";
     }
+
+    public int getPass() {
+        return pass;
+    }
 }
