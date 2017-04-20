@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class MySQL_DAOFactory implements IDAOFactory {
     private static String DRIVERNAME = "com.mysql.jdbc.Driver";
-    private static String URL = "jdbc:mysql://localhost:3306/banksystem?useSSL=false";
+    private static String URL = "jdbc:mysql://servlab.mysql.ukraine.com.ua/servlab_devmax?useSSL=false";
     private static String USERNAME = "servlab_devmax";
     private static String PASSWORD = "f843xa4x";
 
