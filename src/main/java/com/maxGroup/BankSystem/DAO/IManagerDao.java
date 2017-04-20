@@ -5,7 +5,7 @@ import com.maxGroup.BankSystem.Manager;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IManagerDAO {
+public interface IManagerDao {
     void create(Manager manager) throws SQLException;
     Manager read(int id) throws SQLException;
     void update(Manager manager) throws SQLException;

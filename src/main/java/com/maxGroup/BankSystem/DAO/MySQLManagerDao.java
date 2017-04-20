@@ -6,13 +6,13 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.List;
 
-public class MySQLManagerDAO implements IManagerDAO {
+public class MySQLManagerDao implements IManagerDao {
     private final Connection connection;
     private final String READ = "SELECT * FROM managers WHERE id = ?;";
 
-    private static final Logger log = Logger.getLogger(MySQLManagerDAO.class);
+    private static final Logger log = Logger.getLogger(MySQLManagerDao.class);
 
-    public MySQLManagerDAO(Connection connection) {
+    public MySQLManagerDao(Connection connection) {
         this.connection = connection;
     }
 

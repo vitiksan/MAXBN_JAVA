@@ -1,9 +1,10 @@
 package com.maxGroup.BankSystem.DAO;
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public interface IDAOManagerFactory {
+public interface IDaoAccountFactory {
     Connection getConnection() throws SQLException;
-    IManagerDAO getManagerDAO(Connection connection);
+    IAccountDao getAccountDAO(Connection connection);
 }

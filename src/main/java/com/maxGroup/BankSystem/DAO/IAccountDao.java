@@ -6,7 +6,7 @@ import com.maxGroup.BankSystem.AccountFactory.*;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IAccountDAO {
+public interface IAccountDao {
     void create(IAccount account) throws SQLException;
     IAccount read(int id) throws SQLException;
     void update(IAccount manager) throws SQLException;
