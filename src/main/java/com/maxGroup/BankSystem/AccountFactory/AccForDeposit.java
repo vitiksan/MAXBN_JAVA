@@ -9,7 +9,7 @@ public class AccForDeposit implements IAccount,Serializable {
     private static int nextId = 1;
     private int id;
     private String cardNumber;
-    private int balance;
+    private double balance;
     private int pass;
     private GregorianCalendar expCard;
 
@@ -26,7 +26,7 @@ public class AccForDeposit implements IAccount,Serializable {
      * @param balance - Кількість грошей на рахунку
      * @param pass - Пароль від рахунку
      */
-    public AccForDeposit(int balance, int pass) {
+    public AccForDeposit(double balance, int pass) {
         cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
@@ -42,11 +42,11 @@ public class AccForDeposit implements IAccount,Serializable {
         this.cardNumber = numberAccount;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -84,7 +84,7 @@ public class AccForDeposit implements IAccount,Serializable {
      * @param count - Сума, яку потрібно зняти з рахунку
      * @return - true якщо операція виконана, false якщо ні
      */
-    public Boolean getMany(int count) {
+    public Boolean getMany(double count) {
         if (checkPassword() && count <= this.balance) {
             this.balance -= count;
             return true;
@@ -97,7 +97,7 @@ public class AccForDeposit implements IAccount,Serializable {
      * @param count - Сума, на яку поповнюється рахунок
      * @return - true якщо операція виконана, false якщо ні
      */
-    public Boolean fillBalance(int count) {
+    public Boolean fillBalance(double count) {
         if (count > 0) {
             balance += count;
             return true;
@@ -122,5 +122,9 @@ public class AccForDeposit implements IAccount,Serializable {
     public void setAccountId() {
         id = nextId;
         nextId++;
+    }
+
+    public String getType() {
+        return "Deposit";
     }
 }

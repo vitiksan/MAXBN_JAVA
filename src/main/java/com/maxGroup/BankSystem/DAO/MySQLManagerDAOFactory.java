@@ -6,14 +6,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MySQL_DAOFactory implements IDAOFactory {
+public class MySQLManagerDAOFactory implements IDAOFactory {
     private static String DRIVERNAME = "com.mysql.jdbc.Driver";
     private static String URL = "jdbc:mysql://servlab.mysql.ukraine.com.ua/servlab_devmax?useSSL=false";
     private static String USERNAME = "servlab_devmax";
     private static String PASSWORD = "f843xa4x";
 
 
-    private static final Logger log = Logger.getLogger(MySQL_DAOFactory.class);
+    private static final Logger log = Logger.getLogger(MySQLManagerDAOFactory.class);
     @Override
     public Connection getConnection() throws SQLException {
         Connection connection = null;
