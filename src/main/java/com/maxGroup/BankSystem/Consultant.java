@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 public class Consultant extends Employee implements Serializable {
+
     private String occupation;
 
     public Consultant() {
