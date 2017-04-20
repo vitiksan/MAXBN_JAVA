@@ -51,17 +51,17 @@ public class MySQLManagerDAO implements IManagerDAO {
     }
 
     @Override
-    public void update(Manager manager) {
+    public void update(Manager manager) throws SQLException{
 
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws SQLException{
 
     }
 
     @Override
-    public List<Manager> getAll() {
+    public List<Manager> getAll()throws SQLException {
         return null;
     }
 }

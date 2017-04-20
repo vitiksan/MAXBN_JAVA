@@ -26,7 +26,5 @@ public class lesson5 {
                 staff2.add((Manager) item);
             }
         }
-
-
     }
 }

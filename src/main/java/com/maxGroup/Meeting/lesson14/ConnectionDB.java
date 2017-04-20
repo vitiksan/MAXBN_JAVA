@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class ConnectionDB {
     private static String DRIVERNAME = "com.mysql.jdbc.Driver";
     private static String URL = "jdbc:mysql://localhost:3306/banksystem?useSSL=false";
-    private static String USERNAME = "root";
-    private static String PASSWORD = "root";
+    private static String USERNAME = "servlab_devmax";
+    private static String PASSWORD = "f843xa4x";
 
 
     private static final Logger log = Logger.getLogger(ConnectionDB.class);
@@ -149,7 +149,7 @@ public class ConnectionDB {
     public static void updateSalaryForManagers() throws SQLException {
         Connection connection = null;
         Statement statement = null;
-        Scanner in = new Scanner(System.in);
+        //Scanner in = new Scanner(System.in);
 
         //getUserFromDB();
         //System.out.println("Введіть id людини якій потрібно змінити зарплату: ");
@@ -177,7 +177,7 @@ public class ConnectionDB {
     public static void deleteLineFromDB() throws SQLException {
         Connection connection = null;
         Statement statement = null;
-        Scanner in = new Scanner(System.in);
+        //Scanner in = new Scanner(System.in);
 
         //getUserFromDB();
         //System.out.println("Введіть id людини якy потрібно видалити: ");

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IManagerDAO {
-    Manager create();
+    Manager create() throws SQLException;
     Manager read(int id) throws SQLException;
-    void update(Manager manager);
-    void delete(int id);
-    List<Manager> getAll();
+    void update(Manager manager) throws SQLException;
+    void delete(int id) throws SQLException;
+    List<Manager> getAll() throws SQLException;
 }
