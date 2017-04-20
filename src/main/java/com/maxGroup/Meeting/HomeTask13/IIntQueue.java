@@ -6,4 +6,5 @@ public interface IIntQueue {
     int top();
     int getSize();
     boolean isEmpty();
+
 }
