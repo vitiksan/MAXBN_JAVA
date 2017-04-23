@@ -1,28 +1,24 @@
-package com.maxGroup.Meeting.HomeTask13;
+package com.maxGroup.BankSystem;
 
-public class IntQueue {
-    private int[] queue;
+
+
+public class Queue<T> {
+    private T[] queue;
     private int size;
     private int index;
 
-    public IntQueue(int size) {
-        queue = new int[size];
-        this.size = size;
+    public Queue(T[] queue) {
+        this.queue = queue;
+        this.size = queue.length;
         index = -1;
     }
 
-    public IntQueue() {
-        queue = new int[10];
-        size = 10;
-        index = -1;
-    }
-
-    public void push(int item) {
+    public void push(T item) {
         queue[++index] = item;
     }
 
-    public int pop() {
-        int temp = queue[0];
+    public T pop() {
+        T temp = queue[0];
         for (int i = 0; i < size - 1; i++) {
             queue[i] = queue[i + 1];
         }
@@ -30,7 +26,7 @@ public class IntQueue {
         return temp;
     }
 
-    public int first() {
+    public T first() {
         return queue[0];
     }
 
@@ -41,4 +37,5 @@ public class IntQueue {
     public boolean isEmpty() {
         return (index < 0);
     }
+
 }
