@@ -23,33 +23,30 @@ public class HeapSort<T extends Number> {
         return false;
     }
 
+    private boolean sortThreeElement(int index) {
+        boolean replacing = false;
+        if (arr[index].doubleValue() < arr[2 * index + 1].doubleValue() && arr[2 * index + 1].doubleValue() > arr[2 * index + 2].doubleValue()) {
+            replacing = replace(index, 2 * index + 1);
+        } else if (arr[index].doubleValue() < arr[2 * index + 2].doubleValue() && arr[2 * index + 2].doubleValue() > arr[2 * index + 1].doubleValue()) {
+            replacing = replace(index, 2 * index + 2);
+        }
+    }
+
 
     public T[] sort() {
         int index = 0;
         int temp = 0;
         boolean replacing = false;
-        try {
-            while (size != 1) {
-                if (arr[index].doubleValue() < arr[2 * index + 1].doubleValue() && arr[2 * index + 1].doubleValue() > arr[2 * index + 2].doubleValue()) {
-                    replacing = replace(index, 2 * index + 1);
-                    if (!replacing) throw new Exception("can`t replace number");
-                } else if (arr[index].doubleValue() < arr[2 * index + 2].doubleValue() && arr[2 * index + 2].doubleValue() > arr[2 * index + 1].doubleValue()) {
-                    replacing = replace(index, 2 * index + 2);
-                    if (!replacing) throw new Exception("can`t replace number");
-                }
+        while (size != 1) {
 
-                if (2 * index + 1 < size) index = 2 * index + 1;
-                else if (2 * index + 2 < size) index = 2 * index + 2;
+            if (2 * index + 1 < size) index = 2 * index + 1;
+            else if (2 * index + 2 < size) index = 2 * index + 2;
 
-                if (replacing && index == 0) {
-                    replace(index, size - 1);
-                    size--;
-                }
+            if (replacing && index == 0) {
+                replace(index, size - 1);
+                size--;
             }
-        } catch (Exception e) {
-            log.error(e.getMessage());
         }
-
         return arr;
     }
 }
