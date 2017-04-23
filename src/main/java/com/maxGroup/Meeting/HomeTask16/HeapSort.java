@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class HeapSort<T extends Number> {
     private T[] arr;
-    int size;
+    int count;
     private int left;
     private int right;
     private int largest;
@@ -13,17 +13,49 @@ public class HeapSort<T extends Number> {
 
     public HeapSort(T[] arr) {
         this.arr = arr;
-        this.size = arr.length-1;
+        this.count = arr.length;
     }
 
-    private boolean replace(int x, int y) {
-        if (x < size && y < size) {
+    private void replace(int x, int y) {
             T temp = arr[x];
             arr[x] = arr[y];
             arr[y] = temp;
-            return true;
-        }
-        return false;
     }
 
+    public T[] sort(){
+        build();
+
+        for(int i = count; i>0; i--) {
+            replace(0, i);
+            count--;
+            maxheap(0);
+        }
+        return arr;
+    }
+
+    public void maxheap(int i) {
+        left = 2*i;
+        right = 2*i+1;
+
+        if(left <= count && arr[left].doubleValue() > arr[i].doubleValue()){
+            largest=left;
+        } else {
+            largest=i;
+        }
+
+        if(right <= count && arr[right].doubleValue() > arr[largest].doubleValue()) {
+            largest=right;
+        }
+        if(largest!=i) {
+            replace(i, largest);
+            maxheap(largest);
+        }
+    }
+
+    public void build(){
+        count--;
+        for(int i = count /2; i>=0; i--){
+            maxheap(i);
+        }
+    }
 }
