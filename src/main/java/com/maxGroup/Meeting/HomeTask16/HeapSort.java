@@ -23,50 +23,29 @@ public class HeapSort<T extends Number> {
         return false;
     }
 
-    private boolean sortThreeElement(int index) {
-        boolean replacing = false;
-        int left = 1;
-        int right = 2;
-        try {
-            if (arr[index].doubleValue() < arr[2 * index + 1].doubleValue() && arr[2 * index + 1].doubleValue() > arr[2 * index + 2].doubleValue()) {
-                replacing = replace(index, 2 * index + 1);
-                if (!replacing) throw new Exception();
-            } else if (arr[index].doubleValue() < arr[2 * index + 2].doubleValue() && arr[2 * index + 2].doubleValue() > arr[2 * index + 1].doubleValue()) {
-                replacing = replace(index, 2 * index + 2);
-                if (!replacing) throw new Exception();
-            }
+    public T[] heapSort() {
 
-            left = 2 * index + 1;
-            right = 2 * index + 2;
-            if (2 * left + 1 < size) {
-                sortThreeElement(left);
-            } else if (2 * right + 2 < size) {
-                sortThreeElement(right);
-            }
+        for (int i = size / 2 - 1; i >= 0; i--) downHeap(i, size - 1);
 
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-            log.error(e.getMessage());
-        } catch (Exception e) {
-            log.error("can`t replace");
-            log.error(e.getMessage());
-            e.printStackTrace();
+        for (int i = size - 1; i > 0; i--) {
+            replace(0, i);
+            downHeap(0, i - 1);
         }
-        return replacing;
+        return arr;
     }
 
 
-    public T[] sort() {
-        int index = 0;
-        boolean replacing = false;
+    private void downHeap(int index, int lim) {
+        T temp = arr[index];
+        int child;
 
-        while (size != 1) {
-            sortThreeElement(index);
-            if (replacing && index == 0) {
-                replace(index, size - 1);
-                size--;
-            }
+        while (index <= (size -1)/2) {
+            child = 2 * index;
+            if (child < lim && arr[child].doubleValue() < arr[child + 1].doubleValue())
+                child++;
+            if (temp.doubleValue() >= arr[child].doubleValue()) break;
+            replace(index,child);
+            index = child;
         }
-        return arr;
     }
 }
