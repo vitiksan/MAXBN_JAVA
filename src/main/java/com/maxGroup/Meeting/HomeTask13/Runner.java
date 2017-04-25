@@ -2,7 +2,7 @@ package com.maxGroup.Meeting.HomeTask13;
 
 public class Runner {
     public static void main(String[] args) {
-        IQueue arr = new IntQueue(20);
+        IntQueue arr = new IntQueue(20);
         arr.push(2);
         arr.push(5);
         arr.push(7);

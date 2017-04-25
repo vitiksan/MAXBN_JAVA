@@ -100,7 +100,7 @@ public class Customer extends Human implements Serializable {
             if (item.getCardNumber() == accountId) {
                 if (item.getBalance() > 0) {
                     do {
-                        System.out.println("You have many at the account, enter number account when you wont transfer many");
+                        System.out.println("You have many at the account, enter number account when you want transfer many");
                         accountIdNew = in.nextLine();
                         for (IAccount item2 : account) {
                             if (item2.getCardNumber() == accountIdNew) {
