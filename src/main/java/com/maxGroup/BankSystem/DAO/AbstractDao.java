@@ -16,8 +16,11 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
 
     public abstract String getSelectQuery();
 
-    public abstract ArrayList<T> parsData(ResultSet rs);
+    public abstract String getUpdateQuery();
 
+    public abstract int getId(T obj);
+
+    public abstract ArrayList<T> parsData(ResultSet rs);
 
     public T read(int id) throws DAOexception {
         ArrayList<T> someList;
@@ -28,13 +31,13 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
             ResultSet rs = prSt.executeQuery();
             someList = parsData(rs);
         } catch (Exception e) {
-            throw  new DAOexception(e);
+            throw new DAOexception(e);
         }
 
         if (someList == null || someList.size() == 0) return null;
 
         if (someList.size() > 1) {
-            throw  new DAOexception("Отримано забато даних");
+            throw new DAOexception("Отримано забато даних");
         }
 
         return someList.iterator().next();
@@ -48,7 +51,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
             ResultSet resultSet = prSt.executeQuery();
             someList = parsData(resultSet);
         } catch (Exception e) {
-            throw  new DAOexception(e);
+            throw new DAOexception(e);
         }
 
         if (someList == null || someList.size() == 0) return null;
@@ -56,5 +59,14 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
         return someList;
     }
 
+    public void update(T obj) throws DAOexception {
+        String query = getUpdateQuery() + "WHERE id = " + getId(obj);
 
+        try (PreparedStatement prSt = connection.prepareStatement(query)) {
+            prSt.executeQuery();
+
+        } catch (Exception e) {
+            throw new DAOexception(e);
+        }
+    }
 }
