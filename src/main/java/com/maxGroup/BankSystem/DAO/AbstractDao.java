@@ -5,7 +5,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao<T, PK> {
     private Connection connection;
@@ -16,11 +16,11 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
 
     public abstract String getSelectQuery();
 
-    public abstract List<T> parsData(ResultSet rs);
+    public abstract ArrayList<T> parsData(ResultSet rs);
 
 
     public T read(int id) throws DAOexception {
-        List<T> someList;
+        ArrayList<T> someList;
         String query = getSelectQuery() + "WHERE id = ?";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
@@ -38,5 +38,21 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
         }
 
         return someList.iterator().next();
+    }
+
+    public ArrayList<T> readAll() throws DAOexception {
+        ArrayList<T> someList;
+        String query = getSelectQuery();
+
+        try (PreparedStatement prSt = connection.prepareStatement(query)) {
+            ResultSet resultSet = prSt.executeQuery();
+            someList = parsData(resultSet);
+        } catch (Exception e) {
+            throw  new DAOexception(e);
+        }
+
+        if (someList == null || someList.size() == 0) return null;
+
+        return someList;
     }
 }
