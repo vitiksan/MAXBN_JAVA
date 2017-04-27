@@ -23,9 +23,9 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
         List<T> someList;
         String query = getSelectQuery() + "WHERE id = ?";
 
-        try (PreparedStatement prst = connection.prepareStatement(query)) {
-            prst.setInt(1, id);
-            ResultSet rs = prst.executeQuery();
+        try (PreparedStatement prSt = connection.prepareStatement(query)) {
+            prSt.setInt(1, id);
+            ResultSet rs = prSt.executeQuery();
             someList = parsData(rs);
         } catch (Exception e) {
             throw  new DAOexception(e);
