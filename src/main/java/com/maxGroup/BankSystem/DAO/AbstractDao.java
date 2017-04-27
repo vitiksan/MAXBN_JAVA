@@ -54,6 +54,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
         if (someList == null || someList.size() == 0) return null;
 
         return someList;
-
     }
+
+
 }
