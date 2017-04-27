@@ -4,15 +4,13 @@ package com.maxGroup.BankSystem;
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Officer extends Employee implements Serializable, WorkWithClient {
     private static int nextId = 1;
     private int idOfficer;
-    private static final Logger log = Logger.getLogger(Officer.class);
-    private ArrayList<Manager> subordinates;
+    private GenQueue<Manager> subordinates;
 
     public Officer() {
         setName("none");
@@ -21,7 +19,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         setPost("none");
         setStartWork(new GregorianCalendar());
         setSalary(3000);
-        subordinates = new ArrayList<Manager>();
+        subordinates = new GenQueue<Manager>(new Manager[10]);
         setIdOfficer();
     }
 
@@ -45,7 +43,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
         setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
-        subordinates = new ArrayList<Manager>();
+        subordinates = new GenQueue<Manager>(new Manager[10]);
         setIdOfficer();
     }
 
@@ -66,7 +64,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         setPost(post);
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
-        subordinates = new ArrayList<Manager>();
+        subordinates = new GenQueue<Manager>(new Manager[10]);
         setIdOfficer();
     }
 
@@ -90,17 +88,15 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
     }
 
     public String showClient() {
-        String temp = "";
-        for (Manager item : subordinates) temp += item.toString();
-        return temp;
+        return subordinates.showAll();
     }
 
     public void addNewClient() {
-        subordinates.add(new Manager());
+        subordinates.push(new Manager());
     }
 
     public void deleteClient() {
-        Scanner in = new Scanner(System.in);
+        /*Scanner in = new Scanner(System.in);
         boolean find = false;
         try {
             for (Manager item : subordinates) System.out.println(item.toString());
@@ -116,7 +112,7 @@ public class Officer extends Employee implements Serializable, WorkWithClient {
         } catch (Exception e) {
             System.out.println("Can`t find this surname");
             log.info("Can`t find this surname" + e.getMessage());
-        }
+        }*/
     }
 
     public int getIdOfficer() {

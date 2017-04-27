@@ -12,7 +12,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
     private static int nextId = 1;
     private int idManager;
     private static final Logger log = Logger.getLogger(Manager.class);
-    private ArrayList<Customer> clients;
+    private GenQueue<Customer> clients;
 
     public Manager() {
         setName("none");
@@ -21,7 +21,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         setPost("none");
         setStartWork(new GregorianCalendar());
         setSalary(3000);
-        clients = new ArrayList<Customer>();
+        clients = new GenQueue<Customer>(new Customer[10]);
         setIdManager();
     }
 
@@ -46,7 +46,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
         setStartWork(new GregorianCalendar(yearStart, monthStart, dayStart));
-        clients = new ArrayList<Customer>();
+        clients = new GenQueue<Customer>(new Customer[10]);
         setIdManager();
     }
 
@@ -67,7 +67,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         setPost(post);
         setBorn(new GregorianCalendar(year, month, day));
         setSalary(salary);
-        clients = new ArrayList<Customer>();
+        clients = new GenQueue<Customer>(new Customer[10]);
         setIdManager();
     }
 
@@ -85,28 +85,26 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
                 + ", post = " + getPost()
                 + ", experience = " + getExperience()
                 + " month, cell = " + getSalary()
-                + ", clients = " + ""
+                + ", clients = " + showClient()
                 + "]";
     }
 
     public String showClient() {
-        String temp = "";
-        for (Customer item : clients) temp += item.toString();
-        return temp;
+        return clients.showAll();
     }
 
     public void addNewClient() {
-        clients.add(new Customer());
+        clients.push(new Customer());
     }
 
     public void deleteClient() {
-        Scanner in = new Scanner(System.in);
+        /*Scanner in = new Scanner(System.in);
         boolean find = false;
         try {
-            for (Customer item : clients) System.out.println(item.toString());
+            clients.showAll();
             System.out.println("Enter surname customer for delete: ");
             String surname = in.nextLine();
-            for (int i = 0; i < clients.size(); i++) {
+            for (int i = 0; i < clients.getSize(); i++) {
                 if (surname == clients.get(i).getSurname()) {
                     clients.remove(i);
                     find = true;
@@ -116,7 +114,7 @@ public class Manager extends Employee implements Serializable, WorkWithClient {
         } catch (Exception e) {
             System.out.println("Can`t find this surname");
             log.info("Can`t find this surname" + e.getMessage());
-        }
+        }*/
     }
 
     public int getIdManager() {
