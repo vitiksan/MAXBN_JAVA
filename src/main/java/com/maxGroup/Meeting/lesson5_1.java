@@ -1,6 +1,6 @@
 package com.maxGroup.Meeting;
 
-import com.maxGroup.BankSystem.Employee;
+import com.maxGroup.BankSystem.domain.Employee;
 
 public class lesson5_1 {
     public static void main(String[] args) {

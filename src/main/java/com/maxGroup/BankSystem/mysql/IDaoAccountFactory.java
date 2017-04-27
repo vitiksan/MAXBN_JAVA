@@ -1,5 +1,7 @@
-package com.maxGroup.BankSystem.DAO;
+package com.maxGroup.BankSystem.mysql;
 
+
+import com.maxGroup.BankSystem.mysql.IAccountDao;
 
 import java.sql.Connection;
 import java.sql.SQLException;

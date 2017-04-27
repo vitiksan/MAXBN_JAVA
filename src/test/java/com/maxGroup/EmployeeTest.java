@@ -1,11 +1,8 @@
 package com.maxGroup;
 
-import com.maxGroup.BankSystem.Employee;
 import org.junit.Test;
 
 import java.util.GregorianCalendar;
-
-import static org.junit.Assert.*;
 
 public class EmployeeTest {
     @Test

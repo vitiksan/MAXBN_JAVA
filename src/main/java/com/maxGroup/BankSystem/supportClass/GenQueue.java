@@ -1,13 +1,13 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.supportClass;
 
+import com.maxGroup.BankSystem.domain.Human;
 
-
-public class Queue<T> {
+public class GenQueue<T extends Human> {
     private T[] queue;
     private int size;
     private int index;
 
-    public Queue(T[] queue) {
+    public GenQueue(T[] queue) {
         this.queue = queue;
         this.size = queue.length;
         index = -1;
@@ -38,4 +38,15 @@ public class Queue<T> {
         return (index < 0);
     }
 
+    public String showAll(){
+        String temp = "";
+        for (T item: queue){
+            temp +=item.toString()+"\n";
+        }
+        return temp;
+    }
+
+    public int getSize() {
+        return size;
+    }
 }

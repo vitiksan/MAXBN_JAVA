@@ -1,8 +1,8 @@
 package com.maxGroup.Meeting;
 
-import com.maxGroup.BankSystem.Consultant;
-import com.maxGroup.BankSystem.Employee;
-import com.maxGroup.BankSystem.Manager;
+import com.maxGroup.BankSystem.domain.Consultant;
+import com.maxGroup.BankSystem.domain.Employee;
+import com.maxGroup.BankSystem.domain.Manager;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.domain;
 
 
 import org.apache.log4j.Logger;

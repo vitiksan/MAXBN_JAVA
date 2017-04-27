@@ -1,6 +1,6 @@
 package com.maxGroup;
 
-import com.maxGroup.BankSystem.Customer;
+import com.maxGroup.BankSystem.domain.Customer;
 import org.junit.Test;
 
 import java.util.ArrayList;

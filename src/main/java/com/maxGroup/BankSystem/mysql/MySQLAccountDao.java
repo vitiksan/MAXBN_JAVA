@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem.DAO;
+package com.maxGroup.BankSystem.mysql;
 
 import com.maxGroup.BankSystem.AccountFactory.AccFactory;
 import com.maxGroup.BankSystem.AccountFactory.IAccount;

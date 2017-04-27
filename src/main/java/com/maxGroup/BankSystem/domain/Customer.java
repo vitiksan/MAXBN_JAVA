@@ -1,15 +1,16 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.domain;
 
 import com.maxGroup.BankSystem.AccountFactory.AccFactory;
 import com.maxGroup.BankSystem.AccountFactory.IAccount;
 import com.maxGroup.BankSystem.AccountFactory.IAccountFactory;
+import com.maxGroup.BankSystem.DAO.Identificator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-public class Customer extends Human implements Serializable {
+public class Customer extends Human implements Serializable, Identificator<Integer> {
     private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
@@ -53,7 +54,7 @@ public class Customer extends Human implements Serializable {
         this.statusCustomer = statusCustomer;
     }
 
-    public int getIdCustomer() {
+    public Integer getId() {
         return idCustomer;
     }
 

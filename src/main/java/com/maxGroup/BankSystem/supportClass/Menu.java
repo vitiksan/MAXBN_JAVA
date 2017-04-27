@@ -1,11 +1,11 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.supportClass;
 
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
 public class Menu {
-    private static final Logger log = Logger.getLogger(com.maxGroup.BankSystem.Menu.class);
+    private static final Logger log = Logger.getLogger(Menu.class);
     private static int choose = -1;
 
     public static void main(String[] args) {

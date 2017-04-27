@@ -1,10 +1,11 @@
 package com.maxGroup.BankSystem;
 
+import com.maxGroup.BankSystem.domain.Consultant;
+import com.maxGroup.BankSystem.domain.Employee;
+import com.maxGroup.BankSystem.domain.Manager;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class ManagerTest {
     @Test

@@ -1,6 +1,6 @@
-package com.maxGroup.BankSystem.DAO;
+package com.maxGroup.BankSystem.mysql;
 
-import com.maxGroup.BankSystem.Manager;
+import com.maxGroup.BankSystem.domain.Manager;
 import org.apache.log4j.Logger;
 
 import java.sql.*;

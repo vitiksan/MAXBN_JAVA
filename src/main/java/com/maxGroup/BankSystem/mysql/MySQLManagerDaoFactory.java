@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem.DAO;
+package com.maxGroup.BankSystem.mysql;
 
 import org.apache.log4j.Logger;
 

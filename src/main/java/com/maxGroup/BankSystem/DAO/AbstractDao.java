@@ -5,9 +5,10 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao<T, PK> {
+public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serializable> implements IGenDao<T, PK> {
     private Connection connection;
 
     public AbstractDao(Connection connection) {
@@ -18,10 +19,48 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
 
     public abstract String getUpdateQuery();
 
-    public abstract int getId(T obj);
+    public abstract String getCreateQuery();
 
-    public abstract ArrayList<T> parsData(ResultSet rs);
+    public abstract String getDeleteQuery();
 
+    public abstract ArrayList<T> parsData(ResultSet rs) throws DAOexception;
+
+    public abstract void parsUpdate(PreparedStatement prSt, T obj) throws DAOexception;
+
+    protected abstract void parsInsert(PreparedStatement prSt, T obj) throws DAOexception;
+
+    @Override
+    public T createEx(T obj) throws DAOexception {
+        T temp;
+        String query = getCreateQuery();
+
+        try (PreparedStatement prSt = connection.prepareStatement(query)) {
+            parsInsert(prSt, obj);
+            int count = prSt.executeUpdate();
+            if (count != 1) throw new DAOexception("Error. Created more then 1 object " + count);
+        } catch (Exception e) {
+            throw new DAOexception(e);
+        }
+
+        query = getSelectQuery() + "WHERE id = last_insert_id()";
+
+        try (PreparedStatement prSt = connection.prepareStatement(query)) {
+            ResultSet rs = prSt.executeQuery();
+            ArrayList<T> someList = parsData(rs);
+
+            if (someList == null || someList.size() == 0)
+                throw new DAOexception("Error with search created object by id");
+
+            temp = someList.iterator().next();
+        } catch (Exception e) {
+            throw new DAOexception(e);
+        }
+
+
+        return temp;
+    }
+
+    @Override
     public T read(int id) throws DAOexception {
         ArrayList<T> someList;
         String query = getSelectQuery() + "WHERE id = ?";
@@ -43,6 +82,7 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
         return someList.iterator().next();
     }
 
+    @Override
     public ArrayList<T> readAll() throws DAOexception {
         ArrayList<T> someList;
         String query = getSelectQuery();
@@ -53,18 +93,35 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IGenDao
         } catch (Exception e) {
             throw new DAOexception(e);
         }
-
-        if (someList == null || someList.size() == 0) return null;
-
         return someList;
     }
 
+    @Override
     public void update(T obj) throws DAOexception {
-        String query = getUpdateQuery() + "WHERE id = " + getId(obj);
+        String query = getUpdateQuery(); //+ "WHERE id = " + getId(obj);
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
-            prSt.executeQuery();
+            parsUpdate(prSt, obj);
+            int count = prSt.executeUpdate();
+            if (count != 1) throw new DAOexception("Error. Modified more then 1 field " + count);
+        } catch (Exception e) {
+            throw new DAOexception(e);
+        }
+    }
 
+    @Override
+    public void delete(T obj) throws DAOexception {
+        String query = getDeleteQuery(); //+ "WHERE id = " + getId(obj);
+
+        try (PreparedStatement prSt = connection.prepareStatement(query)) {
+            try {
+                prSt.setObject(1, obj.getId());
+            } catch (Exception e) {
+                throw new DAOexception(e);
+            }
+
+            int count = prSt.executeUpdate();
+            if (count != 1) throw new DAOexception("Error. Deleted more then 1 field " + count);
         } catch (Exception e) {
             throw new DAOexception(e);
         }

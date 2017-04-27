@@ -1,5 +1,7 @@
 package com.maxGroup.BankSystem.DAO;
 
+import com.maxGroup.BankSystem.mysql.IManagerDao;
+import com.maxGroup.BankSystem.mysql.MySQLManagerDaoFactory;
 import org.junit.Test;
 
 public class MySQLManagerDAOTest {

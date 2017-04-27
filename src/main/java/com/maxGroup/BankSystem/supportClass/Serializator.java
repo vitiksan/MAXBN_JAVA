@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem;
+package com.maxGroup.BankSystem.supportClass;
 
 import org.apache.log4j.Logger;
 
