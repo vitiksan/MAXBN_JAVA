@@ -38,13 +38,13 @@ public class Account implements Serializable {
         setId();
     }
 
-    public Account(double balance, int pass,String cardNumber, String type) {
+    public Account(int id,double balance, int pass,String cardNumber, String type) {
         this.cardNumber = cardNumber;
         this.balance = balance;
         this.pass = pass;
         this.type = type;
         setExpCard();
-        setId();
+        setId(id);
     }
 
     public String getCardNumber() {

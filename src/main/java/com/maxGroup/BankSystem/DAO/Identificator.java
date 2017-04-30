@@ -4,5 +4,9 @@ import java.io.Serializable;
 
 public interface Identificator<PK extends Serializable> {
 
-    public PK getId();
+    int getId();
+    double getBalance();
+    String cardNumber();
+
+
 }
