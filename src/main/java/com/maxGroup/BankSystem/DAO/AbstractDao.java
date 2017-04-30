@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serializable> implements IGenDao<T, PK> {
@@ -16,13 +17,15 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     public abstract String getSelectQuery();
 
+    public abstract String getSelectAllQuery();
+
     public abstract String getUpdateQuery();
 
     public abstract String getCreateQuery();
 
     public abstract String getDeleteQuery();
 
-    public abstract ArrayList<T> parsData(ResultSet rs) throws DAOexception;
+    public abstract ArrayList<T> parsData(ResultSet rs) throws DAOexception, SQLException;
 
     public abstract void parsUpdate(PreparedStatement prSt, T obj) throws DAOexception;
 
@@ -124,5 +127,10 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
         } catch (Exception e) {
             throw new DAOexception(e);
         }
+    }
+
+    @Override
+    public T create() throws DAOexception {
+        return null;
     }
 }
