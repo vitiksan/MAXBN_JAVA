@@ -137,6 +137,11 @@ public class Account implements Serializable {
         nextId++;
     }
 
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getType() {
         return type;
     }
