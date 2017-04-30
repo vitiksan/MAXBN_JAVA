@@ -1,8 +1,8 @@
 package com.maxGroup.BankSystem.mysql;
 
-import com.maxGroup.BankSystem.AccountFactory.AccFactory;
-import com.maxGroup.BankSystem.AccountFactory.IAccount;
-import com.maxGroup.BankSystem.AccountFactory.IAccountFactory;
+import com.maxGroup.AccountFactory.AccFactory;
+import com.maxGroup.AccountFactory.IAccount;
+import com.maxGroup.AccountFactory.IAccountFactory;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;

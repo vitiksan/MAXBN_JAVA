@@ -1,7 +1,7 @@
 package com.maxGroup.BankSystem.mysql;
 
 
-import com.maxGroup.BankSystem.AccountFactory.*;
+import com.maxGroup.AccountFactory.*;
 
 import java.sql.SQLException;
 import java.util.List;

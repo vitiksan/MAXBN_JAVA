@@ -1,8 +1,8 @@
 package com.maxGroup.BankSystem.domain;
 
-import com.maxGroup.BankSystem.AccountFactory.AccFactory;
-import com.maxGroup.BankSystem.AccountFactory.IAccount;
-import com.maxGroup.BankSystem.AccountFactory.IAccountFactory;
+import com.maxGroup.AccountFactory.AccFactory;
+import com.maxGroup.AccountFactory.IAccount;
+import com.maxGroup.AccountFactory.IAccountFactory;
 import com.maxGroup.BankSystem.DAO.Identificator;
 
 import java.io.Serializable;
@@ -14,7 +14,7 @@ public class Customer extends Human implements Serializable, Identificator<Integ
     private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
-    private ArrayList<IAccount> account = new ArrayList<IAccount>();
+    private ArrayList<Account> account = new ArrayList<Account>();
 
     public Customer() {
         setName("none");
@@ -36,14 +36,15 @@ public class Customer extends Human implements Serializable, Identificator<Integ
      * @param day            - День народження
      * @param balance        - Кількість грошей на початкувому рахунку
      * @param pass           - Пароль від початкового рахунку
+     * @param type           - Тип початково рахунку
      */
-    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass) {
+    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass,String type) {
         setName(name);
         setSurname(surname);
         setBorn(new GregorianCalendar(year, month, day));
         setIdCustomer();
         this.statusCustomer = statusCustomer;
-        createAccount(balance, pass);
+        createAccount(balance, pass,type);
     }
 
     public String getStatusCustomer() {
@@ -69,20 +70,16 @@ public class Customer extends Human implements Serializable, Identificator<Integ
      * @param pass    - Пароль нового рахунку
      * @return - true якщо операція виконана, false якщо ні
      */
-    public boolean createAccount(int balance, int pass) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Do you want create account for?(credit,deposit,payments - enter your answer)");
-        String choices = in.nextLine();
-        IAccountFactory factory = AccFactory.createAccountFactory(choices);
-        return account.add(factory.createAccount(balance, pass));
+    public boolean createAccount(int balance, int pass, String type) {
+        return account.add(new Account(balance,pass,type));
+    }
+
+    public boolean createAccount(int balance, int pass,String cardNumber, String type) {
+        return account.add(new Account(balance,pass,cardNumber,type));
     }
 
     public boolean createAccount() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Do you want create account for?(credit, deposit, payments - enter your answer)");
-        String choices = in.nextLine();
-        IAccountFactory factory = AccFactory.createAccountFactory(choices);
-        return account.add(factory.createAccount());
+        return account.add(new Account());
     }
 
     public void setIdCustomer() {
@@ -97,13 +94,13 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         boolean search = false;
         System.out.println("Enter number account, that you want to close:");
         accountId = in.nextLine();
-        for (IAccount item : account) {
+        for (Account item : account) {
             if (item.getCardNumber() == accountId) {
                 if (item.getBalance() > 0) {
                     do {
                         System.out.println("You have many at the account, enter number account when you want transfer many");
                         accountIdNew = in.nextLine();
-                        for (IAccount item2 : account) {
+                        for (Account item2 : account) {
                             if (item2.getCardNumber() == accountIdNew) {
                                 search = true;
                                 item2.fillBalance(item.getBalance());
@@ -120,13 +117,13 @@ public class Customer extends Human implements Serializable, Identificator<Integ
 
     public int getBalanceAccounts() {
         int sum = 0;
-        for (IAccount item : account) sum += item.getBalance();
+        for (Account item : account) sum += item.getBalance();
         return sum;
     }
 
     public String getAccountNumbers() {
         String numbers = "";
-        for (IAccount item : account) numbers += item.getCardNumber() + "  ";
+        for (Account item : account) numbers += item.getCardNumber() + "  ";
         return numbers;
     }
 

@@ -1,45 +1,50 @@
-package com.maxGroup.BankSystem.AccountFactory;
+package com.maxGroup.BankSystem.domain;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AccForPayments implements IAccount,Serializable {
+public class Account implements Serializable {
     private static int nextId = 1;
     private int id;
     private String cardNumber;
     private double balance;
     private int pass;
+    private String type;    //dor payments, for deposit, for credit
     private GregorianCalendar expCard;
 
-    public AccForPayments() {
+    public Account() {
         cardNumber = generateVCNumber();
         balance = 0;
         pass = 1111;
+        type = "for payments";
         setExpCard();
-        setAccountId();
+        setId();
     }
 
     /**
      * Конструктор
      * @param balance - Кількість грошей на рахунку
      * @param pass - Пароль від рахунку
+     * @param type - Тип аккаунту
      */
-    public AccForPayments(double balance, int pass) {
+    public Account(double balance, int pass,String type) {
         cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
+        this.type=type;
         setExpCard();
-        setAccountId();
+        setId();
     }
 
-    public AccForPayments(double balance, int pass,String cardNumber) {
+    public Account(double balance, int pass,String cardNumber, String type) {
         this.cardNumber = cardNumber;
         this.balance = balance;
         this.pass = pass;
+        this.type = type;
         setExpCard();
-        setAccountId();
+        setId();
     }
 
     public String getCardNumber() {
@@ -123,25 +128,28 @@ public class AccForPayments implements IAccount,Serializable {
             System.out.println("Your card will be closed less as 2 month ago");
     }
 
-    public int getAccountId() {
+    public int getId() {
         return id;
     }
 
-    public void setAccountId() {
+    public void setId() {
         id = nextId;
         nextId++;
     }
 
     public String getType() {
-        return "Payments";
+        return type;
     }
 
     public int getPass() {
         return pass;
     }
 
-    @Override
-    public void setAccountId(int id) {
-        this.id=id;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public static void setNextId(int nextId) {
+        Account.nextId = nextId;
     }
 }

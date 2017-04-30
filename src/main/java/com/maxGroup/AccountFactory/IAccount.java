@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem.AccountFactory;
+package com.maxGroup.AccountFactory;
 
 public interface IAccount {
     String getCardNumber();

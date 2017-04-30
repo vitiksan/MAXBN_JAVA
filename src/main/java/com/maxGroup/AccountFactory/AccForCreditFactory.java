@@ -1,4 +1,4 @@
-package com.maxGroup.BankSystem.AccountFactory;
+package com.maxGroup.AccountFactory;
 
 public class AccForCreditFactory implements IAccountFactory {
     public IAccount createAccount() {

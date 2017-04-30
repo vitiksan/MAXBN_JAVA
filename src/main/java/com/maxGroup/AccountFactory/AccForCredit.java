@@ -1,11 +1,11 @@
-package com.maxGroup.BankSystem.AccountFactory;
+package com.maxGroup.AccountFactory;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AccForDeposit implements IAccount,Serializable {
+public class AccForCredit implements IAccount,Serializable {
     private static int nextId = 1;
     private int id;
     private String cardNumber;
@@ -13,7 +13,7 @@ public class AccForDeposit implements IAccount,Serializable {
     private int pass;
     private GregorianCalendar expCard;
 
-    public AccForDeposit() {
+    public AccForCredit() {
         cardNumber = generateVCNumber();
         balance = 0;
         pass = 1111;
@@ -26,15 +26,14 @@ public class AccForDeposit implements IAccount,Serializable {
      * @param balance - Кількість грошей на рахунку
      * @param pass - Пароль від рахунку
      */
-    public AccForDeposit(double balance, int pass) {
+    public AccForCredit(double balance, int pass) {
         cardNumber = generateVCNumber();
         this.balance = balance;
         this.pass = pass;
         setExpCard();
         setAccountId();
     }
-
-    public AccForDeposit(double balance, int pass,String cardNumber) {
+    public AccForCredit(double balance, int pass,String cardNumber) {
         this.cardNumber = cardNumber;
         this.balance = balance;
         this.pass = pass;
@@ -133,7 +132,7 @@ public class AccForDeposit implements IAccount,Serializable {
     }
 
     public String getType() {
-        return "Deposit";
+        return "Credit";
     }
 
     public int getPass() {
