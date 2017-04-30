@@ -1,8 +1,5 @@
 package com.maxGroup.BankSystem.domain;
 
-import com.maxGroup.AccountFactory.AccFactory;
-import com.maxGroup.AccountFactory.IAccount;
-import com.maxGroup.AccountFactory.IAccountFactory;
 import com.maxGroup.BankSystem.DAO.Identificator;
 
 import java.io.Serializable;
