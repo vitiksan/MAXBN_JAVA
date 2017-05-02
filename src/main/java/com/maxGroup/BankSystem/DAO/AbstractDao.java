@@ -17,8 +17,6 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     public abstract String getSelectQuery();
 
-    public abstract String getSelectAllQuery();
-
     public abstract String getUpdateQuery();
 
     public abstract String getCreateQuery();
@@ -100,7 +98,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     @Override
     public void update(T obj) throws DAOexception {
-        String query = getUpdateQuery(); //+ "WHERE id = " + getId(obj);
+        String query = getUpdateQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             parsUpdate(prSt, obj);
@@ -113,7 +111,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     @Override
     public void delete(T obj) throws DAOexception {
-        String query = getDeleteQuery(); //+ "WHERE id = " + getId(obj);
+        String query = getDeleteQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             try {
