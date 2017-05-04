@@ -27,7 +27,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     public abstract void parsUpdate(PreparedStatement prSt, T obj) throws DAOexception;
 
-    protected abstract void parsInsert(PreparedStatement prSt, T obj) throws DAOexception;
+    public abstract void parsInsert(PreparedStatement prSt, T obj) throws DAOexception;
 
     @Override
     public T createEx(T obj) throws DAOexception {

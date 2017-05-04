@@ -77,7 +77,7 @@ public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
     }
 
     @Override
-    protected void parsInsert(PreparedStatement prSt, Account obj) throws DAOexception {
+    public void parsInsert(PreparedStatement prSt, Account obj) throws DAOexception {
         try {
             prSt.setString(1, obj.getType());
             prSt.setString(2, obj.getCardNumber());
