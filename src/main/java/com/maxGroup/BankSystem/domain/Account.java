@@ -15,6 +15,18 @@ public class Account implements Identificator<Integer> {
     private String type;
     private GregorianCalendar expCard;
 
+    public Account() {
+        this.cardNumber = generateVCNumber();
+    }
+
+    public Account(double balance, int pass, String type) {
+        this.cardNumber = generateVCNumber();
+        this.balance = balance;
+        this.pass = pass;
+        this.type = type;
+        setExpCard();
+    }
+
     public int getId() {
         return id;
     }
@@ -27,16 +39,16 @@ public class Account implements Identificator<Integer> {
         return cardNumber;
     }
 
-    public void setCardNumber(String numberAccount) {
+    protected void setCardNumber(String numberAccount) {
         this.cardNumber = numberAccount;
     }
 
     /**
      * @return - генерація 16-значного номера рахунку
      */
-    public String generateVCNumber() {
+    private String generateVCNumber() {
         String temp = "4";
-        Random random = new Random(0);
+        Random random = new Random();
         for (int i = 0; i < 15; i++) {
             temp += String.valueOf(random.nextInt(10));
         }
@@ -47,7 +59,7 @@ public class Account implements Identificator<Integer> {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    protected void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -57,7 +69,7 @@ public class Account implements Identificator<Integer> {
      * @param count - Сума, яку потрібно зняти з рахунку
      * @return - true якщо операція виконана, false якщо ні
      */
-    public Boolean getMany(double count) {
+    public Boolean getMoney(double count) {
         if (checkPassword() && count <= this.balance) {
             this.balance -= count;
             return true;
@@ -83,7 +95,7 @@ public class Account implements Identificator<Integer> {
         return pass;
     }
 
-    public void setPass(int pass) {
+    protected void setPass(int pass) {
         this.pass = pass;
     }
 
@@ -102,12 +114,20 @@ public class Account implements Identificator<Integer> {
         this.type = type;
     }
 
-    public void setExpCard() {
+    private void setExpCard() {
         GregorianCalendar now = new GregorianCalendar();
         expCard = new GregorianCalendar(now.get(GregorianCalendar.YEAR) + 4, now.get(GregorianCalendar.MONTH), now.get(GregorianCalendar.DATE));
     }
 
-    public void GetExp() {
+    public GregorianCalendar getExpCard() {
+        return expCard;
+    }
+
+    protected void setExpCard(GregorianCalendar expCard) {
+        this.expCard = expCard;
+    }
+
+    public void checkExpDate() {
         GregorianCalendar now = new GregorianCalendar();
         int yearNow = now.get(GregorianCalendar.YEAR);
         int yearExpCard = expCard.get(GregorianCalendar.YEAR);

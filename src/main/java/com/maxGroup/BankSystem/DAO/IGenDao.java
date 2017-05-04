@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public interface IGenDao<T, PK extends Serializable> {
-    T create() throws DAOexception;
 
     T createEx(T obj) throws DAOexception;
 

@@ -42,7 +42,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
             throw new DAOexception(e);
         }
 
-        query = getSelectQuery() + "WHERE id = last_insert_id()";
+        /*query = getSelectQuery() + " WHERE id = LAST_INSERT_ID();";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             ResultSet rs = prSt.executeQuery();
@@ -50,14 +50,13 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
             if (someList == null || someList.size() == 0)
                 throw new DAOexception("Error with search created object by id");
-
             temp = someList.iterator().next();
         } catch (Exception e) {
             throw new DAOexception(e);
-        }
+        }*/
 
 
-        return temp;
+        return obj;
     }
 
     @Override
@@ -125,10 +124,5 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
         } catch (Exception e) {
             throw new DAOexception(e);
         }
-    }
-
-    @Override
-    public T create() throws DAOexception {
-        return null;
     }
 }

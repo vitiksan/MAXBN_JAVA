@@ -4,18 +4,35 @@ import com.maxGroup.BankSystem.DAO.AbstractDao;
 import com.maxGroup.BankSystem.DAO.DAOexception;
 import com.maxGroup.BankSystem.domain.Account;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
+public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
 
-    private class ExtendAccount extends Account{
+    private class ExtendAccount extends Account {
         @Override
         protected void setId(int id) {
             super.setId(id);
+        }
+        @Override
+        protected void setExpCard(GregorianCalendar expCard) {
+            super.setExpCard(expCard);
+        }
+        @Override
+        protected void setCardNumber(String numberAccount) {
+            super.setCardNumber(numberAccount);
+        }
+        @Override
+        protected void setBalance(double balance) {
+            super.setBalance(balance);
+        }
+        @Override
+        protected void setPass(int pass) {
+            super.setPass(pass);
         }
     }
 
@@ -25,17 +42,17 @@ public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT * FROM Accounts;";
+        return "SELECT * FROM Accounts";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE Accounts SET type=?,cardNumber=?,balance=?,password=? WHERE id=?;";
+        return "UPDATE Accounts SET type=?,cardNumber=?,balance=?,password=?,expDate=? WHERE id=?;";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO Accounts (type,cardNumber,balance,password) VALUES(?,?,?,?);";
+        return "INSERT INTO Accounts (type,cardNumber,balance,password,expDate) VALUES(?,?,?,?,?);";
     }
 
     @Override
@@ -45,7 +62,8 @@ public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
 
     @Override
     public ArrayList<Account> parsData(ResultSet rs) throws DAOexception {
-        ArrayList<Account> accounts =new ArrayList<Account>();
+        ArrayList<Account> accounts = new ArrayList<Account>();
+        Calendar cl = Calendar.getInstance();
 
         try {
             while (!rs.next()) {
@@ -55,6 +73,8 @@ public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
                 account.setBalance(rs.getDouble("balance"));
                 account.setPass(rs.getInt("password"));
                 account.setType(rs.getString("type"));
+                cl.setTime(rs.getDate("expDate"));
+                account.setExpCard((GregorianCalendar) cl);
                 accounts.add(account);
             }
         } catch (Exception e) {
@@ -68,9 +88,10 @@ public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
         try {
             prSt.setString(1, obj.getType());
             prSt.setString(2, obj.getCardNumber());
-            prSt.setDouble(3,obj.getBalance());
-            prSt.setInt(4,obj.getPass());
-            prSt.setInt(5,obj.getId());
+            prSt.setDouble(3, obj.getBalance());
+            prSt.setInt(4, obj.getPass());
+            prSt.setDate(5, new java.sql.Date(obj.getExpCard().getTime().getTime()));
+            prSt.setInt(6, obj.getId());
         } catch (Exception e) {
             throw new DAOexception(e);
         }
@@ -81,8 +102,9 @@ public class MySqlDaoAccount extends AbstractDao<Account,Integer> {
         try {
             prSt.setString(1, obj.getType());
             prSt.setString(2, obj.getCardNumber());
-            prSt.setDouble(3,obj.getBalance());
-            prSt.setInt(4,obj.getPass());
+            prSt.setDouble(3, obj.getBalance());
+            prSt.setInt(4, obj.getPass());
+            prSt.setDate(5, new java.sql.Date(obj.getExpCard().getTime().getTime()));
         } catch (Exception e) {
             throw new DAOexception(e);
         }

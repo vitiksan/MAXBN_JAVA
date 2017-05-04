@@ -52,7 +52,7 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         this.statusCustomer = statusCustomer;
     }
 
-    public Integer getId() {
+    public int getId() {
         return idCustomer;
     }
 
@@ -71,9 +71,9 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         return account.add(new Account(balance,pass,type));
     }
 
-    public boolean createAccount(int balance, int pass,String cardNumber, String type) {
-        return account.add(new Account(balance,pass,cardNumber,type));
-    }
+   // public boolean createAccount(int balance, int pass,String cardNumber, String type) {
+     //   return account.add(new Account(balance,pass,type));
+   // }
 
     public boolean createAccount() {
         return account.add(new Account());

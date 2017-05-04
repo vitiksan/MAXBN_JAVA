@@ -6,7 +6,7 @@ import com.maxGroup.BankSystem.supportClass.GenQueue;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Officer extends Employee implements Serializable, WorkWithClient {
+public class Officer extends Employee implements Serializable {
     private static int nextId = 1;
     private int idOfficer;
     private GenQueue<Manager> subordinates;
