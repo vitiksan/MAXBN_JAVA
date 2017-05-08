@@ -14,7 +14,6 @@ public class MySqlDaoAccountTest {
         IGenDao dao = factory.getDAO(factory.getConnection(),Account.class);
         Account wroteAccount = (Account) dao.createEx(account);
         assertNotNull(wroteAccount);
-
     }
 
     @Test
