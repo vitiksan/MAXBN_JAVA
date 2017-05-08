@@ -105,6 +105,7 @@ public class Account implements Identificator<Integer> {
         return (in.nextInt() == pass);
     }
 
+
     public void changePassword() throws Exception {
         Scanner in = new Scanner(System.in);
         int countTry = 0;
