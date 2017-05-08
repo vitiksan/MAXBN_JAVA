@@ -62,7 +62,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
     @Override
     public T read(int id) throws DAOexception {
         ArrayList<T> someList;
-        String query = getSelectQuery() + "WHERE id = ?";
+        String query = getSelectQuery() + " WHERE id =?;";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             prSt.setInt(1, id);
@@ -84,7 +84,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
     @Override
     public ArrayList<T> readAll() throws DAOexception {
         ArrayList<T> someList;
-        String query = getSelectQuery();
+        String query = getSelectQuery()+" WHERE 1;";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             ResultSet resultSet = prSt.executeQuery();
@@ -101,7 +101,8 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             parsUpdate(prSt, obj);
-            int count = prSt.executeUpdate();
+            int count;
+            count = prSt.executeUpdate();
             if (count != 1) throw new DAOexception("Error. Modified more then 1 field " + count);
         } catch (Exception e) {
             throw new DAOexception(e);

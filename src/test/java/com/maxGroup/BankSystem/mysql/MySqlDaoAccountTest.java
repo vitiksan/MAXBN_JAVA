@@ -58,6 +58,4 @@ public class MySqlDaoAccountTest {
         Account deleteAccount = (Account) dao.read(10);
         assertNull(deleteAccount);
     }
-
-
 }
