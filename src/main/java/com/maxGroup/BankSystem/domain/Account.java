@@ -102,7 +102,27 @@ public class Account implements Identificator<Integer> {
     public boolean checkPassword() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter password: ");
-        return  (in.nextInt() == pass);
+        return (in.nextInt() == pass);
+    }
+
+    public void changePassword() throws Exception {
+        Scanner in = new Scanner(System.in);
+        int countTry = 0;
+        boolean temp;
+        int newPass, repeatNewPass;
+        do {
+            temp = checkPassword();
+            countTry++;
+            if (countTry >= 3) throw new Exception("too many attempts to enter");
+        } while (!temp && countTry < 3);
+        if (temp) {
+            do {
+                System.out.println("Enter new password: ");
+                newPass = in.nextInt();
+                System.out.println("Repeat new password: ");
+                repeatNewPass = in.nextInt();
+            } while (newPass != repeatNewPass);
+        }
     }
 
     public String getType() {
