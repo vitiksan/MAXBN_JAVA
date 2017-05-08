@@ -69,7 +69,7 @@ public class Account implements Identificator<Integer> {
      * @param count - Сума, яку потрібно зняти з рахунку
      * @return - true якщо операція виконана, false якщо ні
      */
-    public Boolean getMoney(double count) {
+    public boolean getMoney(double count) {
         if (checkPassword() && count <= this.balance) {
             this.balance -= count;
             return true;
@@ -83,7 +83,7 @@ public class Account implements Identificator<Integer> {
      * @param count - Сума, на яку поповнюється рахунок
      * @return - true якщо операція виконана, false якщо ні
      */
-    public Boolean fillBalance(double count) {
+    public boolean fillBalance(double count) {
         if (count > 0) {
             balance += count;
             return true;
@@ -102,8 +102,7 @@ public class Account implements Identificator<Integer> {
     public boolean checkPassword() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter password: ");
-        if (in.nextInt() == pass) return true;
-        else return false;
+        return  (in.nextInt() == pass);
     }
 
     public String getType() {
@@ -127,7 +126,7 @@ public class Account implements Identificator<Integer> {
         this.expCard = expCard;
     }
 
-    public void checkExpDate() {
+    public boolean checkExpDate() {
         GregorianCalendar now = new GregorianCalendar();
         int yearNow = now.get(GregorianCalendar.YEAR);
         int yearExpCard = expCard.get(GregorianCalendar.YEAR);
@@ -135,6 +134,7 @@ public class Account implements Identificator<Integer> {
         int monthExpCard = expCard.get(GregorianCalendar.MONTH);
         if (yearNow > yearExpCard || (yearNow == yearExpCard && monthNow > monthExpCard))
             System.out.println("Your card will be closed less as 2 month ago");
+        return !(yearNow > yearExpCard || (yearNow == yearExpCard && monthNow > monthExpCard));
     }
 
 }
