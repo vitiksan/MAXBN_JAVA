@@ -3,6 +3,7 @@ package com.maxGroup.BankSystem.domain;
 import com.maxGroup.BankSystem.DAO.Identificator;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Scanner;
@@ -48,7 +49,8 @@ public class Account implements Identificator<Integer> {
      */
     private String generateVCNumber() {
         String temp = "4";
-        Random random = new Random();
+        Date currentDate = new Date();
+        Random random = new Random(currentDate.getTime());
         for (int i = 0; i < 15; i++) {
             temp += String.valueOf(random.nextInt(10));
         }

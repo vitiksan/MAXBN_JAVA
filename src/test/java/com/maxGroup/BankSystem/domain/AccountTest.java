@@ -10,6 +10,8 @@ public class AccountTest {
         Account account = new Account();
         Account account1 = new Account();
 
+        System.out.println(account.getCardNumber());
+        System.out.println(account1.getCardNumber());
         assertNotEquals(account.getCardNumber(),account1.getCardNumber());
     }
 
