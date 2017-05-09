@@ -43,7 +43,8 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
             throw new DAOexception(e);
         }
 
-        query = getSelectQuery() + " WHERE id = last_insert_id();";
+
+        query = getSelectQuery() + " WHERE id = (SELECT last_insert_id());";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             ResultSet rs = prSt.executeQuery();
