@@ -72,7 +72,7 @@ public class Account implements Identificator<Integer> {
      * @return - true якщо операція виконана, false якщо ні
      */
     public boolean getMoney(double count) {
-        if (checkPassword() && count <= this.balance) {
+        if (count <= this.balance) {
             this.balance -= count;
             return true;
         }

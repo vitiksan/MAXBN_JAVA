@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serializable> implements IGenDao<T, PK> {
     private Connection connection;
@@ -42,21 +43,21 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
             throw new DAOexception(e);
         }
 
-        /*query = getSelectQuery() + " WHERE id = LAST_INSERT_ID();";
+        query = getSelectQuery() + " WHERE id = last_insert_id();";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             ResultSet rs = prSt.executeQuery();
             ArrayList<T> someList = parsData(rs);
 
-            if (someList == null || someList.size() == 0)
+            if (someList == null || someList.size() !=1)
                 throw new DAOexception("Error with search created object by id");
             temp = someList.iterator().next();
         } catch (Exception e) {
             throw new DAOexception(e);
-        }*/
+        }
 
 
-        return obj;
+        return temp;
     }
 
     @Override
@@ -96,21 +97,21 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
     }
 
     @Override
-    public void update(T obj) throws DAOexception {
+    public boolean update(T obj) throws DAOexception {
         String query = getUpdateQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             parsUpdate(prSt, obj);
-            int count;
-            count = prSt.executeUpdate();
+            int count = prSt.executeUpdate();
             if (count != 1) throw new DAOexception("Error. Modified more then 1 field " + count);
+            else return true;
         } catch (Exception e) {
             throw new DAOexception(e);
         }
     }
 
     @Override
-    public void delete(T obj) throws DAOexception {
+    public boolean delete(T obj) throws DAOexception {
         String query = getDeleteQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
@@ -122,8 +123,19 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
             int count = prSt.executeUpdate();
             if (count != 1) throw new DAOexception("Error. Deleted more then 1 field " + count);
+            else return true;
         } catch (Exception e) {
             throw new DAOexception(e);
         }
+    }
+
+    protected java.util.GregorianCalendar convertToGregorianCalendar(java.sql.Date date) {
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        gregorianCalendar.setTime(date);
+        return gregorianCalendar;
+    }
+
+    protected java.sql.Date convertToSqlDate(java.util.GregorianCalendar gregorianCalendar) {
+        return new java.sql.Date(gregorianCalendar.getTime().getTime());
     }
 }

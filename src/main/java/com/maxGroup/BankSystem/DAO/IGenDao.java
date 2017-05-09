@@ -11,7 +11,7 @@ public interface IGenDao<T, PK extends Serializable> {
 
     ArrayList<T> readAll() throws DAOexception;
 
-    void update(T obj) throws DAOexception;
+    boolean update(T obj) throws DAOexception;
 
-    void delete(T obj) throws DAOexception;
+    boolean delete(T obj) throws DAOexception;
 }
