@@ -2,7 +2,6 @@ package com.maxGroup.BankSystem.supportClass;
 
 import com.maxGroup.BankSystem.DAO.DAOexception;
 import com.maxGroup.BankSystem.DAO.IGenDao;
-import com.maxGroup.BankSystem.domain.Account;
 import com.maxGroup.BankSystem.domain.Customer;
 import com.maxGroup.BankSystem.domain.Manager;
 import com.maxGroup.BankSystem.mysql.MySqlDaoFactory;
