@@ -47,8 +47,90 @@ public class Menu {
                 }
                 break;
             case 3:
+                Scanner in = new Scanner(System.in);
+                for (Customer customer : customers) {
+                    System.out.println(customer.toString());
+                }
+                System.out.println("Enter id customer which want to create new account");
+                int id = Integer.parseInt(in.next());
+                for (Customer customer : customers) {
+                    if (customer.getId() == id) {
+                        customer.createAccount();
+                        break;
+                    }
+                }
                 break;
             case 4:
+                try {
+                    MySqlDaoFactory factory = new MySqlDaoFactory();
+                    IGenDao dao = factory.getDAO(factory.getConnection(), Manager.class);
+                    managers = (ArrayList<Manager>) dao.readAll();
+                } catch (DAOexception daOexception) {
+                    log.error(daOexception);
+                }
+                break;
+            case 5:
+                try {
+                    MySqlDaoFactory factory = new MySqlDaoFactory();
+                    IGenDao dao = factory.getDAO(factory.getConnection(), Customer.class);
+                    customers = (ArrayList<Customer>) dao.readAll();
+                } catch (DAOexception daOexception) {
+                    log.error(daOexception);
+                }
+                break;
+            case 6:
+                in = new Scanner(System.in);
+                for (Customer customer : customers) {
+                    System.out.println(customer.toString());
+                }
+                System.out.println("Enter id customer which want to delete account");
+                id = Integer.parseInt(in.next());
+                for (Customer customer : customers) {
+                    if (customer.getId() == id) {
+                        customer.deleteAccount();
+                        break;
+                    }
+                }
+                break;
+            case 7:
+                try {
+                    in = new Scanner(System.in);
+                    MySqlDaoFactory factory = new MySqlDaoFactory();
+                    IGenDao dao = factory.getDAO(factory.getConnection(), Customer.class);
+                    for (Customer customer : customers) {
+                        System.out.println(customer.toString());
+                    }
+                    System.out.println("Enter id customer which do you want to delete");
+                    id = Integer.parseInt(in.next());
+                    for (Customer customer : customers) {
+                        if (customer.getId() == id) {
+                            if (dao.delete(customer)) customers.remove(customer);
+                            break;
+                        }
+                    }
+                } catch (DAOexception daOexception) {
+                    log.error(daOexception);
+                }
+                break;
+            case 8:
+                try {
+                    in = new Scanner(System.in);
+                    MySqlDaoFactory factory = new MySqlDaoFactory();
+                    IGenDao dao = factory.getDAO(factory.getConnection(), Manager.class);
+                    for (Manager manager : managers) {
+                        System.out.println(manager.toString());
+                    }
+                    System.out.println("Enter id manager which do you want to delete");
+                    id = Integer.parseInt(in.next());
+                    for (Manager manager : managers) {
+                        if (manager.getId() == id) {
+                            if (dao.delete(manager)) managers.remove(manager);
+                            break;
+                        }
+                    }
+                } catch (DAOexception daOexception) {
+                    log.error(daOexception);
+                }
                 break;
             case 0:
                 System.exit(0);
@@ -66,7 +148,7 @@ public class Menu {
             try {
                 System.out.print("Please enter your choices: ");
                 temp = Integer.parseInt(in.next());
-                if (temp > 4) {
+                if (temp > 8) {
                     throw new Exception();
                 }
             } catch (Exception e) {
