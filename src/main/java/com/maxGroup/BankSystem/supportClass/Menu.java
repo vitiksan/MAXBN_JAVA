@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-
 public class Menu {
     private static final Logger log = Logger.getLogger(Menu.class);
     private static ArrayList<Manager> managers = new ArrayList<Manager>();
