@@ -4,6 +4,7 @@ import com.maxGroup.BankSystem.DAO.DAOexception;
 import com.maxGroup.BankSystem.DAO.IGenDao;
 import com.maxGroup.BankSystem.DAO.IdaoFactory;
 import com.maxGroup.BankSystem.domain.Account;
+import com.maxGroup.BankSystem.domain.Customer;
 import com.maxGroup.BankSystem.domain.Manager;
 
 import java.sql.Connection;
@@ -59,6 +60,12 @@ public class MySqlDaoFactory implements IdaoFactory<Connection> {
             @Override
             public IGenDao create(Connection connection) {
                 return new MySqlDaoManager(connection);
+            }
+        });
+        allDaoClass.put(Customer.class, new DaoCreator<Connection>() {
+            @Override
+            public IGenDao create(Connection connection) {
+                return new MySqlDaoCustomer(connection);
             }
         });
     }
