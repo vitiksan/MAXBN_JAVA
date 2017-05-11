@@ -59,10 +59,11 @@ public class Menu {
     private static void information() {
         System.out.println("You can:");
         System.out.println("1-Create new Manager");
-        System.out.println("2-");
-        System.out.println("3-");
-        System.out.println("4-");
+        System.out.println("2-Create new Customer");
+        System.out.println("3-Crete new Account for Customer");
+        System.out.println("4-Read all Manager");
+        System.out.println("5-Read all Customer");
+        System.out.println("5-Read all Account by Customer");
         System.out.println("0-Exit");
     }
 }
-
