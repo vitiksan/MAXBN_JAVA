@@ -30,7 +30,7 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE managers SET name=?,surname=?,post=?,salary=? WHERE id=?;";
+        return "UPDATE managers SET name=?,surname=?,post=?,salary=? WHERE manager_id=?;";
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM managers WHERE id =?;";
+        return "DELETE FROM managers WHERE manager_id =?;";
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
         try {
             while (rs.next()) {
                 ExtendManager manager = new ExtendManager();
-                manager.setId(rs.getInt("id"));
+                manager.setId(rs.getInt("manager_id"));
                 manager.setName(rs.getString("name"));
                 manager.setSurname(rs.getString("surname"));
                 manager.setPost(rs.getString("post"));

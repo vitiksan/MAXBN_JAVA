@@ -8,40 +8,16 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Customer extends Human implements Serializable, Identificator<Integer> {
-    private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
     private ArrayList<Account> account = new ArrayList<Account>();
 
-    public Customer() {
-        setName("none");
-        setSurname("none");
-        setBorn(new GregorianCalendar(1970, 1, 1));
-        this.statusCustomer = "usual";
-        setIdCustomer();
-        createAccount();
+    public int getId() {
+        return idCustomer;
     }
 
-    /**
-     * Конструктор
-     *
-     * @param statusCustomer - Статус клієнта(наприклад звичайний, золотий або платиновий)
-     * @param name           - Ім'я
-     * @param surname        - Прізвище
-     * @param year           - Рік народження
-     * @param month          - Місяць народженя
-     * @param day            - День народження
-     * @param balance        - Кількість грошей на початкувому рахунку
-     * @param pass           - Пароль від початкового рахунку
-     * @param type           - Тип початково рахунку
-     */
-    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass,String type) {
-        setName(name);
-        setSurname(surname);
-        setBorn(new GregorianCalendar(year, month, day));
-        setIdCustomer();
-        this.statusCustomer = statusCustomer;
-        createAccount(balance, pass,type);
+    protected void setId(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public String getStatusCustomer() {
@@ -52,12 +28,8 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         this.statusCustomer = statusCustomer;
     }
 
-    public int getId() {
-        return idCustomer;
-    }
-
-    public static int getNextId() {
-        return nextId;
+    public ArrayList<Account> getAccount() {
+        return account;
     }
 
     /**
@@ -71,17 +43,8 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         return account.add(new Account(balance,pass,type));
     }
 
-   // public boolean createAccount(int balance, int pass,String cardNumber, String type) {
-     //   return account.add(new Account(balance,pass,type));
-   // }
-
     public boolean createAccount() {
         return account.add(new Account());
-    }
-
-    public void setIdCustomer() {
-        this.idCustomer = nextId;
-        nextId++;
     }
 
     public boolean deleteAccount() {
