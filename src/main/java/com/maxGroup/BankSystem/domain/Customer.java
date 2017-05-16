@@ -1,47 +1,25 @@
 package com.maxGroup.BankSystem.domain;
 
+import com.maxGroup.BankSystem.DAO.DAOexception;
+import com.maxGroup.BankSystem.DAO.IGenDao;
 import com.maxGroup.BankSystem.DAO.Identificator;
+import com.maxGroup.BankSystem.mysql.MySqlDaoFactory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Customer extends Human implements Serializable, Identificator<Integer> {
-    private static int nextId = 1;
     private int idCustomer;
     private String statusCustomer;
-    private ArrayList<Account> account = new ArrayList<Account>();
+    private ArrayList<Account> accounts = new ArrayList<Account>();
 
-    public Customer() {
-        setName("none");
-        setSurname("none");
-        setBorn(new GregorianCalendar(1970, 1, 1));
-        this.statusCustomer = "usual";
-        setIdCustomer();
-        createAccount();
+    public int getId() {
+        return idCustomer;
     }
 
-    /**
-     * Конструктор
-     *
-     * @param statusCustomer - Статус клієнта(наприклад звичайний, золотий або платиновий)
-     * @param name           - Ім'я
-     * @param surname        - Прізвище
-     * @param year           - Рік народження
-     * @param month          - Місяць народженя
-     * @param day            - День народження
-     * @param balance        - Кількість грошей на початкувому рахунку
-     * @param pass           - Пароль від початкового рахунку
-     * @param type           - Тип початково рахунку
-     */
-    public Customer(String statusCustomer, String name, String surname, int year, int month, int day, int balance, int pass,String type) {
-        setName(name);
-        setSurname(surname);
-        setBorn(new GregorianCalendar(year, month, day));
-        setIdCustomer();
-        this.statusCustomer = statusCustomer;
-        createAccount(balance, pass,type);
+    protected void setId(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public String getStatusCustomer() {
@@ -52,12 +30,8 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         this.statusCustomer = statusCustomer;
     }
 
-    public int getId() {
-        return idCustomer;
-    }
-
-    public static int getNextId() {
-        return nextId;
+    public ArrayList<Account> getAccount() {
+        return accounts;
     }
 
     /**
@@ -68,59 +42,84 @@ public class Customer extends Human implements Serializable, Identificator<Integ
      * @return - true якщо операція виконана, false якщо ні
      */
     public boolean createAccount(int balance, int pass, String type) {
-        return account.add(new Account(balance,pass,type));
+        return accounts.add(new Account(balance, pass, type));
     }
-
-   // public boolean createAccount(int balance, int pass,String cardNumber, String type) {
-     //   return account.add(new Account(balance,pass,type));
-   // }
 
     public boolean createAccount() {
-        return account.add(new Account());
-    }
+        try {
+            Scanner in = new Scanner(System.in);
 
-    public void setIdCustomer() {
-        this.idCustomer = nextId;
-        nextId++;
+            System.out.println("Enter opening balance:");
+            double balance = Double.parseDouble(in.next());
+            System.out.println("Enter type account(for payments, credit, deposit):");
+            String type = in.nextLine();
+            System.out.println("Enter password:");
+            int password = Integer.parseInt(in.next());
+            System.out.println("Repeat password:");
+            int repeatPassword = Integer.parseInt(in.next());
+            if (password != repeatPassword) throw new Exception("Password and repeat password do`nt match");
+            Account account = new Account(balance, password, type);
+
+            MySqlDaoFactory factory = new MySqlDaoFactory();
+            IGenDao dao = factory.getDAO(factory.getConnection(), Account.class);
+
+            account = (Account) dao.createEx(account);
+            if (account != null) {
+                accounts.add(account);
+                return true;
+            }
+        } catch (DAOexception daOexception) {
+            daOexception.getMessage();
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return false;
     }
 
     public boolean deleteAccount() {
         Scanner in = new Scanner(System.in);
-        String accountId;
-        String accountIdNew;
+        int accountId;
+        int accountIdNew;
         boolean search = false;
-        System.out.println("Enter number account, that you want to close:");
-        accountId = in.nextLine();
-        for (Account item : account) {
-            if (item.getCardNumber() == accountId) {
-                if (item.getBalance() > 0) {
-                    do {
-                        System.out.println("You have many at the account, enter number account when you want transfer many");
-                        accountIdNew = in.nextLine();
-                        for (Account item2 : account) {
-                            if (item2.getCardNumber() == accountIdNew) {
-                                search = true;
-                                item2.fillBalance(item.getBalance());
-                                account.remove(item);
-                                return true;
+        System.out.println("Enter id accounts, that you want to close:");
+        try {
+            accountId = Integer.parseInt(in.next());
+            for (Account item : accounts) {
+                if (item.getId() == accountId) {
+                    if (item.getBalance() > 0) {
+                        do {
+                            System.out.println("You have many at the accounts, enter id accounts when you want transfer many");
+                            accountIdNew = Integer.parseInt(in.next());
+                            for (Account item2 : accounts) {
+                                if (item2.getId() == accountIdNew) {
+                                    search = true;
+                                    item2.fillBalance(item.getBalance());
+                                    MySqlDaoFactory factory = new MySqlDaoFactory();
+                                    IGenDao dao = factory.getDAO(factory.getConnection(), Account.class);
+                                    dao.delete(item);
+                                    accounts.remove(item);
+                                    return true;
+                                }
                             }
-                        }
-                    } while (!search);
-                } else account.remove(item);
+                        } while (!search);
+                    } else accounts.remove(item);
+                }
             }
+        } catch (DAOexception e) {
+            e.printStackTrace();
         }
         return false;
     }
 
     public int getBalanceAccounts() {
         int sum = 0;
-        for (Account item : account) sum += item.getBalance();
+        for (Account item : accounts) sum += item.getBalance();
         return sum;
     }
 
     public String getAccountNumbers() {
         String numbers = "";
-        for (Account item : account) numbers += item.getCardNumber() + "  ";
+        for (Account item : accounts) numbers += item.getCardNumber() + "  ";
         return numbers;
     }
 

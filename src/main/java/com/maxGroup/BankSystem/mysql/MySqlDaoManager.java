@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MySqlDaoManager extends AbstractDao<Manager,Integer> {
+public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
 
-    private class ExtendManager extends Manager{
+    private class ExtendManager extends Manager {
         @Override
         protected void setId(int id) {
             super.setId(id);
@@ -30,7 +30,7 @@ public class MySqlDaoManager extends AbstractDao<Manager,Integer> {
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE managers SET name=?,surname=?,post=?,salary=? WHERE id=?;";
+        return "UPDATE managers SET name=?,surname=?,post=?,salary=? WHERE manager_id=?;";
     }
 
     @Override
@@ -40,17 +40,17 @@ public class MySqlDaoManager extends AbstractDao<Manager,Integer> {
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM managers WHERE id =?;";
+        return "DELETE FROM managers WHERE manager_id =?;";
     }
 
     @Override
     public ArrayList<Manager> parsData(ResultSet rs) throws DAOexception, SQLException {
-        ArrayList<Manager> managers =new ArrayList<Manager>();
+        ArrayList<Manager> managers = new ArrayList<Manager>();
 
         try {
-            while (!rs.next()) {
+            while (rs.next()) {
                 ExtendManager manager = new ExtendManager();
-                manager.setId(rs.getInt("id"));
+                manager.setId(rs.getInt("manager_id"));
                 manager.setName(rs.getString("name"));
                 manager.setSurname(rs.getString("surname"));
                 manager.setPost(rs.getString("post"));
@@ -68,9 +68,9 @@ public class MySqlDaoManager extends AbstractDao<Manager,Integer> {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
-            prSt.setString(3,obj.getPost());
-            prSt.setDouble(4,obj.getSalary());
-            prSt.setInt(5,obj.getId());
+            prSt.setString(3, obj.getPost());
+            prSt.setDouble(4, obj.getSalary());
+            prSt.setInt(5, obj.getId());
         } catch (Exception e) {
             throw new DAOexception(e);
         }
@@ -81,8 +81,8 @@ public class MySqlDaoManager extends AbstractDao<Manager,Integer> {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
-            prSt.setString(3,obj.getPost());
-            prSt.setDouble(4,obj.getSalary());
+            prSt.setString(3, obj.getPost());
+            prSt.setDouble(4, obj.getSalary());
         } catch (Exception e) {
             throw new DAOexception(e);
         }
