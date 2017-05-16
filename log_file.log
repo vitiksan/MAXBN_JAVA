@@ -1,0 +1,8 @@
+2017-04-18 22:33:12 INFO     ConnectionDB  getConnection  :25 -- Драйвер JDBC отримано
+2017-04-18 22:33:13 INFO     ConnectionDB  getConnection  :33 -- Успішне підключення до БД
+2017-04-18 22:39:09 INFO     ConnectionDB  getConnection  :25 -- Драйвер JDBC отримано
+2017-04-18 22:39:09 INFO     ConnectionDB  getConnection  :33 -- Успішне підключення до БД
+2017-04-18 22:39:09 INFO     ConnectionDB  getConnection  :25 -- Драйвер JDBC отримано
+2017-04-18 22:39:09 INFO     ConnectionDB  getConnection  :33 -- Успішне підключення до БД
+2017-04-18 23:17:55 INFO     MySQL_DAOFactory  getConnection  :23 -- Драйвер JDBC отримано
+2017-04-18 23:17:56 INFO     MySQL_DAOFactory  getConnection  :31 -- Успішне підключення до БД
