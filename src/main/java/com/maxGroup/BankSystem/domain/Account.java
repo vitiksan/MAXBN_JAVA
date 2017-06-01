@@ -15,6 +15,7 @@ public class Account implements Identificator<Integer> {
     private int pass;
     private String type;
     private GregorianCalendar expCard;
+    private int customer_id;
 
     public Account() {
         this.cardNumber = generateVCNumber();
@@ -160,4 +161,11 @@ public class Account implements Identificator<Integer> {
         return !(yearNow > yearExpCard || (yearNow == yearExpCard && monthNow > monthExpCard));
     }
 
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
 }

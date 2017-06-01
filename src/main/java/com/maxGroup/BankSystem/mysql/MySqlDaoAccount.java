@@ -45,22 +45,22 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT * FROM Accounts";
+        return "SELECT * FROM accounts";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE Accounts SET type=?,cardNumber=?,balance=?,password=?,expDate=? WHERE id=?;";
+        return "UPDATE accounts SET account_type=?,cardNumber=?,balance=?,password=?,validity=? customer_id=? WHERE account_id=?;";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO Accounts (type,cardNumber,balance,password,expDate) VALUES(?,?,?,?,?);";
+        return "INSERT INTO accounts (account_type,cardNumber,balance,password,validity,customer_id) VALUES(?,?,?,?,?,?);";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM Accounts WHERE id =?;";
+        return "DELETE FROM accounts WHERE account_id =?;";
     }
 
     @Override
@@ -70,12 +70,13 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
         try {
             while (rs.next()) {
                 ExtendAccount account = new ExtendAccount();
-                account.setId(rs.getInt("id"));
+                account.setId(rs.getInt("account_id"));
                 account.setCardNumber(rs.getString("cardNumber"));
                 account.setBalance(rs.getDouble("balance"));
                 account.setPass(rs.getInt("password"));
-                account.setType(rs.getString("type"));
-                account.setExpCard(convertToGregorianCalendar(rs.getDate("expDate")));
+                account.setType(rs.getString("account_type"));
+                account.setCustomer_id(rs.getInt("customer_id"));
+                account.setExpCard(convertToGregorianCalendar(rs.getDate("validity")));
                 accounts.add(account);
             }
         } catch (Exception e) {
@@ -92,7 +93,8 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
             prSt.setDouble(3, obj.getBalance());
             prSt.setInt(4, obj.getPass());
             prSt.setDate(5, convertToSqlDate(obj.getExpCard()));
-            prSt.setInt(6, obj.getId());
+            prSt.setInt(6,obj.getCustomer_id());
+            prSt.setInt(7, obj.getId());
         } catch (Exception e) {
             throw new DAOexception(e);
         }
@@ -106,6 +108,7 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
             prSt.setDouble(3, obj.getBalance());
             prSt.setInt(4, obj.getPass());
             prSt.setDate(5, convertToSqlDate(obj.getExpCard()));
+            prSt.setInt(6,obj.getCustomer_id());
         } catch (Exception e) {
             throw new DAOexception(e);
         }

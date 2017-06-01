@@ -24,22 +24,22 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT * FROM Customers;";
+        return "SELECT * FROM customers;";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE Customers SET name=?,surname=?,bornDate=?,statusCustomer=? WHERE customer_id=?;";
+        return "UPDATE customers SET customers_name=?,customers_surname=?,born_date=?,statusCustomer=? WHERE customer_id=?;";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO Customers (name,surname,bornDate,statusCustomer) VALUES(?,?,?,?);";
+        return "INSERT INTO customers (name,surname,bornDate,statusCustomer) VALUES(?,?,?,?);";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM Customers WHERE id =?;";
+        return "DELETE FROM customers WHERE id =?;";
     }
 
     @Override
