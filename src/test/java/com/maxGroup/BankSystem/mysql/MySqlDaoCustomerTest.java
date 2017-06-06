@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 
 import static org.junit.Assert.*;
 
+
 public class MySqlDaoCustomerTest {
     @Test
     public void createEx() throws Exception {
