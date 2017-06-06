@@ -24,7 +24,7 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT * FROM customers WHERE customer_id=;";
+        return "SELECT * FROM customers WHERE customer_id=";
     }
 
     @Override
@@ -34,17 +34,19 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE customers SET name=?,surname=?,bornDate=?,statusCustomer=? WHERE customer_id=?;";
+        return "UPDATE customers SET customer_name=?,customer_surname=?,born_date=?," +
+                "customer_status=? WHERE customer_id=? AND manager_id=?;";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO customers (name,surname,bornDate,statusCustomer) VALUES(?,?,?,?);";
+        return "INSERT INTO customers (customer_name,customer_surname,born_date," +
+                "customer_status,addres_id,manager_id,create_date) VALUES(?,?,?,?,1,?,(NOW()));";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM Customers WHERE id =?;";
+        return "DELETE FROM customers WHERE customer_id =?;";
     }
 
     @Override
@@ -55,10 +57,10 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
             while (rs.next()) {
                 MySqlDaoCustomer.ExtendCustomer customer = new MySqlDaoCustomer.ExtendCustomer();
                 customer.setId(rs.getInt("customer_id"));
-                customer.setName(rs.getString("name"));
-                customer.setSurname(rs.getString("surname"));
-                customer.setBorn(convertToGregorianCalendar(rs.getDate("bornDate")));
-                customer.setStatusCustomer(rs.getString("statusCustomer"));
+                customer.setName(rs.getString("customer_name"));
+                customer.setSurname(rs.getString("customer_surname"));
+                customer.setBorn(convertToGregorianCalendar(rs.getDate("born_date")));
+                customer.setStatusCustomer(rs.getString("customer_status"));
                 customers.add(customer);
             }
         } catch (Exception e) {
@@ -68,7 +70,7 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
     }
 
     @Override
-    public void parsUpdate(PreparedStatement prSt, Customer obj) throws DAOexception {
+    public void parsUpdate(PreparedStatement prSt, Customer obj, int key) throws DAOexception {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
@@ -81,12 +83,13 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
     }
 
     @Override
-    public void parsInsert(PreparedStatement prSt, Customer obj) throws DAOexception {
+    public void parsInsert(PreparedStatement prSt, Customer obj,int key) throws DAOexception {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
             prSt.setDate(3, convertToSqlDate(obj.getBorn()));
             prSt.setString(4, obj.getStatusCustomer());
+            prSt.setObject(5,key);
         } catch (Exception e) {
             throw new DAOexception(e);
         }

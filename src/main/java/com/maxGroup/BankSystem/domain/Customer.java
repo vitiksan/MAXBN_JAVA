@@ -63,7 +63,7 @@ public class Customer extends Human implements Serializable, Identificator<Integ
             MySqlDaoFactory factory = new MySqlDaoFactory();
             IGenDao dao = factory.getDAO(factory.getConnection(), Account.class);
 
-            account = (Account) dao.createEx(account);
+            account = (Account) dao.createEx(account,1);
             if (account != null) {
                 accounts.add(account);
                 return true;

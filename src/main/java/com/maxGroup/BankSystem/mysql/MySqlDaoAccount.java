@@ -49,6 +49,11 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
     }
 
     @Override
+    public String getSelectAllQuery() {
+        return null;
+    }
+
+    @Override
     public String getUpdateQuery() {
         return "UPDATE accounts SET account_type=?,cardNumber=?,balance=?,password=?,validity=? customer_id=? WHERE account_id=?;";
     }
@@ -86,7 +91,7 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
     }
 
     @Override
-    public void parsUpdate(PreparedStatement prSt, Account obj) throws DAOexception {
+    public void parsUpdate(PreparedStatement prSt, Account obj,int key) throws DAOexception {
         try {
             prSt.setString(1, obj.getType());
             prSt.setString(2, obj.getCardNumber());
@@ -101,7 +106,7 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
     }
 
     @Override
-    public void parsInsert(PreparedStatement prSt, Account obj) throws DAOexception {
+    public void parsInsert(PreparedStatement prSt, Account obj,int key) throws DAOexception {
         try {
             prSt.setString(1, obj.getType());
             prSt.setString(2, obj.getCardNumber());

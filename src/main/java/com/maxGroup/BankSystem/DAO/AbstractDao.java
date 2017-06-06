@@ -28,17 +28,17 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     public abstract ArrayList<T> parsData(ResultSet rs) throws DAOexception, SQLException;
 
-    public abstract void parsUpdate(PreparedStatement prSt, T obj) throws DAOexception;
+    public abstract void parsUpdate(PreparedStatement prSt, T obj,int key) throws DAOexception;
 
-    public abstract void parsInsert(PreparedStatement prSt, T obj) throws DAOexception;
+    public abstract void parsInsert(PreparedStatement prSt, T obj,int key) throws DAOexception;
 
     @Override
-    public T createEx(T obj) throws DAOexception {
+    public T createEx(T obj,int key) throws DAOexception {
         T temp;
         String query = getCreateQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
-            parsInsert(prSt, obj);
+            parsInsert(prSt, obj,key);
             int count = prSt.executeUpdate();
             if (count != 1) throw new DAOexception("Error. Created more then 1 object " + count);
         } catch (Exception e) {
@@ -100,11 +100,11 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
     }
 
     @Override
-    public boolean update(T obj) throws DAOexception {
+    public boolean update(T obj,int key) throws DAOexception {
         String query = getUpdateQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
-            parsUpdate(prSt, obj);
+            parsUpdate(prSt, obj,key);
             int count = prSt.executeUpdate();
             if (count != 1) throw new DAOexception("Error. Modified more then 1 field " + count);
             else return true;

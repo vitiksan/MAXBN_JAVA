@@ -29,6 +29,11 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
     }
 
     @Override
+    public String getSelectAllQuery() {
+        return null;
+    }
+
+    @Override
     public String getUpdateQuery() {
         return "UPDATE managers SET name=?,surname=?,post=?,salary=? WHERE manager_id=?;";
     }
@@ -64,7 +69,7 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
     }
 
     @Override
-    public void parsUpdate(PreparedStatement prSt, Manager obj) throws DAOexception {
+    public void parsUpdate(PreparedStatement prSt, Manager obj,int key) throws DAOexception {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
@@ -77,7 +82,7 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
     }
 
     @Override
-    public void parsInsert(PreparedStatement prSt, Manager obj) throws DAOexception {
+    public void parsInsert(PreparedStatement prSt, Manager obj,int key) throws DAOexception {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
