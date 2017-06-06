@@ -24,12 +24,17 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
 
     @Override
     public String getSelectQuery() {
+        return "SELECT * FROM customers WHERE customer_id=;";
+    }
+
+    @Override
+    public String getSelectAllQuery() {
         return "SELECT * FROM customers;";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE customers SET customers_name=?,customers_surname=?,born_date=?,statusCustomer=? WHERE customer_id=?;";
+        return "UPDATE customers SET name=?,surname=?,bornDate=?,statusCustomer=? WHERE customer_id=?;";
     }
 
     @Override
@@ -39,7 +44,7 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM customers WHERE id =?;";
+        return "DELETE FROM Customers WHERE id =?;";
     }
 
     @Override

@@ -23,9 +23,9 @@ public class ManagerTest {
             System.out.println(human.toString());
         }
 
-        for (Employee human : staff) {
-            human.riseSalary(500);
-        }
+        //for (Employee human : staff) {
+        //    human.riseSalary(500);
+        //}
 
         System.out.println("---------------");
 

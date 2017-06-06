@@ -52,7 +52,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.maxGroup.App</mainClass>
+              <mainClass>com.maxGroup.BankSystem.supportClass.Menu</mainClass>
             </manifest>
           </archive>
         </configuration>

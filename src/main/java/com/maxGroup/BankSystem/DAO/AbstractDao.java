@@ -18,6 +18,8 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
 
     public abstract String getSelectQuery();
 
+    public abstract String getSelectAllQuery();
+
     public abstract String getUpdateQuery();
 
     public abstract String getCreateQuery();
@@ -44,7 +46,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
         }
 
 
-        query = getSelectQuery() + " WHERE id = (SELECT last_insert_id());";
+        query = getSelectQuery() + "(SELECT last_insert_id());";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             ResultSet rs = prSt.executeQuery();
@@ -64,7 +66,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
     @Override
     public T read(int id) throws DAOexception {
         ArrayList<T> someList;
-        String query = getSelectQuery() + " WHERE id =?;";
+        String query = getSelectQuery() + "?;";
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             prSt.setInt(1, id);
@@ -86,7 +88,7 @@ public abstract class AbstractDao<T extends Identificator<PK>, PK extends Serial
     @Override
     public ArrayList<T> readAll() throws DAOexception {
         ArrayList<T> someList;
-        String query = getSelectQuery()+" WHERE 1;";
+        String query = getSelectAllQuery();
 
         try (PreparedStatement prSt = connection.prepareStatement(query)) {
             ResultSet resultSet = prSt.executeQuery();
