@@ -17,6 +17,7 @@ public class MySqlDaoCustomerTest {
         customer.setName("vitalik");
         customer.setSurname("mah");
         customer.setBorn(new GregorianCalendar(1997,11,29));
+        customer.setAddres("if");
         customer.setStatusCustomer("basic");
         MySqlDaoFactory factory = new MySqlDaoFactory();
         IGenDao dao = factory.getDAO(factory.getConnection(), Customer.class);

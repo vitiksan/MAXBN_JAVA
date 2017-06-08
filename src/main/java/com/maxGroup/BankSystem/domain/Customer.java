@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Customer extends Human implements Serializable, Identificator<Integer> {
     private int idCustomer;
     private String statusCustomer;
+    private String addres;
     private ArrayList<Account> accounts = new ArrayList<Account>();
 
     public int getId() {
@@ -121,6 +122,14 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         String numbers = "";
         for (Account item : accounts) numbers += item.getCardNumber() + "  ";
         return numbers;
+    }
+
+    public String getAddres() {
+        return addres;
+    }
+
+    public void setAddres(String addres) {
+        this.addres = addres;
     }
 
     @Override

@@ -80,7 +80,6 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
                 account.setBalance(rs.getDouble("balance"));
                 account.setPass(rs.getInt("password"));
                 account.setType(rs.getString("account_type"));
-                account.setCustomer_id(rs.getInt("customer_id"));
                 account.setExpCard(convertToGregorianCalendar(rs.getDate("validity")));
                 accounts.add(account);
             }
@@ -98,7 +97,7 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
             prSt.setDouble(3, obj.getBalance());
             prSt.setInt(4, obj.getPass());
             prSt.setDate(5, convertToSqlDate(obj.getExpCard()));
-            prSt.setInt(6,obj.getCustomer_id());
+            prSt.setInt(6,key);
             prSt.setInt(7, obj.getId());
         } catch (Exception e) {
             throw new DAOexception(e);
@@ -113,7 +112,7 @@ public class MySqlDaoAccount extends AbstractDao<Account, Integer> {
             prSt.setDouble(3, obj.getBalance());
             prSt.setInt(4, obj.getPass());
             prSt.setDate(5, convertToSqlDate(obj.getExpCard()));
-            prSt.setInt(6,obj.getCustomer_id());
+            prSt.setInt(6,key);
         } catch (Exception e) {
             throw new DAOexception(e);
         }

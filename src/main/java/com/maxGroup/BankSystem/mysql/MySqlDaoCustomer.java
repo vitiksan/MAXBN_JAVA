@@ -35,13 +35,13 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
     @Override
     public String getUpdateQuery() {
         return "UPDATE customers SET customer_name=?,customer_surname=?,born_date=?," +
-                "customer_status=? WHERE customer_id=? AND manager_id=?;";
+                "address,customer_status=? WHERE customer_id=? AND manager_id=?;";
     }
 
     @Override
     public String getCreateQuery() {
         return "INSERT INTO customers (customer_name,customer_surname,born_date," +
-                "customer_status,addres_id,manager_id,create_date) VALUES(?,?,?,?,1,?,(NOW()));";
+                "address,customer_status,manager_id,create_date) VALUES(?,?,?,?,?,?,(NOW()));";
     }
 
     @Override
@@ -75,8 +75,10 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
             prSt.setDate(3, convertToSqlDate(obj.getBorn()));
-            prSt.setString(4, obj.getStatusCustomer());
-            prSt.setInt(5, obj.getId());
+            prSt.setString(4,obj.getAddres());
+            prSt.setString(5, obj.getStatusCustomer());
+            prSt.setInt(6, obj.getId());
+            prSt.setObject(7,key);
         } catch (Exception e) {
             throw new DAOexception(e);
         }
@@ -85,11 +87,13 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
     @Override
     public void parsInsert(PreparedStatement prSt, Customer obj,int key) throws DAOexception {
         try {
+
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
             prSt.setDate(3, convertToSqlDate(obj.getBorn()));
-            prSt.setString(4, obj.getStatusCustomer());
-            prSt.setObject(5,key);
+            prSt.setString(4,obj.getAddres());
+            prSt.setString(5, obj.getStatusCustomer());
+            prSt.setInt(6,key);
         } catch (Exception e) {
             throw new DAOexception(e);
         }
