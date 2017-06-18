@@ -21,12 +21,15 @@ public class LinkedListStack<T> {
     }
 
     public T pop() {
-        Node temp = first;
         while (!isEmpty()) {
+            Node temp = first;
             first = first.next;
+            return temp.element;
         }
-        return temp.element;
+        return null;
     }
 
-
+    public int size(){
+        return size;
+    }
 }

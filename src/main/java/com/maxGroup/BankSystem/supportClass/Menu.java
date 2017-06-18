@@ -32,7 +32,7 @@ public class Menu {
                 try {
                     MySqlDaoFactory factory = new MySqlDaoFactory();
                     IGenDao dao = factory.getDAO(factory.getConnection(), Manager.class);
-                    managers.add((Manager) dao.createEx(createManager(),1));
+                    managers.add((Manager) dao.createEx(createManager()));
                 } catch (DAOexception e) {
                     log.error("Dao Exception " + e);
                 }
@@ -41,7 +41,7 @@ public class Menu {
                 try {
                     MySqlDaoFactory factory = new MySqlDaoFactory();
                     IGenDao dao = factory.getDAO(factory.getConnection(), Customer.class);
-                    customers.add((Customer) dao.createEx(createCustomer(),1));
+                    customers.add((Customer) dao.createEx(createCustomer()));
                 } catch (DAOexception e) {
                     log.error("Dao Exception " + e);
                 }
