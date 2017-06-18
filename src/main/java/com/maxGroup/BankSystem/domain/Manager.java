@@ -1,6 +1,5 @@
 package com.maxGroup.BankSystem.domain;
 
-
 import com.maxGroup.BankSystem.DAO.Identificator;
 import com.maxGroup.BankSystem.supportClass.GenQueue;
 
