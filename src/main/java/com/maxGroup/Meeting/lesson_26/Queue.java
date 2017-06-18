@@ -1,6 +1,5 @@
 package com.maxGroup.Meeting.lesson_26;
 
-import java.util.AbstractCollection;
 import java.util.AbstractList;
 
 public class Queue<T> extends AbstractList implements  IQueue<T>{
