@@ -25,27 +25,27 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT * FROM managers;";
+        return "SELECT * FROM managers WHERE manager_id=";
     }
 
     @Override
     public String getSelectAllQuery() {
-        return null;
+        return "SELECT * FROM managers;";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE managers SET name=?,surname=?,post=?,salary=? WHERE manager_id=?;";
+        return "UPDATE managers SET manager_name=?,manager_surname=?, manager_born_date=? ,manager_post=?,manager_salary=?, manager_start_work=? WHERE manager_id=?;";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO managers (name,surname,post,salary) VALUES(?,?,?,?);";
+        return "INSERT INTO managers (manager_name,manager_surname,manager_born_date,manager_post,manager_salary,manager_start_work) VALUES(?,?,?,?,?,?);";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM managers WHERE manager_id =?;";
+        return "DELETE FROM managers WHERE manager_id=?;";
     }
 
     @Override
@@ -56,10 +56,12 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
             while (rs.next()) {
                 ExtendManager manager = new ExtendManager();
                 manager.setId(rs.getInt("manager_id"));
-                manager.setName(rs.getString("name"));
-                manager.setSurname(rs.getString("surname"));
-                manager.setPost(rs.getString("post"));
-                manager.setSalary(rs.getDouble("salary"));
+                manager.setName(rs.getString("manager_name"));
+                manager.setSurname(rs.getString("manager_surname"));
+                manager.setBorn(convertToGregorianCalendar(rs.getDate("manager_born_date")));
+                manager.setPost(rs.getString("manager_post"));
+                manager.setSalary(rs.getDouble("manager_salary"));
+                manager.setStartWork((convertToGregorianCalendar(rs.getDate("manager_start_work"))));
                 managers.add(manager);
             }
         } catch (Exception e) {
@@ -69,25 +71,29 @@ public class MySqlDaoManager extends AbstractDao<Manager, Integer> {
     }
 
     @Override
-    public void parsUpdate(PreparedStatement prSt, Manager obj,int key) throws DAOexception {
+    public void parsUpdate(PreparedStatement prSt, Manager obj) throws DAOexception {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
-            prSt.setString(3, obj.getPost());
-            prSt.setDouble(4, obj.getSalary());
-            prSt.setInt(5, obj.getId());
+            prSt.setDate(3, convertToSqlDate(obj.getBorn()));
+            prSt.setString(4, obj.getPost());
+            prSt.setDouble(5, obj.getSalary());
+            prSt.setDate(6, convertToSqlDate(obj.getStartWork()));
+            prSt.setInt(7, obj.getId());
         } catch (Exception e) {
             throw new DAOexception(e);
         }
     }
 
     @Override
-    public void parsInsert(PreparedStatement prSt, Manager obj,int key) throws DAOexception {
+    public void parsInsert(PreparedStatement prSt, Manager obj) throws DAOexception {
         try {
             prSt.setString(1, obj.getName());
             prSt.setString(2, obj.getSurname());
-            prSt.setString(3, obj.getPost());
-            prSt.setDouble(4, obj.getSalary());
+            prSt.setDate(3, convertToSqlDate(obj.getBorn()));
+            prSt.setString(4, obj.getPost());
+            prSt.setDouble(5, obj.getSalary());
+            prSt.setDate(6, convertToSqlDate(obj.getStartWork()));
         } catch (Exception e) {
             throw new DAOexception(e);
         }

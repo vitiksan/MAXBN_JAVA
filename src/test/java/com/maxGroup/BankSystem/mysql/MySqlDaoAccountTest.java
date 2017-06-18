@@ -14,7 +14,7 @@ public class MySqlDaoAccountTest {
         Account account = new Account(150000, 12345, "for payments");
         MySqlDaoFactory factory = new MySqlDaoFactory();
         IGenDao dao = factory.getDAO(factory.getConnection(), Account.class);
-        Account wroteAccount = (Account) dao.createEx(account,1);
+        Account wroteAccount = (Account) dao.createEx(account);
         assertNotNull(wroteAccount);
     }
 
@@ -41,7 +41,7 @@ public class MySqlDaoAccountTest {
         IGenDao dao = factory.getDAO(factory.getConnection(), Account.class);
         Account account = (Account) dao.read(1);
         account.getMoney(500.50);
-        assertTrue(dao.update(account,1));
+        assertTrue(dao.update(account));
     }
 
     @Test

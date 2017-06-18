@@ -22,8 +22,9 @@ public class Manager extends Employee implements Identificator<Integer> {
     }
 
     public void addNewClient() {
-        clients.push(new Customer());
+        clients.push(new Customer(id));
     }
+
     @Override
     public String toString() {
         return getClass().getName() +

@@ -17,11 +17,11 @@ public class MySqlDaoCustomerTest {
         customer.setName("vitalik");
         customer.setSurname("mah");
         customer.setBorn(new GregorianCalendar(1997,11,29));
-        customer.setAddres("if");
+        customer.setAddress("if");
         customer.setStatusCustomer("basic");
         MySqlDaoFactory factory = new MySqlDaoFactory();
         IGenDao dao = factory.getDAO(factory.getConnection(), Customer.class);
-        Customer wroteCustomer = (Customer) dao.createEx(customer,1);
+        Customer wroteCustomer = (Customer) dao.createEx(customer);
         assertNotNull(wroteCustomer);
     }
 
@@ -48,7 +48,7 @@ public class MySqlDaoCustomerTest {
         IGenDao dao = factory.getDAO(factory.getConnection(), Customer.class);
         Customer customer = (Customer) dao.read(1);
         customer.setName("vasa");
-        assertTrue(dao.update(customer,1));
+        assertTrue(dao.update(customer));
     }
 
     @Test

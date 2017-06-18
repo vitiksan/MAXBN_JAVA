@@ -12,8 +12,16 @@ import java.util.Scanner;
 public class Customer extends Human implements Serializable, Identificator<Integer> {
     private int idCustomer;
     private String statusCustomer;
-    private String addres;
+    private String address;
+    private int managerId;
     private ArrayList<Account> accounts = new ArrayList<Account>();
+
+    public Customer() {
+    }
+
+    public Customer(int managerId) {
+        this.managerId = managerId;
+    }
 
     public int getId() {
         return idCustomer;
@@ -29,6 +37,14 @@ public class Customer extends Human implements Serializable, Identificator<Integ
 
     public void setStatusCustomer(String statusCustomer) {
         this.statusCustomer = statusCustomer;
+    }
+
+    public int getManagerId() {
+        return managerId;
+    }
+
+    protected void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 
     public ArrayList<Account> getAccount() {
@@ -64,7 +80,7 @@ public class Customer extends Human implements Serializable, Identificator<Integ
             MySqlDaoFactory factory = new MySqlDaoFactory();
             IGenDao dao = factory.getDAO(factory.getConnection(), Account.class);
 
-            account = (Account) dao.createEx(account,1);
+            account = (Account) dao.createEx(account);
             if (account != null) {
                 accounts.add(account);
                 return true;
@@ -124,12 +140,12 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         return numbers;
     }
 
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
