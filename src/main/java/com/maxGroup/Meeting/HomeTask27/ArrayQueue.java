@@ -15,4 +15,19 @@ public class ArrayQueue<T> {
         this.size = size;
         array = new Object[size];
     }
+
+    public boolean add(T item) {
+        if (index < size - 1) {
+            array[++index] = item;
+            return true;
+        }
+        return false;
+    }
+
+    public T remove(){
+        T temp = (T) array[0];
+        for (int i = 0; i<index-1;i++) array[i]=array[i+1];
+        index--;
+        return temp;
+    }
 }
