@@ -26,7 +26,7 @@ public class ArrayQueue<T> {
 
     public T remove(){
         T temp = (T) array[0];
-        for (int i = 0; i<index-1;i++) array[i]=array[i+1];
+        for (int i = 0; i<index;i++) array[i]=array[i+1];
         index--;
         return temp;
     }
