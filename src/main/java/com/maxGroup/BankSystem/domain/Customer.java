@@ -7,6 +7,7 @@ import com.maxGroup.BankSystem.mysql.MySqlDaoFactory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Customer extends Human implements Serializable, Identificator<Integer> {
@@ -17,9 +18,20 @@ public class Customer extends Human implements Serializable, Identificator<Integ
     private ArrayList<Account> accounts = new ArrayList<Account>();
 
     public Customer() {
+        super();
     }
 
     public Customer(int managerId) {
+        super();
+        this.managerId = managerId;
+    }
+
+    public Customer(String name, String surname, GregorianCalendar born,
+                    int idCustomer, String statusCustomer, String address, int managerId) {
+        super(name, surname, born);
+        this.idCustomer = idCustomer;
+        this.statusCustomer = statusCustomer;
+        this.address = address;
         this.managerId = managerId;
     }
 
@@ -177,8 +189,10 @@ public class Customer extends Human implements Serializable, Identificator<Integ
 
     @Override
     public int hashCode() {
-        return 6 * getName().hashCode() +
-                5 * getSurname().hashCode() +
-                9 * getBorn().hashCode();
+        int result = idCustomer;
+        ///result = 31 * result + (statusCustomer != null ? statusCustomer.hashCode() : 0);
+        //result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + managerId;
+        return result;
     }
 }

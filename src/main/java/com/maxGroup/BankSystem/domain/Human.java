@@ -2,10 +2,22 @@ package com.maxGroup.BankSystem.domain;
 
 import java.util.GregorianCalendar;
 
-public abstract class Human {
+public class Human {
     private String name;
     private String surname;
     private GregorianCalendar born;
+
+    public Human() {
+        name = "none";
+        surname = "none";
+        born = new GregorianCalendar();
+    }
+
+    public Human(String name, String surname, GregorianCalendar born) {
+        this.name = name;
+        this.surname = surname;
+        this.born = born;
+    }
 
     public String getName() {
         return name;
