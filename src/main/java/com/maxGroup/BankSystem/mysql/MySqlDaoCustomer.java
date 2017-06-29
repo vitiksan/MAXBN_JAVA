@@ -35,6 +35,8 @@ public class MySqlDaoCustomer extends AbstractDao<Customer,Integer> {
         super(connection);
     }
 
+
+    //TODO 29.01 - Add JOIN
     @Override
     public String getSelectQuery() {
         return "SELECT * FROM customers WHERE customer_id=";

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class SenderAndRecipient {
+    //TODO 29.02 - Try add abstract class
     public static ArrayList<Customer> getRecipient() throws DAOexception {
         HashSet<Integer> id = new HashSet<>();
         ArrayList<Customer> customers = new ArrayList<>();

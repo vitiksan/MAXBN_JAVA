@@ -1,14 +1,11 @@
 package com.maxGroup.Meeting.lesson_28;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class TestingHashSet {
     public static void main(String[] args) throws FileNotFoundException {
-        Set<String> words = new HashSet<String>();
+        Set<String> words = new TreeSet<String>();
         long sumarrytime = 0;
 
         String loadFile = loadData("./src/main/java/com/maxGroup/Meeting/lesson_28/book.txt");
