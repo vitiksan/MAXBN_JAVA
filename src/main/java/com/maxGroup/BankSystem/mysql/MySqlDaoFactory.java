@@ -6,6 +6,7 @@ import com.maxGroup.BankSystem.DAO.IdaoFactory;
 import com.maxGroup.BankSystem.domain.Account;
 import com.maxGroup.BankSystem.domain.Customer;
 import com.maxGroup.BankSystem.domain.Manager;
+import com.maxGroup.BankSystem.domain.Transaction;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,6 +67,12 @@ public class MySqlDaoFactory implements IdaoFactory<Connection> {
             @Override
             public IGenDao create(Connection connection) {
                 return new MySqlDaoCustomer(connection);
+            }
+        });
+        allDaoClass.put(Transaction.class, new DaoCreator<Connection>() {
+            @Override
+            public IGenDao create(Connection connection) {
+                return new MySqlDaoTransaction(connection);
             }
         });
     }
