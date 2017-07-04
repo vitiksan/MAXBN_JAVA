@@ -3,10 +3,7 @@ package com.maxGroup.BankSystem.domain;
 import com.maxGroup.BankSystem.DAO.Identificator;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Account implements Identificator<Integer> {
     private int id;
@@ -16,6 +13,7 @@ public class Account implements Identificator<Integer> {
     private String type;
     private GregorianCalendar expCard;
     private int customerId;
+    private HashSet<Transaction> transactions = new HashSet<Transaction>();
 
     public Account() {
         this.cardNumber = generateVCNumber();
@@ -172,5 +170,9 @@ public class Account implements Identificator<Integer> {
 
     protected void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
     }
 }

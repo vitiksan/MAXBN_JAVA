@@ -6,16 +6,14 @@ import com.maxGroup.BankSystem.DAO.Identificator;
 import com.maxGroup.BankSystem.mysql.MySqlDaoFactory;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Scanner;
+import java.util.*;
 
 public class Customer extends Human implements Serializable, Identificator<Integer> {
     private int idCustomer;
     private String statusCustomer;
     private String address;
     private int managerId;
-    private ArrayList<Account> accounts = new ArrayList<Account>();
+    private HashSet<Account> accounts = new HashSet<Account>();
 
     public Customer() {
         super();
@@ -59,7 +57,7 @@ public class Customer extends Human implements Serializable, Identificator<Integ
         this.managerId = managerId;
     }
 
-    public ArrayList<Account> getAccount() {
+    public HashSet<Account> getAccounts() {
         return accounts;
     }
 
